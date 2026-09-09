@@ -10,7 +10,7 @@
 
 Секреты — ТОЛЬКО из окружения (GitHub Secrets), в коде их нет:
   GSC_SA_JSON      — JSON-ключ сервис-аккаунта Google (у него должен быть доступ к ресурсу в Search Console)
-  GSC_SITE         — ресурс: 'sc-domain:ratescout.ru' (домен-ресурс) или 'https://ratescout.ru/' (URL-префикс)
+  GSC_SITE         — ресурс: 'sc-domain:ratescout.info.gf' (домен-ресурс) или 'https://ratescout.info.gf/' (URL-префикс)
   TELEGRAM_TOKEN   — тот же бот, что у каналов
   ALERT_CHAT_ID    — id личного чата владельца с ботом (как у сторожа)
 Без секретов — сухой прогон (печатает, что сделал бы, ничего не шлёт).
@@ -24,7 +24,7 @@ import urllib.request
 from datetime import datetime, timedelta, timezone
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-SITE = os.environ.get("GSC_SITE", "sc-domain:ratescout.ru")
+SITE = os.environ.get("GSC_SITE", "sc-domain:ratescout.info.gf")
 try:
     _CUR = json.load(open(os.path.join(ROOT, "currencies.json"), encoding="utf-8"))["currencies"]
 except (OSError, ValueError):
@@ -70,7 +70,7 @@ def _pct(cur, prev):
 
 
 def _short_url(u):
-    return u.replace("https://ratescout.ru", "").replace("https://ratescout.ru/", "/") or "/"
+    return u.replace("https://ratescout.info.gf", "").replace("https://ratescout.info.gf/", "/") or "/"
 
 
 def build_report(token):

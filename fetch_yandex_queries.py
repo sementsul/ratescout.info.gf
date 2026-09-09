@@ -14,7 +14,7 @@ import urllib.request
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 TOKEN = os.environ.get("YANDEX_OAUTH_TOKEN")
-HOST = os.environ.get("YANDEX_HOST") or "https://ratescout.ru"
+HOST = os.environ.get("YANDEX_HOST") or "https://ratescout.info.gf"
 WM = "https://api.webmaster.yandex.net/v4"
 
 

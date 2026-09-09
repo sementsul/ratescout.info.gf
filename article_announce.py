@@ -15,7 +15,7 @@ import urllib.parse
 import urllib.request
 import uuid
 
-SRC = os.environ.get("ARTICLE_JSON_URL", "https://ratescout.ru/article-today.json")
+SRC = os.environ.get("ARTICLE_JSON_URL", "https://ratescout.info.gf/article-today.json")
 
 
 def _post(url, data, ctype="application/x-www-form-urlencoded", headers=None):

@@ -7,7 +7,7 @@
 Секреты — ТОЛЬКО из окружения (в коде их нет):
   YANDEX_OAUTH_TOKEN   — OAuth-токен с доступами Вебмастер+Метрика
   YANDEX_METRIKA_COUNTER — id счётчика Метрики (по умолчанию 111586112)
-  YANDEX_HOST          — хост в Вебмастере (по умолчанию https://ratescout.ru)
+  YANDEX_HOST          — хост в Вебмастере (по умолчанию https://ratescout.info.gf)
   TELEGRAM_TOKEN, ALERT_CHAT_ID — куда слать (тот же бот/чат, что у сторожа)
 Без токена — сухой прогон (ничего не шлёт). Каждый под-запрос обёрнут: сбой одного не роняет весь отчёт.
 """
@@ -21,7 +21,7 @@ from datetime import datetime, timedelta, timezone
 TOKEN = os.environ.get("YANDEX_OAUTH_TOKEN")
 # `or` — а не default в get(): незаданный секрет в CI приходит ПУСТОЙ строкой и затёр бы дефолт.
 COUNTER = os.environ.get("YANDEX_METRIKA_COUNTER") or "111586112"
-HOST = os.environ.get("YANDEX_HOST") or "https://ratescout.ru"
+HOST = os.environ.get("YANDEX_HOST") or "https://ratescout.info.gf"
 WM = "https://api.webmaster.yandex.net/v4"
 MET = "https://api-metrika.yandex.net/stat/v1/data"
 
@@ -123,7 +123,7 @@ def gsc_totals():
     creds = service_account.Credentials.from_service_account_info(
         json.loads(sa), scopes=["https://www.googleapis.com/auth/webmasters.readonly"])
     creds.refresh(google.auth.transport.requests.Request())
-    site = os.environ.get("GSC_SITE") or "https://ratescout.ru/"
+    site = os.environ.get("GSC_SITE") or "https://ratescout.info.gf/"
     today = datetime.now(timezone.utc).date()
     end = today - timedelta(days=3)
     start = end - timedelta(days=6)
@@ -201,7 +201,7 @@ def metrika_report():
             return "  топ-страницы: нет данных"
         out = ["  топ-страницы (просмотры):"]
         for r in rows:
-            u = r["dimensions"][0].get("name", "?").replace("https://ratescout.ru", "") or "/"
+            u = r["dimensions"][0].get("name", "?").replace("https://ratescout.info.gf", "") or "/"
             out.append(f"    {u} — {r['metrics'][0]:.0f}")
         return "\n".join(out)
     L.append(sub(_pages, "pages"))

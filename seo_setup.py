@@ -14,9 +14,9 @@ import sys
 import urllib.parse
 import urllib.request
 
-GSC_SITE = os.environ.get("GSC_SITE") or "https://ratescout.ru/"
-SITEMAP = "https://ratescout.ru/sitemap.xml"
-Y_HOST = (os.environ.get("YANDEX_HOST") or "https://ratescout.ru").rstrip("/")
+GSC_SITE = os.environ.get("GSC_SITE") or "https://ratescout.info.gf/"
+SITEMAP = "https://ratescout.info.gf/sitemap.xml"
+Y_HOST = (os.environ.get("YANDEX_HOST") or "https://ratescout.info.gf").rstrip("/")
 WM = "https://api.webmaster.yandex.net/v4"
 
 

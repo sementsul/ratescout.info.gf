@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # RateScout - interactive console rate monitor (macOS/Linux, built-in bash + curl).
 # Keys: h heatmap, w watchlist, m movers; period 1/2/3 = 24h/7d/30d; r refresh, q quit.
-# It only DOWNLOADS ready-made text pages from ratescout.ru and prints them. No install, no code from data.
-# Source: https://ratescout.ru/cli/rs.sh
-base="https://ratescout.ru/cli"; view="heat"; period="24h"
+# It only DOWNLOADS ready-made text pages from ratescout.info.gf and prints them. No install, no code from data.
+# Source: https://ratescout.info.gf/cli/rs.sh
+base="https://ratescout.info.gf/cli"; view="heat"; period="24h"
 cleanup() { printf '\033[?25h'; clear; exit 0; }
 trap cleanup INT
 printf '\033[?25l'

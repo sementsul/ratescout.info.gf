@@ -14,14 +14,14 @@
 
 Запуск (ничего указывать не надо):  python3 vk_id_bootstrap.py
 
-По умолчанию настроено на веб-приложение VK ID app_id=54760537 и redirect https://ratescout.ru/.
+По умолчанию настроено на веб-приложение VK ID app_id=54760537 и redirect https://ratescout.info.gf/.
 Перед запуском (ОДИН раз) в dev.vk.com у приложения 54760537 (тип «Веб-сайт») проверь:
    • приложение включено;
-   • Базовый домен: ratescout.ru
-   • Доверенный redirect URI: https://ratescout.ru/  (ровно так, со слэшем)
+   • Базовый домен: ratescout.info.gf
+   • Доверенный redirect URI: https://ratescout.info.gf/  (ровно так, со слэшем)
 
 Переопределить при желании через env:
-   VK_CLIENT_ID (54760537), VK_REDIRECT (https://ratescout.ru/), GH_REPO (sementsul/ratescout)
+   VK_CLIENT_ID (54760537), VK_REDIRECT (https://ratescout.info.gf/), GH_REPO (sementsul/ratescout)
 """
 import base64
 import getpass
@@ -46,7 +46,7 @@ except Exception:                                                 # noqa: BLE001
 _SSL_INSECURE = None                                              # ленивый небезопасный контекст (последний фолбэк)
 
 CLIENT_ID = os.environ.get("VK_CLIENT_ID", "54760537")            # веб-приложение VK ID (app id — не секрет)
-REDIRECT = os.environ.get("VK_REDIRECT", "https://ratescout.ru/")  # свой домен = доверенный redirect у приложения
+REDIRECT = os.environ.get("VK_REDIRECT", "https://ratescout.info.gf/")  # свой домен = доверенный redirect у приложения
 SCOPE = "video photos wall groups"
 AUTH = "https://id.vk.com/authorize"
 TOKEN = "https://id.vk.com/oauth2/auth"

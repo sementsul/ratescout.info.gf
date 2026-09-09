@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Автопостинг роликов/картинок из репо my-many/promo в Telegram-канал: один элемент за запуск.
 ВИДЕО и КАРТИНКИ (вперемешку, по имени). Очередь КРУГОВАЯ: после последнего — снова первый.
-Подпись ЧЕРЕДУЕТСЯ: ratescout.ru → my-many.ru → по кругу.
+Подпись ЧЕРЕДУЕТСЯ: ratescout.info.gf → my-many.ru → по кругу.
 
 Секреты (GitHub Secrets): TELEGRAM_TOKEN (бот, админ канала), TELEGRAM_CHANNEL (@username), GH_PAT.
 Состояние — tg_posted.json {"last": <имя>, "count": N} (коммитит воркфлоу). DRY_RUN=1 — не публикует.
@@ -25,7 +25,7 @@ IMG_EXT = (".jpg", ".jpeg", ".png", ".webp")
 
 CAP_RS = (os.environ.get("TG_CAPTION_RS") or "").strip() or (
     "Мониторинг курсов обмена и обменников — RateScout.\n"
-    "Лучший курс на обмен крипты и валюты: https://ratescout.ru/?p=1116359")
+    "Лучший курс на обмен крипты и валюты: https://ratescout.info.gf/?p=1116359")
 CAP_MM = (os.environ.get("TG_CAPTION_MM") or "").strip() or (
     "MyMany — база выгодных цепочек обмена (арбитраж).\n"
     "Зарабатывай на разнице курсов, всё посчитано: https://my-many.ru/")
@@ -96,7 +96,7 @@ def main():
         idx = names.index(force)
     name, url = media[idx]
     caption = caption_for(count)
-    who = "ratescout.ru" if count % 2 == 0 else "my-many.ru"
+    who = "ratescout.info.gf" if count % 2 == 0 else "my-many.ru"
     is_vid = name.lower().endswith(VID_EXT)
     kind = "видео" if is_vid else "картинка"
     print(f"медиа всего: {len(media)} | цикл-пост #{count} | след.[{idx}]: {name} ({kind}) | домен: {who}")

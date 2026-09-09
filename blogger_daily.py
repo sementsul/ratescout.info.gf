@@ -23,7 +23,7 @@ CSEC = os.environ.get("BLOGGER_CLIENT_SECRET")
 RTOK = os.environ.get("BLOGGER_REFRESH_TOKEN")
 BLOG = os.environ.get("BLOGGER_BLOG_ID")
 PID = os.environ.get("BLOGGER_POST_ID")            # если задан — обновляем этот пост, а не плодим новые
-SRC = os.environ.get("DAILY_JSON_URL", "https://ratescout.ru/daily.json")
+SRC = os.environ.get("DAILY_JSON_URL", "https://ratescout.info.gf/daily.json")
 # Стабильный заголовок вечного поста (не меняется по дням → стабильный URL и ранжирование).
 # Можно переопределить секретом/переменной BLOGGER_POST_TITLE.
 STABLE_TITLE = os.environ.get("BLOGGER_POST_TITLE", "Курсы криптовалют сегодня — сводка RateScout")

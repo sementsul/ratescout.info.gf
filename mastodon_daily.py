@@ -15,7 +15,7 @@ import uuid
 
 URL = (os.environ.get("MASTODON_URL") or "").rstrip("/")
 TOKEN = os.environ.get("MASTODON_TOKEN")
-SRC = os.environ.get("DAILY_JSON_URL", "https://ratescout.ru/daily.json")
+SRC = os.environ.get("DAILY_JSON_URL", "https://ratescout.info.gf/daily.json")
 
 
 def api(path, data=None, ctype=None):

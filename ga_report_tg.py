@@ -95,7 +95,7 @@ def build_report():
             "engagement_pct": float(eng) * 100 if eng else None, "avg_session_sec": avgdur}))
     except Exception as _e:                        # noqa: BLE001
         print("baserow GA skip:", _e)
-    L = [f"📊 Google Analytics — {DAYS} дней (ratescout.ru)", ""]
+    L = [f"📊 Google Analytics — {DAYS} дней (ratescout.info.gf)", ""]
     L.append(f"👥 Пользователи: {users}   Сеансы: {sessions}")
     L.append(f"👁 Просмотры: {views}   Вовлечённость: {float(eng) * 100:.0f}%   Ср. сеанс: {dur(avgdur)}")
 

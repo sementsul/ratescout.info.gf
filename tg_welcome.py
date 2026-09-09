@@ -13,7 +13,7 @@ import urllib.request
 
 TOKEN = os.environ.get("TELEGRAM_TOKEN")
 CHANNEL = os.environ.get("TELEGRAM_CHANNEL")
-BASE = "https://ratescout.ru"
+BASE = "https://ratescout.info.gf"
 MINIAPP = "https://t.me/RateScoutRUBot/ratescout_ru"
 
 CAPTION = (
@@ -24,7 +24,7 @@ CAPTION = (
     "📰 Мы также в Дзене: https://dzen.ru/ratescout\n"
     "🅥 И во ВКонтакте: https://vk.com/ratescout\n"
     "🐘 Mastodon: https://mastodon.social/@ratescout_ru\n"
-    "📝 Blog: https://blogger.ratescout.ru/\n\n"
+    "📝 Blog: https://blogger.ratescout.info.gf/\n\n"
     "ℹ️ Справочный сервис (мониторинг курсов), не обменный пункт. Не является финансовой рекомендацией."
 )
 BUTTONS = [

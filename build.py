@@ -439,7 +439,7 @@ def render_home(lang):
     {search_box(lang)}
     {wallet_cta(lang)}
     <div class="sblock"><h3>{tr(lang,'sections')}</h3><ul>
-      <li><a href="https://app.ratescout.ru">{'📱 Приложение' if lang=='ru' else '📱 App'}</a></li>
+      <li><a href="https://app.ratescout.info.gf">{'📱 Приложение' if lang=='ru' else '📱 App'}</a></li>
       <li><a href="{PREF[lang]}/napravleniya/">{tr(lang,'nav_dirs')}</a></li>
       <li><a href="{PREF[lang]}/lidery-rynka/">{tr(lang,'nav_leaders')}</a></li>
       <li><a href="{PREF[lang]}/heatmap/">{'Тепловая карта' if lang=='ru' else 'Heatmap'}</a></li>
@@ -1829,7 +1829,7 @@ def mobile_drawer(lang):
         grp("Инструменты" if ru else "Tools", [
             (f"{P}/aml/", tr(lang, 'nav_aml')),
             (f"{P}/vidzhet/", tr(lang, 'nav_widget')),
-            ("https://app.ratescout.ru", "📱 Приложение" if ru else "📱 App")]),
+            ("https://app.ratescout.info.gf", "📱 Приложение" if ru else "📱 App")]),
         grp("Знания" if ru else "Learn", [
             (f"{P}/blog/", tr(lang, 'nav_blog')),
             (f"{P}/faq/", tr(lang, 'nav_faq')),
@@ -2006,7 +2006,7 @@ def footer(lang):
                 "проводим операции. Ссылки ведут в сервис BestChange (мониторинг курсов обменных пунктов); "
                 "по партнёрской программе мы можем получать вознаграждение. Это не реклама от имени BestChange.")
         links = (f'<a href="/o-servise/">О сервисе</a> · <a href="/aml/">AML-проверка</a> · '
-                 f'<a href="/vidzhet/">Виджет для сайта</a> · <a href="/redakciya/">О редакции</a> · <a href="https://blogger.ratescout.ru/" target="_blank" rel="noopener me">Блог на Blogger</a> · <a href="https://t.me/ratescout_kurs" target="_blank" rel="noopener me">Канал в Telegram</a> · <a href="https://ok.ru/group/70000057243663" target="_blank" rel="noopener me">Одноклассники</a> · <a href="https://mastodon.social/@ratescout_ru" target="_blank" rel="noopener me">Mastodon</a> · <a href="https://www.yell.ru/moscow/com/ratescout-ru_14524615/" target="_blank" rel="noopener me">Yell.ru</a> · <a href="/raskrytie/">Раскрытие и дисклеймеры</a> · <a href="/politika/">Политика конфиденциальности</a> · <a href="/usloviya/">Условия использования</a>')
+                 f'<a href="/vidzhet/">Виджет для сайта</a> · <a href="/redakciya/">О редакции</a> · <a href="https://blogger.ratescout.info.gf/" target="_blank" rel="noopener me">Блог на Blogger</a> · <a href="https://t.me/ratescout_kurs" target="_blank" rel="noopener me">Канал в Telegram</a> · <a href="https://ok.ru/group/70000057243663" target="_blank" rel="noopener me">Одноклассники</a> · <a href="https://mastodon.social/@ratescout_ru" target="_blank" rel="noopener me">Mastodon</a> · <a href="https://www.yell.ru/moscow/com/ratescout-ru_14524615/" target="_blank" rel="noopener me">Yell.ru</a> · <a href="/raskrytie/">Раскрытие и дисклеймеры</a> · <a href="/politika/">Политика конфиденциальности</a> · <a href="/usloviya/">Условия использования</a>')
         fine = ("18+. Информация носит справочный характер, не является рекламой, офертой или финансовой "
                 f"рекомендацией. Курсы меняются. © {S['name']} {S['domain']}.<br>"
                 f"<span class=\"erid\">Владелец сайта: {S.get('owner_status','')} {S.get('owner','')}, ИНН {S.get('owner_inn','')}.</span>")
@@ -2016,7 +2016,7 @@ def footer(lang):
                 "affiliate program we may earn a commission. This is not advertising on behalf of BestChange.")
         links = (f'<a href="/en/o-servise/">About</a> · <a href="/en/aml/">AML check</a> · '
                  f'<a href="/en/earn/">Earn with BestChange</a> · '
-                 f'<a href="/en/vidzhet/">Site widget</a> · <a href="/en/redakciya/">Editorial</a> · <a href="https://blogger.ratescout.ru/" target="_blank" rel="noopener me">Blog on Blogger</a> · <a href="https://t.me/ratescout_kurs" target="_blank" rel="noopener me">Telegram channel</a> · <a href="https://ok.ru/group/70000057243663" target="_blank" rel="noopener me">Odnoklassniki</a> · <a href="https://mastodon.social/@ratescout_ru" target="_blank" rel="noopener me">Mastodon</a> · <a href="/en/raskrytie/">Disclosure</a> · <a href="/en/politika/">Privacy policy</a> · <a href="/en/usloviya/">Terms of Service</a>')
+                 f'<a href="/en/vidzhet/">Site widget</a> · <a href="/en/redakciya/">Editorial</a> · <a href="https://blogger.ratescout.info.gf/" target="_blank" rel="noopener me">Blog on Blogger</a> · <a href="https://t.me/ratescout_kurs" target="_blank" rel="noopener me">Telegram channel</a> · <a href="https://ok.ru/group/70000057243663" target="_blank" rel="noopener me">Odnoklassniki</a> · <a href="https://mastodon.social/@ratescout_ru" target="_blank" rel="noopener me">Mastodon</a> · <a href="/en/raskrytie/">Disclosure</a> · <a href="/en/politika/">Privacy policy</a> · <a href="/en/usloviya/">Terms of Service</a>')
         fine = ("18+. Information is for reference only and is not advertising, an offer or financial advice. "
                 f"Rates change. © {S['name']} {S['domain']}.<br>"
                 f"<span class=\"erid\">Site owner: {S.get('owner','')} (self-employed, RU tax ID {S.get('owner_inn','')}).</span>")
@@ -2579,7 +2579,7 @@ def render_currency(slug, info, lang):
     {search_box(lang)}
     {wallet_cta(lang)}
     <div class="sblock"><h3>{tr(lang,'sections')}</h3><ul>
-      <li><a href="https://app.ratescout.ru">{'📱 Приложение' if lang=='ru' else '📱 App'}</a></li>
+      <li><a href="https://app.ratescout.info.gf">{'📱 Приложение' if lang=='ru' else '📱 App'}</a></li>
       <li><a href="{PREF[lang]}/">{tr(lang,'all_cur')}</a></li>
       <li><a href="{PREF[lang]}/napravleniya/">{tr(lang,'nav_dirs')}</a></li>
       <li><a href="{PREF[lang]}/lidery-rynka/">{tr(lang,'nav_leaders')}</a></li>
@@ -3344,9 +3344,9 @@ def make_og_card(src_path, out_path, W=1200, H=630):
 
 def make_daily_image(out_path, date, gainers, losers, lang="ru"):
     """Картинка для Telegram: топ роста/падения за сутки с 24ч-графиками (без emoji — DejaVu их не рисует)."""
-    lab = (("[⇄] Крипторынок за сутки", "▲ Топ роста", "▼ Топ падения", "Полный обзор: ratescout.ru/obzor/sutki")
+    lab = (("[⇄] Крипторынок за сутки", "▲ Топ роста", "▼ Топ падения", "Полный обзор: ratescout.info.gf/obzor/sutki")
            if lang == "ru" else
-           ("[⇄] Crypto market · 24h", "▲ Top gainers", "▼ Top losers", "Full review: ratescout.ru/en/obzor/sutki"))
+           ("[⇄] Crypto market · 24h", "▲ Top gainers", "▼ Top losers", "Full review: ratescout.info.gf/en/obzor/sutki"))
     W, H = 1080, 1080
     img = Image.new("RGB", (W, H), (11, 11, 11))
     dr = ImageDraw.Draw(img)
@@ -3356,7 +3356,7 @@ def make_daily_image(out_path, date, gainers, losers, lang="ru"):
     fr = ImageFont.truetype(FONT_BOLD, 36)
     ff = ImageFont.truetype(FONT_REG, 28)
     dr.text((56, 44), lab[0], font=fb, fill=(85, 255, 255))
-    dr.text((56, 108), f"{date} · ratescout.ru", font=ff, fill=(150, 150, 150))
+    dr.text((56, 108), f"{date} · ratescout.info.gf", font=ff, fill=(150, 150, 150))
 
     def section(title, items, y0, col):
         dr.text((56, y0), title, font=fh, fill=col)
@@ -3377,9 +3377,9 @@ def make_daily_image(out_path, date, gainers, losers, lang="ru"):
 def make_weekly_image(out_path, date, stbl, liq, lang="ru"):
     """Картинка для воскресной «Сводки»: стейблкоины (откл. от $1) + ликвидность. Без emoji (DejaVu их не рисует)."""
     lab = (("[⇄] Сводка крипторынка", "Стейблкоины (откл. от $1)", "Ликвидность (обменников к USDT)",
-            "Полная сводка: ratescout.ru/svodka") if lang == "ru" else
+            "Полная сводка: ratescout.info.gf/svodka") if lang == "ru" else
            ("[⇄] Crypto market summary", "Stablecoins (peg to $1)", "Liquidity (exchangers to USDT)",
-            "Full summary: ratescout.ru/en/svodka"))
+            "Full summary: ratescout.info.gf/en/svodka"))
     W, H = 1080, 1080
     img = Image.new("RGB", (W, H), (11, 11, 11))
     dr = ImageDraw.Draw(img)
@@ -3389,7 +3389,7 @@ def make_weekly_image(out_path, date, stbl, liq, lang="ru"):
     fr = ImageFont.truetype(FONT_BOLD, 34)
     ff = ImageFont.truetype(FONT_REG, 28)
     dr.text((56, 44), lab[0], font=fb, fill=(85, 255, 255))
-    dr.text((56, 108), f"{date} · ratescout.ru", font=ff, fill=(150, 150, 150))
+    dr.text((56, 108), f"{date} · ratescout.info.gf", font=ff, fill=(150, 150, 150))
     y = 200
     dr.text((56, y), lab[1], font=fh, fill=(120, 200, 255))
     y += 66
@@ -3453,7 +3453,7 @@ def _digest_weekly(now_dt, out, fl=""):
     lines.append("🏆 Ликвидность (обменников к USDT):")
     lines += [f"• {CUR[s]['ticker']} — {lq}" for s, _p, lq, _c in liq]
     lines += ["", f"📊 Полная таблица всех {len(CUR)} валют (поиск/сортировка) → {BASE_URL}/svodka/",
-              "", "📢 Наши каналы: Telegram https://t.me/ratescout_kurs · Дзен https://dzen.ru/ratescout · ВК https://vk.com/ratescout · Mastodon https://mastodon.social/@ratescout_ru · Blogger https://blogger.ratescout.ru/", "", "#крипта #курсы #сводка"]
+              "", "📢 Наши каналы: Telegram https://t.me/ratescout_kurs · Дзен https://dzen.ru/ratescout · ВК https://vk.com/ratescout · Mastodon https://mastodon.social/@ratescout_ru · Blogger https://blogger.ratescout.info.gf/", "", "#крипта #курсы #сводка"]
     short = (f"🧭 Сводка крипторынка {now}\n{idx_line}\n"
              f"Полная сводка → {BASE_URL}/svodka/\n#крипта #курсы")[:490]
     json.dump({"has_data": True, "caption": "\n".join(lines), "image": img_url,
@@ -3547,7 +3547,7 @@ def write_daily_digest():
     lines += ["", "📉 Топ падения:"]
     lines += [f"• {CUR[s]['ticker']} {p:.1f}%" for s, p in losers]
     lines += ["", f"Полный обзор и графики → {BASE_URL}/obzor/sutki/",
-              "", "📢 Наши каналы: Telegram https://t.me/ratescout_kurs · Дзен https://dzen.ru/ratescout · ВК https://vk.com/ratescout · Mastodon https://mastodon.social/@ratescout_ru · Blogger https://blogger.ratescout.ru/", "", "#крипта #курсы #обзор"]
+              "", "📢 Наши каналы: Telegram https://t.me/ratescout_kurs · Дзен https://dzen.ru/ratescout · ВК https://vk.com/ratescout · Mastodon https://mastodon.social/@ratescout_ru · Blogger https://blogger.ratescout.info.gf/", "", "#крипта #курсы #обзор"]
     short = (f"📊 Крипторынок за сутки {now}\n📈 "
              + " · ".join(f"{CUR[s]['ticker']} +{p:.1f}%" for s, p in gainers[:3])
              + "\n📉 " + " · ".join(f"{CUR[s]['ticker']} {p:.1f}%" for s, p in losers[:3])
@@ -3569,7 +3569,7 @@ def write_daily_digest_en():
     now = now_dt.strftime("%d.%m.%Y")
     chans = ("📢 Our channels: Telegram https://t.me/ratescout_kurs · Дзен https://dzen.ru/ratescout · "
              "VK https://vk.com/ratescout · Mastodon https://mastodon.social/@ratescout_ru · "
-             "Blogger https://blogger.ratescout.ru/")
+             "Blogger https://blogger.ratescout.info.gf/")
     if now_dt.weekday() == 6:                     # воскресенье — сводка
         rows = _svodka_rows()
         withchg = sorted([r for r in rows if r[3] is not None], key=lambda r: r[2], reverse=True)[:20]
@@ -3667,12 +3667,12 @@ def render_dzen_rss():
     arts = ARTS["ru"]
     if not arts:
         return
-    author = S.get("owner_email", "") or "info@ratescout.ru"
+    author = S.get("owner_email", "") or "info@ratescout.info.gf"
     tg_promo = ('<p>📢 Ежедневные курсы и обзор рынка — в наших каналах: '
                 'Telegram <a href="https://t.me/ratescout_kurs">t.me/ratescout_kurs</a> · '
                 'ВКонтакте <a href="https://vk.com/ratescout">vk.com/ratescout</a> · '
                 'Mastodon <a href="https://mastodon.social/@ratescout_ru">@ratescout_ru</a> · '
-                'Blogger <a href="https://blogger.ratescout.ru/">blogger.ratescout.ru</a></p>')
+                'Blogger <a href="https://blogger.ratescout.info.gf/">blogger.ratescout.info.gf</a></p>')
     items = ""
     for a in arts:
         og = cover_url(a["slug"], "ru")
@@ -4337,7 +4337,7 @@ def compliance_pages(lang):
 <p>{S.get('owner_status','')} <b>{S.get('owner','')}</b>, ИНН {S.get('owner_inn','')}. Владелец не является
    обменным пунктом и не проводит операции. Контакт: {S.get('owner_email','')}.</p>
 <h2>Официальные ресурсы</h2>
-<p>Официальный блог сервиса: <a href="https://blogger.ratescout.ru/" target="_blank" rel="noopener me">blogger.ratescout.ru</a>.
+<p>Официальный блог сервиса: <a href="https://blogger.ratescout.info.gf/" target="_blank" rel="noopener me">blogger.ratescout.info.gf</a>.
    Telegram-канал: <a href="https://t.me/ratescout_kurs" target="_blank" rel="noopener me">t.me/ratescout_kurs</a>,
    ВКонтакте: <a href="https://vk.com/ratescout" target="_blank" rel="noopener me">vk.com/ratescout</a>,
    Mastodon: <a href="https://mastodon.social/@ratescout_ru" target="_blank" rel="noopener me">@ratescout_ru</a>.</p>"""
@@ -4438,7 +4438,7 @@ def compliance_pages(lang):
 <p><b>{S.get('owner','')}</b> (self-employed, RU tax ID {S.get('owner_inn','')}). The owner is not an exchange
    office and does not process transactions. Contact: {S.get('owner_email','')}.</p>
 <h2>Official resources</h2>
-<p>Official service blog: <a href="https://blogger.ratescout.ru/" target="_blank" rel="noopener me">blogger.ratescout.ru</a>.
+<p>Official service blog: <a href="https://blogger.ratescout.info.gf/" target="_blank" rel="noopener me">blogger.ratescout.info.gf</a>.
    Telegram channel: <a href="https://t.me/ratescout_kurs" target="_blank" rel="noopener me">t.me/ratescout_kurs</a>,
    VK: <a href="https://vk.com/ratescout" target="_blank" rel="noopener me">vk.com/ratescout</a>,
    Mastodon: <a href="https://mastodon.social/@ratescout_ru" target="_blank" rel="noopener me">@ratescout_ru</a>.</p>"""
@@ -5208,9 +5208,9 @@ def make_cli_txt():
     for i in range(0, len(heat), 6):
         L.append("  " + "".join(tile(r) for r in heat[i:i + 6]))
     L += ["", SEP,
-          f"  {GR}Данные: мониторинг BestChange (цены в USDT), обновление ежечасно · ratescout.ru{R}",
-          f"  {GR}Полный интерактивный монитор (панели, графики, скринер): https://ratescout.ru/monitor{R}",
-          f"  {GR}Приложение и эта команда: https://app.ratescout.ru · не оферта, 18+{R}", ""]
+          f"  {GR}Данные: мониторинг BestChange (цены в USDT), обновление ежечасно · ratescout.info.gf{R}",
+          f"  {GR}Полный интерактивный монитор (панели, графики, скринер): https://ratescout.info.gf/monitor{R}",
+          f"  {GR}Приложение и эта команда: https://app.ratescout.info.gf · не оферта, 18+{R}", ""]
     with open(os.path.join(DIST, "cli.txt"), "w", encoding="utf-8") as f:
         f.write("\n".join(L) + "\n")
     print(f"✅ cli.txt: watchlist {len(watch)}, {len(gain)}↑/{len(lose)}↓, хитмап {len(heat)}")
@@ -5267,7 +5267,7 @@ def make_cli_pages():
     ts = datetime.fromtimestamp(RATES_GENERATED, timezone.utc).strftime("%Y-%m-%d %H:%M UTC") if RATES_GENERATED else ""
 
     # ссылка на сайт с UTM-меткой (для аналитики переходов из консоли)
-    SITE = "https://ratescout.ru/monitor/?utm_source=console&utm_medium=cli&utm_campaign=cli_monitor"
+    SITE = "https://ratescout.info.gf/monitor/?utm_source=console&utm_medium=cli&utm_campaign=cli_monitor"
 
     def link(url, text):  # OSC 8 — кликабельная ссылка в совр. терминалах; где не поддержано — просто текст
         return f"\033]8;;{url}\033\\{text}\033]8;;\033\\"

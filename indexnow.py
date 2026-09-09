@@ -11,7 +11,7 @@ import re
 import urllib.request
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-HOST = "ratescout.ru"
+HOST = "ratescout.info.gf"
 KEY = "b394aeced6a92ed48a09e2bd30099905"
 ENDPOINT = "https://api.indexnow.org/indexnow"
 

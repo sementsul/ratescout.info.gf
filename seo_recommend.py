@@ -20,7 +20,7 @@ import urllib.request
 from datetime import datetime, timedelta, timezone
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-SITE = os.environ.get("GSC_SITE", "https://ratescout.ru/")
+SITE = os.environ.get("GSC_SITE", "https://ratescout.info.gf/")
 SEO_OUT = os.path.join(ROOT, "seo-recommendations.md")
 API = "https://www.googleapis.com/webmasters/v3/sites/{site}/searchAnalytics/query"
 SCOPE = "https://www.googleapis.com/auth/webmasters.readonly"
@@ -113,7 +113,7 @@ def match_query(q):
 # --- существующие страницы: берём из живого sitemap (источник правды о том, что уже есть) -----------
 def existing_pairs():
     try:
-        with urllib.request.urlopen("https://ratescout.ru/sitemap.xml", timeout=30) as r:
+        with urllib.request.urlopen("https://ratescout.info.gf/sitemap.xml", timeout=30) as r:
             xml = r.read().decode("utf-8", "ignore")
     except Exception:                              # noqa: BLE001
         return set()

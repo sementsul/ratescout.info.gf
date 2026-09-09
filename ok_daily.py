@@ -12,7 +12,7 @@ import urllib.request
 
 import ok_api
 
-SRC = os.environ.get("DAILY_JSON_URL", "https://ratescout.ru/daily.json")
+SRC = os.environ.get("DAILY_JSON_URL", "https://ratescout.info.gf/daily.json")
 
 
 def main():

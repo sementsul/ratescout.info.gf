@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Автопостинг контента из репо my-many/promo на стену VK-группы: один элемент за запуск.
 Поддерживает ВИДЕО и КАРТИНКИ (вперемешку, по имени). Очередь КРУГОВАЯ: после последнего — снова первый.
-Подпись ЧЕРЕДУЕТСЯ: ratescout.ru → my-many.ru → и по кругу.
+Подпись ЧЕРЕДУЕТСЯ: ratescout.info.gf → my-many.ru → и по кругу.
 
 Секреты (GitHub Secrets):
   VK_USER_TOKEN — пользовательский токен (video/photos/wall; сообщество фото/видео не грузит), бессрочный.
@@ -32,7 +32,7 @@ IMG_EXT = (".jpg", ".jpeg", ".png", ".webp")
 
 CAP_RS = (os.environ.get("VK_CAPTION_RS") or "").strip() or (
     "Мониторинг курсов обмена и обменников — RateScout.\n"
-    "Лучший курс на обмен крипты и валюты в одном месте: https://ratescout.ru/?p=1116359\n\n"
+    "Лучший курс на обмен крипты и валюты в одном месте: https://ratescout.info.gf/?p=1116359\n\n"
     "#обмен #криптовалюта #курсывалют #ratescout")
 CAP_MM = (os.environ.get("VK_CAPTION_MM") or "").strip() or (
     "MyMany — база выгодных цепочек обмена (арбитраж).\n"
@@ -138,7 +138,7 @@ def main():
     idx = (names.index(last) + 1) % len(names) if last in names else 0   # КРУГ: после последнего → первый
     name, url = media[idx]
     caption = caption_for(count)
-    who = "ratescout.ru" if count % 2 == 0 else "my-many.ru"
+    who = "ratescout.info.gf" if count % 2 == 0 else "my-many.ru"
     kind = "видео" if name.lower().endswith(VID_EXT) else "картинка"
     print(f"медиа всего: {len(media)} | цикл-пост #{count} | след.[{idx}]: {name} ({kind}) | домен: {who}")
     print(f"подпись:\n{caption}\n")

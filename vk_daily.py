@@ -21,7 +21,7 @@ import urllib.request
 
 VK_TOKEN = os.environ.get("VK_TOKEN")          # сообщество — для wall.post
 VK_GROUP = os.environ.get("VK_GROUP_ID")
-SRC = os.environ.get("DAILY_JSON_URL", "https://ratescout.ru/daily.json")
+SRC = os.environ.get("DAILY_JSON_URL", "https://ratescout.info.gf/daily.json")
 API = "https://api.vk.com/method/"
 V = "5.199"
 

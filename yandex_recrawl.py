@@ -4,7 +4,7 @@
 Помогает Яндексу быстрее взять важные страницы в поиск. У Вебмастера суточная квота на переобход —
 скрипт шлёт курированный список важных URL и останавливается, когда квота кончилась.
 
-Секрет — ТОЛЬКО из окружения: YANDEX_OAUTH_TOKEN (доступ Вебмастер). YANDEX_HOST опц. (по умолч. https://ratescout.ru).
+Секрет — ТОЛЬКО из окружения: YANDEX_OAUTH_TOKEN (доступ Вебмастер). YANDEX_HOST опц. (по умолч. https://ratescout.info.gf).
 Итог печатает в лог (для Actions) и, если заданы TELEGRAM_TOKEN+ALERT_CHAT_ID, шлёт краткую сводку владельцу.
 Без токена — сухой прогон (печатает, что отправил бы).
 """
@@ -16,7 +16,7 @@ import urllib.parse
 import urllib.request
 
 TOKEN = os.environ.get("YANDEX_OAUTH_TOKEN")
-HOST = (os.environ.get("YANDEX_HOST") or "https://ratescout.ru").rstrip("/")
+HOST = (os.environ.get("YANDEX_HOST") or "https://ratescout.info.gf").rstrip("/")
 WM = "https://api.webmaster.yandex.net/v4"
 
 # Курированный список важных страниц (по убыванию значимости). Квота ограничит фактическую отправку.

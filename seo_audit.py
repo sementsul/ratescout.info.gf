@@ -15,8 +15,8 @@ import sys
 import urllib.parse
 import urllib.request
 
-GSC_SITE = os.environ.get("GSC_SITE") or "https://ratescout.ru/"
-Y_HOST = (os.environ.get("YANDEX_HOST") or "https://ratescout.ru").rstrip("/")
+GSC_SITE = os.environ.get("GSC_SITE") or "https://ratescout.info.gf/"
+Y_HOST = (os.environ.get("YANDEX_HOST") or "https://ratescout.info.gf").rstrip("/")
 WM = "https://api.webmaster.yandex.net/v4"
 
 
@@ -38,11 +38,11 @@ def gsc_audit():
         return [f"🔵 Google Search Console: ошибка API — {str(e)[:100]}"]
     L = ["🔵 Google Search Console"]
     if not sm:
-        L.append("  ⚠️ sitemap НЕ отправлен — добавь https://ratescout.ru/sitemap.xml в Sitemaps")
+        L.append("  ⚠️ sitemap НЕ отправлен — добавь https://ratescout.info.gf/sitemap.xml в Sitemaps")
         return L
     for s in sm:
         cnt = sum(int(c.get("submitted", 0)) for c in s.get("contents", []))
-        L.append(f"  sitemap {s.get('path','?').replace('https://ratescout.ru','')}: "
+        L.append(f"  sitemap {s.get('path','?').replace('https://ratescout.info.gf','')}: "
                  f"URL {cnt}, ошибок {s.get('errors',0)}, предупр. {s.get('warnings',0)}, "
                  f"последняя отправка {s.get('lastSubmitted','?')[:10]}")
     return L
@@ -81,7 +81,7 @@ def yandex_audit():
         sm = _yget(f"{base}/sitemaps", token).get("sitemaps", [])
         if not sm:
             return "  ⚠️ sitemap не зарегистрирован — добавь в «Файлы Sitemap»"
-        return "  sitemap: " + "; ".join(f"{s.get('sitemap_url','?').replace('https://ratescout.ru','')}"
+        return "  sitemap: " + "; ".join(f"{s.get('sitemap_url','?').replace('https://ratescout.info.gf','')}"
                                          f" (URL {s.get('urls_count','?')})" for s in sm[:3])
     L.append(one(_sm, "sitemaps"))
 

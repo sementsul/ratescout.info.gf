@@ -1,9 +1,9 @@
 # RateScout - interactive console rate monitor (Windows PowerShell).
 # Keys: h heatmap, w watchlist, m movers; period 1/2/3 = 24h/7d/30d; r refresh, q quit.
-# It only DOWNLOADS ready-made text pages from ratescout.ru and prints them. No install, no code from data.
-# Source: https://ratescout.ru/cli/rs.ps1
+# It only DOWNLOADS ready-made text pages from ratescout.info.gf and prints them. No install, no code from data.
+# Source: https://ratescout.info.gf/cli/rs.ps1
 try { [Console]::OutputEncoding = [System.Text.Encoding]::UTF8 } catch {}
-$base = "https://ratescout.ru/cli"; $view = "heat"; $period = "24h"
+$base = "https://ratescout.info.gf/cli"; $view = "heat"; $period = "24h"
 $wc = New-Object System.Net.WebClient; $wc.Encoding = [System.Text.Encoding]::UTF8
 try { [Console]::CursorVisible = $false } catch {}
 try {

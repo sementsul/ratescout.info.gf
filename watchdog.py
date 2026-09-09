@@ -26,7 +26,7 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 
-BASE = os.environ.get("BASE_URL", "https://ratescout.ru")
+BASE = os.environ.get("BASE_URL", "https://ratescout.info.gf")
 MAX_STALE_H = int(os.environ.get("MAX_STALE_H", "8"))     # курсы старше стольких часов = тревога
 LOW_QUEUE = int(os.environ.get("LOW_QUEUE", "5"))          # статей в запасе меньше = пора писать
 UA = {"User-Agent": "RateScout-Watchdog"}
