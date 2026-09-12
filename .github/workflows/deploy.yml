@@ -1,0 +1,105 @@
+name: Build & Deploy RateScout FR
+
+# FR-only сборка ratescout.info.gf (без ERID/ОРД, только FTC-disclosure).
+# Секреты: BESTCHANGE_API_KEY, BESTCHANGE_RATES_URL, COINGECKO_KEY (опц.)
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+    - cron: "47 * * * *"
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Install build deps (markdown, Pillow + DejaVu)
+        run: |
+          pip install --quiet markdown Pillow
+          sudo apt-get install -y --no-install-recommends fonts-dejavu-core || echo "fonts skipped"
+
+      - name: Fetch rates (key from Secret — NOT committed, NOT in output)
+        env:
+          BESTCHANGE_API_KEY: ${{ secrets.BESTCHANGE_API_KEY }}
+          BESTCHANGE_RATES_URL: ${{ secrets.BESTCHANGE_RATES_URL }}
+        run: python3 fetch_rates.py || echo "rates fetch skipped — building with bundled data"
+
+      - name: Update rate history (daily snapshot → history.json)
+        run: python3 history.py || echo "history update skipped"
+
+      - name: Fetch market data (CoinGecko, free, no key) → market.json
+        env:
+          COINGECKO_KEY: ${{ secrets.COINGECKO_KEY }}
+        run: python3 fetch_market.py || echo "market skipped"
+
+      - name: Fetch trending (CoinGecko /search/trending, free) → trending.json
+        env:
+          COINGECKO_KEY: ${{ secrets.COINGECKO_KEY }}
+        run: python3 fetch_trending.py || echo "trending skipped"
+
+      - name: Fetch OFAC sanctions list → aml-sanctions.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 fetch_aml.py || echo "sanctions list skipped — AML check without it"
+
+      - name: Fetch Fear & Greed index (free) → fng.json
+        run: python3 fetch_fng.py || echo "fear&greed skipped"
+
+      - name: Build static site
+        run: python3 build.py
+
+      - name: Persist rate history back to repo (once/day, skip ci)
+        run: |
+          if ! git diff --quiet -- history.json aml-sanctions.json; then
+            git config user.name "ratescout-bot"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add history.json aml-sanctions.json
+            git commit -m "chore(data): snapshot cours + liste sanctions OFAC [skip ci]"
+            git push
+            echo "history.json/aml-sanctions.json pushed"
+          else
+            echo "no history changes — no commit"
+          fi
+
+      - name: Guard — key MUST NOT leak into build
+        run: |
+          if [ -n "$BESTCHANGE_API_KEY" ] && grep -rqF "$BESTCHANGE_API_KEY" dist/ ; then
+            echo "KEY FOUND IN dist/ — aborting deploy"; exit 1
+          fi
+          echo "no key in dist/"
+        env:
+          BESTCHANGE_API_KEY: ${{ secrets.BESTCHANGE_API_KEY }}
+
+      - name: Smoke-verify built site
+        run: python3 verify_build.py
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+      - id: deploy
+        uses: actions/deploy-pages@v5
+
+      - name: Ping IndexNow (Bing)
+        if: github.event_name != 'schedule'
+        run: python3 indexnow.py || echo "IndexNow skipped"

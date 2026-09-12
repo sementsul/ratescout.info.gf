@@ -1,0 +1,1992 @@
+{
+ "categories": [
+  "Криптовалюты",
+  "Digital currencies",
+  "Bank accounts and cards",
+  "Online banking",
+  "Money transfers",
+  "Cash"
+ ],
+ "currencies": {
+  "wmz": {
+   "id": 1,
+   "name": "WebMoney",
+   "ticker": "WMZ",
+   "category": "Digital currencies"
+  },
+  "terra": {
+   "id": 2,
+   "name": "Terra",
+   "ticker": "LUNA",
+   "category": "Криптовалюты"
+  },
+  "wme": {
+   "id": 3,
+   "name": "WebMoney",
+   "ticker": "WME",
+   "category": "Digital currencies"
+  },
+  "belarusbank": {
+   "id": 4,
+   "name": "Belarusbank",
+   "ticker": "BYN",
+   "category": "Online banking"
+  },
+  "privat24-usd": {
+   "id": 55,
+   "name": "Privat 24",
+   "ticker": "USD",
+   "category": "Online banking"
+  },
+  "yoomoney": {
+   "id": 6,
+   "name": "YooMoney",
+   "ticker": "RUB",
+   "category": "Digital currencies"
+  },
+  "wire-bgn": {
+   "id": 7,
+   "name": "Bank transfer",
+   "ticker": "BGN",
+   "category": "Bank accounts and cards"
+  },
+  "sberbank": {
+   "id": 42,
+   "name": "Sberbank",
+   "ticker": "RUB",
+   "category": "Online banking"
+  },
+  "omg": {
+   "id": 48,
+   "name": "OMG Network",
+   "ticker": "OMG",
+   "category": "Криптовалюты"
+  },
+  "wu-euro": {
+   "id": 15,
+   "name": "WU",
+   "ticker": "EUR",
+   "category": "Money transfers"
+  },
+  "turkish-cash": {
+   "id": 18,
+   "name": "Cash",
+   "ticker": "TRY",
+   "category": "Cash"
+  },
+  "binance-coin": {
+   "id": 19,
+   "name": "BNB BEP20",
+   "ticker": "BNB",
+   "category": "Криптовалюты"
+  },
+  "advanced-cash-try": {
+   "id": 20,
+   "name": "Volet",
+   "ticker": "TRY",
+   "category": "Digital currencies"
+  },
+  "bitcoin-bep20": {
+   "id": 43,
+   "name": "Bitcoin BEP20",
+   "ticker": "BTCB",
+   "category": "Криптовалюты"
+  },
+  "vtb": {
+   "id": 51,
+   "name": "VTB",
+   "ticker": "RUB",
+   "category": "Online banking"
+  },
+  "usdc-arbitrum": {
+   "id": 47,
+   "name": "USDC ARBITRUM",
+   "ticker": "USDC",
+   "category": "Криптовалюты"
+  },
+  "moneygo": {
+   "id": 40,
+   "name": "MoneyGo",
+   "ticker": "USD",
+   "category": "Digital currencies"
+  },
+  "corp-bank-usd": {
+   "id": 41,
+   "name": "Company details",
+   "ticker": "USD",
+   "category": "Bank accounts and cards"
+  },
+  "paypal-usd": {
+   "id": 45,
+   "name": "PayPal",
+   "ticker": "USD",
+   "category": "Digital currencies"
+  },
+  "exmo-tether": {
+   "id": 50,
+   "name": "Exmo",
+   "ticker": "USDT",
+   "category": "Digital currencies"
+  },
+  "alfaclick": {
+   "id": 52,
+   "name": "Alfa-Bank",
+   "ticker": "RUB",
+   "category": "Online banking"
+  },
+  "psbank": {
+   "id": 53,
+   "name": "PSB",
+   "ticker": "RUB",
+   "category": "Online banking"
+  },
+  "mobile-wallet-rub": {
+   "id": 49,
+   "name": "Mobile Wallet",
+   "ticker": "RUB",
+   "category": "Digital currencies"
+  },
+  "visa-mastercard-byr": {
+   "id": 54,
+   "name": "Bank card",
+   "ticker": "BYN",
+   "category": "Bank accounts and cards"
+  },
+  "privat24-uah": {
+   "id": 56,
+   "name": "Privat 24",
+   "ticker": "UAH",
+   "category": "Online banking"
+  },
+  "skrill": {
+   "id": 44,
+   "name": "Skrill",
+   "ticker": "USD",
+   "category": "Digital currencies"
+  },
+  "visa-mastercard-usd": {
+   "id": 58,
+   "name": "Bank card",
+   "ticker": "USD",
+   "category": "Bank accounts and cards"
+  },
+  "visa-mastercard-rub": {
+   "id": 59,
+   "name": "Bank card",
+   "ticker": "RUB",
+   "category": "Bank accounts and cards"
+  },
+  "visa-mastercard-uah": {
+   "id": 60,
+   "name": "Bank card",
+   "ticker": "UAH",
+   "category": "Bank accounts and cards"
+  },
+  "tinkoff-cash-in": {
+   "id": 46,
+   "name": "T-Bank cash-in",
+   "ticker": "RUB",
+   "category": "Online banking"
+  },
+  "bat": {
+   "id": 61,
+   "name": "BAT",
+   "ticker": "BAT",
+   "category": "Криптовалюты"
+  },
+  "alfabank-cash-in": {
+   "id": 62,
+   "name": "Alfa cash-in",
+   "ticker": "RUB",
+   "category": "Online banking"
+  },
+  "ozon": {
+   "id": 63,
+   "name": "Ozon Bank",
+   "ticker": "RUB",
+   "category": "Online banking"
+  },
+  "russtandart": {
+   "id": 64,
+   "name": "Russian Standard",
+   "ticker": "RUB",
+   "category": "Online banking"
+  },
+  "visa-mastercard-euro": {
+   "id": 65,
+   "name": "Bank card",
+   "ticker": "EUR",
+   "category": "Bank accounts and cards"
+  },
+  "usdr": {
+   "id": 57,
+   "name": "StablR USD ERC20",
+   "ticker": "USDR",
+   "category": "Криптовалюты"
+  },
+  "kaspi-bank": {
+   "id": 66,
+   "name": "Kaspi Bank",
+   "ticker": "KZT",
+   "category": "Online banking"
+  },
+  "wu": {
+   "id": 67,
+   "name": "WU",
+   "ticker": "USD",
+   "category": "Money transfers"
+  },
+  "oschadbank": {
+   "id": 68,
+   "name": "Oschadbank",
+   "ticker": "UAH",
+   "category": "Online banking"
+  },
+  "wire-usd": {
+   "id": 69,
+   "name": "Bank transfer",
+   "ticker": "USD",
+   "category": "Bank accounts and cards"
+  },
+  "wrapped-bitcoin": {
+   "id": 73,
+   "name": "Wrapped BTC",
+   "ticker": "WBTC",
+   "category": "Криптовалюты"
+  },
+  "wire-euro": {
+   "id": 70,
+   "name": "Bank transfer",
+   "ticker": "EUR",
+   "category": "Bank accounts and cards"
+  },
+  "wire-rub": {
+   "id": 71,
+   "name": "Bank transfer",
+   "ticker": "RUB",
+   "category": "Bank accounts and cards"
+  },
+  "neteller": {
+   "id": 72,
+   "name": "Neteller",
+   "ticker": "USD",
+   "category": "Digital currencies"
+  },
+  "bkash": {
+   "id": 74,
+   "name": "bKash",
+   "ticker": "BDT",
+   "category": "Digital currencies"
+  },
+  "idram": {
+   "id": 11,
+   "name": "Idram",
+   "ticker": "AMD",
+   "category": "Digital currencies"
+  },
+  "fortebank": {
+   "id": 75,
+   "name": "ForteBank",
+   "ticker": "KZT",
+   "category": "Online banking"
+  },
+  "near": {
+   "id": 76,
+   "name": "NEAR Protocol",
+   "ticker": "NEAR",
+   "category": "Криптовалюты"
+  },
+  "moneygram-euro": {
+   "id": 77,
+   "name": "MoneyGram",
+   "ticker": "EUR",
+   "category": "Money transfers"
+  },
+  "moneygram": {
+   "id": 78,
+   "name": "MoneyGram",
+   "ticker": "USD",
+   "category": "Money transfers"
+  },
+  "avangard": {
+   "id": 79,
+   "name": "Avangard",
+   "ticker": "RUB",
+   "category": "Online banking"
+  },
+  "paypal-euro": {
+   "id": 80,
+   "name": "PayPal",
+   "ticker": "EUR",
+   "category": "Digital currencies"
+  },
+  "wire-gbp": {
+   "id": 81,
+   "name": "Bank transfer",
+   "ticker": "GBP",
+   "category": "Bank accounts and cards"
+  },
+  "solana": {
+   "id": 82,
+   "name": "Solana",
+   "ticker": "SOL",
+   "category": "Криптовалюты"
+  },
+  "visa-mastercard-try": {
+   "id": 83,
+   "name": "Bank card",
+   "ticker": "TRY",
+   "category": "Bank accounts and cards"
+  },
+  "monobank": {
+   "id": 84,
+   "name": "Monobank",
+   "ticker": "UAH",
+   "category": "Online banking"
+  },
+  "capitalist-rub": {
+   "id": 85,
+   "name": "Capitalist",
+   "ticker": "RUB",
+   "category": "Digital currencies"
+  },
+  "uni": {
+   "id": 86,
+   "name": "UNI",
+   "ticker": "USD",
+   "category": "Money transfers"
+  },
+  "usdq": {
+   "id": 87,
+   "name": "Quantoz ERC20",
+   "ticker": "USDQ",
+   "category": "Криптовалюты"
+  },
+  "advanced-cash": {
+   "id": 88,
+   "name": "Volet",
+   "ticker": "USD",
+   "category": "Digital currencies"
+  },
+  "dollar-cash": {
+   "id": 89,
+   "name": "Cash",
+   "ticker": "USD",
+   "category": "Cash"
+  },
+  "halykbank": {
+   "id": 90,
+   "name": "HalykBank",
+   "ticker": "KZT",
+   "category": "Online banking"
+  },
+  "cash-ruble": {
+   "id": 91,
+   "name": "Cash",
+   "ticker": "RUB",
+   "category": "Cash"
+  },
+  "hryvnia-cash": {
+   "id": 92,
+   "name": "Cash",
+   "ticker": "UAH",
+   "category": "Cash"
+  },
+  "bitcoin": {
+   "id": 93,
+   "name": "Bitcoin",
+   "ticker": "BTC",
+   "category": "Криптовалюты"
+  },
+  "tenge-cash": {
+   "id": 94,
+   "name": "Cash",
+   "ticker": "KZT",
+   "category": "Cash"
+  },
+  "gazprombank": {
+   "id": 95,
+   "name": "Gazprombank",
+   "ticker": "RUB",
+   "category": "Online banking"
+  },
+  "wire-bdt": {
+   "id": 96,
+   "name": "Bank transfer",
+   "ticker": "BDT",
+   "category": "Bank accounts and cards"
+  },
+  "visa-mastercard-brl": {
+   "id": 97,
+   "name": "Bank card",
+   "ticker": "BRL",
+   "category": "Bank accounts and cards"
+  },
+  "visa-mastercard-thb": {
+   "id": 98,
+   "name": "Bank card",
+   "ticker": "THB",
+   "category": "Bank accounts and cards"
+  },
+  "litecoin": {
+   "id": 99,
+   "name": "Litecoin",
+   "ticker": "LTC",
+   "category": "Криптовалюты"
+  },
+  "unionpay": {
+   "id": 100,
+   "name": "UnionPay card",
+   "ticker": "CNY",
+   "category": "Bank accounts and cards"
+  },
+  "revolut-gbp": {
+   "id": 101,
+   "name": "Revolut",
+   "ticker": "GBP",
+   "category": "Online banking"
+  },
+  "wire-uah": {
+   "id": 102,
+   "name": "Bank transfer",
+   "ticker": "UAH",
+   "category": "Bank accounts and cards"
+  },
+  "payoneer": {
+   "id": 103,
+   "name": "Payoneer",
+   "ticker": "USD",
+   "category": "Digital currencies"
+  },
+  "icon": {
+   "id": 104,
+   "name": "ICON",
+   "ticker": "ICX",
+   "category": "Криптовалюты"
+  },
+  "tinkoff": {
+   "id": 105,
+   "name": "T-Bank",
+   "ticker": "RUB",
+   "category": "Online banking"
+  },
+  "ethereum-arbitrum": {
+   "id": 106,
+   "name": "Ethereum ARBITRUM",
+   "ticker": "ETH",
+   "category": "Криптовалюты"
+  },
+  "gc-rub": {
+   "id": 107,
+   "name": "GC",
+   "ticker": "RUB",
+   "category": "Money transfers"
+  },
+  "visa-mastercard-vnd": {
+   "id": 108,
+   "name": "Bank card",
+   "ticker": "VND",
+   "category": "Bank accounts and cards"
+  },
+  "nixmoney": {
+   "id": 109,
+   "name": "NixMoney",
+   "ticker": "USD",
+   "category": "Digital currencies"
+  },
+  "usd-coin-trc20": {
+   "id": 110,
+   "name": "USDC TRC20",
+   "ticker": "USDC",
+   "category": "Криптовалюты"
+  },
+  "visa-mastercard-kzt": {
+   "id": 111,
+   "name": "Bank card",
+   "ticker": "KZT",
+   "category": "Bank accounts and cards"
+  },
+  "global24": {
+   "id": 112,
+   "name": "Global24",
+   "ticker": "UAH",
+   "category": "Digital currencies"
+  },
+  "wire-kzt": {
+   "id": 113,
+   "name": "Bank transfer",
+   "ticker": "KZT",
+   "category": "Bank accounts and cards"
+  },
+  "bereke-bank": {
+   "id": 114,
+   "name": "Bereke Bank",
+   "ticker": "KZT",
+   "category": "Online banking"
+  },
+  "dogecoin": {
+   "id": 115,
+   "name": "Dogecoin",
+   "ticker": "DOGE",
+   "category": "Криптовалюты"
+  },
+  "gc-usd": {
+   "id": 116,
+   "name": "GC",
+   "ticker": "USD",
+   "category": "Money transfers"
+  },
+  "visa-mastercard-ars": {
+   "id": 117,
+   "name": "Bank card",
+   "ticker": "ARS",
+   "category": "Bank accounts and cards"
+  },
+  "pumb": {
+   "id": 118,
+   "name": "PUMB",
+   "ticker": "UAH",
+   "category": "Online banking"
+  },
+  "wire-inr": {
+   "id": 119,
+   "name": "Bank transfer",
+   "ticker": "INR",
+   "category": "Bank accounts and cards"
+  },
+  "advanced-cash-euro": {
+   "id": 120,
+   "name": "Volet",
+   "ticker": "EUR",
+   "category": "Digital currencies"
+  },
+  "advanced-cash-rub": {
+   "id": 121,
+   "name": "Volet",
+   "ticker": "RUB",
+   "category": "Digital currencies"
+  },
+  "zen-euro": {
+   "id": 122,
+   "name": "ZEN",
+   "ticker": "EUR",
+   "category": "Digital currencies"
+  },
+  "skrill-euro": {
+   "id": 123,
+   "name": "Skrill",
+   "ticker": "EUR",
+   "category": "Digital currencies"
+  },
+  "verge": {
+   "id": 124,
+   "name": "Verge",
+   "ticker": "XVG",
+   "category": "Криптовалюты"
+  },
+  "monobank-euro": {
+   "id": 125,
+   "name": "Monobank",
+   "ticker": "EUR",
+   "category": "Online banking"
+  },
+  "ethereum-optimism": {
+   "id": 126,
+   "name": "Ethereum OPTIMISM",
+   "ticker": "ETH",
+   "category": "Криптовалюты"
+  },
+  "qiwi-kzt": {
+   "id": 127,
+   "name": "QIWI",
+   "ticker": "KZT",
+   "category": "Digital currencies"
+  },
+  "corp-bank-yuan": {
+   "id": 128,
+   "name": "Company details",
+   "ticker": "CNY",
+   "category": "Bank accounts and cards"
+  },
+  "arbitrum": {
+   "id": 129,
+   "name": "Arbitrum",
+   "ticker": "ARB",
+   "category": "Криптовалюты"
+  },
+  "aptos": {
+   "id": 130,
+   "name": "Aptos",
+   "ticker": "APT",
+   "category": "Криптовалюты"
+  },
+  "bitcoin-ln": {
+   "id": 131,
+   "name": "Bitcoin LN",
+   "ticker": "BTC",
+   "category": "Криптовалюты"
+  },
+  "rnkb": {
+   "id": 132,
+   "name": "RNCB",
+   "ticker": "RUB",
+   "category": "Online banking"
+  },
+  "waves": {
+   "id": 133,
+   "name": "Waves",
+   "ticker": "WAVES",
+   "category": "Криптовалюты"
+  },
+  "pepe": {
+   "id": 134,
+   "name": "Pepe",
+   "ticker": "PEPE",
+   "category": "Криптовалюты"
+  },
+  "ontology": {
+   "id": 135,
+   "name": "Ontology",
+   "ticker": "ONT",
+   "category": "Криптовалюты"
+  },
+  "neteller-euro": {
+   "id": 136,
+   "name": "Neteller",
+   "ticker": "EUR",
+   "category": "Digital currencies"
+  },
+  "bitcoin-sv": {
+   "id": 137,
+   "name": "Bitcoin SV",
+   "ticker": "BSV",
+   "category": "Криптовалюты"
+  },
+  "polygon": {
+   "id": 138,
+   "name": "Polygon",
+   "ticker": "POL",
+   "category": "Криптовалюты"
+  },
+  "ethereum": {
+   "id": 139,
+   "name": "Ethereum",
+   "ticker": "ETH",
+   "category": "Криптовалюты"
+  },
+  "dash": {
+   "id": 140,
+   "name": "Dash",
+   "ticker": "DASH",
+   "category": "Криптовалюты"
+  },
+  "euro-cash": {
+   "id": 141,
+   "name": "Cash",
+   "ticker": "EUR",
+   "category": "Cash"
+  },
+  "advanced-cash-uah": {
+   "id": 142,
+   "name": "Volet",
+   "ticker": "UAH",
+   "category": "Digital currencies"
+  },
+  "utopia-usd": {
+   "id": 143,
+   "name": "Utopia USD",
+   "ticker": "UUSD",
+   "category": "Криптовалюты"
+  },
+  "cronos": {
+   "id": 144,
+   "name": "Cronos",
+   "ticker": "CRO",
+   "category": "Криптовалюты"
+  },
+  "capitalist": {
+   "id": 145,
+   "name": "Capitalist",
+   "ticker": "USD",
+   "category": "Digital currencies"
+  },
+  "visa-mastercard-gbp": {
+   "id": 146,
+   "name": "Bank card",
+   "ticker": "GBP",
+   "category": "Bank accounts and cards"
+  },
+  "tinkoff-qr-codes": {
+   "id": 147,
+   "name": "T-Bank QR",
+   "ticker": "RUB",
+   "category": "Online banking"
+  },
+  "trade-usd": {
+   "id": 148,
+   "name": "Cryptoexchange",
+   "ticker": "USD",
+   "category": "Digital currencies"
+  },
+  "monero": {
+   "id": 149,
+   "name": "Monero",
+   "ticker": "XMR",
+   "category": "Криптовалюты"
+  },
+  "ria-usd": {
+   "id": 150,
+   "name": "Ria",
+   "ticker": "USD",
+   "category": "Money transfers"
+  },
+  "ria-euro": {
+   "id": 151,
+   "name": "Ria",
+   "ticker": "EUR",
+   "category": "Money transfers"
+  },
+  "paysera": {
+   "id": 152,
+   "name": "PaySera",
+   "ticker": "USD",
+   "category": "Digital currencies"
+  },
+  "trade-euro": {
+   "id": 153,
+   "name": "Cryptoexchange",
+   "ticker": "EUR",
+   "category": "Digital currencies"
+  },
+  "epay": {
+   "id": 154,
+   "name": "Epay",
+   "ticker": "USD",
+   "category": "Digital currencies"
+  },
+  "visa-mastercard-sek": {
+   "id": 155,
+   "name": "Bank card",
+   "ticker": "SEK",
+   "category": "Bank accounts and cards"
+  },
+  "corp-bank-euro": {
+   "id": 156,
+   "name": "Company details",
+   "ticker": "EUR",
+   "category": "Bank accounts and cards"
+  },
+  "raiffeisen-bank": {
+   "id": 157,
+   "name": "Raiffeisen",
+   "ticker": "RUB",
+   "category": "Online banking"
+  },
+  "raiffeisen-bank-uah": {
+   "id": 158,
+   "name": "Raiffeisen",
+   "ticker": "UAH",
+   "category": "Online banking"
+  },
+  "settlement-rub": {
+   "id": 159,
+   "name": "Company details",
+   "ticker": "RUB",
+   "category": "Bank accounts and cards"
+  },
+  "ethereum-classic": {
+   "id": 160,
+   "name": "Ethereum Classic",
+   "ticker": "ETC",
+   "category": "Криптовалюты"
+  },
+  "ripple": {
+   "id": 161,
+   "name": "XRP",
+   "ticker": "XRP",
+   "category": "Криптовалюты"
+  },
+  "zcash": {
+   "id": 162,
+   "name": "Zcash",
+   "ticker": "ZEC",
+   "category": "Криптовалюты"
+  },
+  "tether": {
+   "id": 163,
+   "name": "Tether OMNI",
+   "ticker": "USDT",
+   "category": "Криптовалюты"
+  },
+  "paypal-gbp": {
+   "id": 164,
+   "name": "PayPal",
+   "ticker": "GBP",
+   "category": "Digital currencies"
+  },
+  "alipay": {
+   "id": 165,
+   "name": "Alipay",
+   "ticker": "CNY",
+   "category": "Digital currencies"
+  },
+  "wire-cny": {
+   "id": 166,
+   "name": "Bank transfer",
+   "ticker": "CNY",
+   "category": "Bank accounts and cards"
+  },
+  "wire-thb": {
+   "id": 167,
+   "name": "Bank transfer",
+   "ticker": "THB",
+   "category": "Bank accounts and cards"
+  },
+  "zrx": {
+   "id": 168,
+   "name": "0x",
+   "ticker": "ZRX",
+   "category": "Криптовалюты"
+  },
+  "tether-avax": {
+   "id": 169,
+   "name": "Tether AVALANCHE",
+   "ticker": "USDT",
+   "category": "Криптовалюты"
+  },
+  "post-bank": {
+   "id": 170,
+   "name": "Post Bank",
+   "ticker": "RUB",
+   "category": "Online banking"
+  },
+  "sepa": {
+   "id": 171,
+   "name": "SEPA",
+   "ticker": "EUR",
+   "category": "Bank accounts and cards"
+  },
+  "bitcoin-cash": {
+   "id": 172,
+   "name": "Bitcoin Cash",
+   "ticker": "BCH",
+   "category": "Криптовалюты"
+  },
+  "nem": {
+   "id": 173,
+   "name": "NEM",
+   "ticker": "XEM",
+   "category": "Криптовалюты"
+  },
+  "wise": {
+   "id": 174,
+   "name": "Wise",
+   "ticker": "USD",
+   "category": "Online banking"
+  },
+  "tezos": {
+   "id": 175,
+   "name": "Tezos",
+   "ticker": "XTZ",
+   "category": "Криптовалюты"
+  },
+  "openbank": {
+   "id": 176,
+   "name": "Openbank",
+   "ticker": "RUB",
+   "category": "Online banking"
+  },
+  "neo": {
+   "id": 177,
+   "name": "NEO",
+   "ticker": "NEO",
+   "category": "Криптовалюты"
+  },
+  "eos": {
+   "id": 178,
+   "name": "EOS",
+   "ticker": "EOS",
+   "category": "Криптовалюты"
+  },
+  "iota": {
+   "id": 179,
+   "name": "IOTA",
+   "ticker": "IOTA",
+   "category": "Криптовалюты"
+  },
+  "tether-sol": {
+   "id": 180,
+   "name": "Tether SOL",
+   "ticker": "USDT",
+   "category": "Криптовалюты"
+  },
+  "cardano": {
+   "id": 181,
+   "name": "Cardano",
+   "ticker": "ADA",
+   "category": "Криптовалюты"
+  },
+  "stellar": {
+   "id": 182,
+   "name": "Stellar",
+   "ticker": "XLM",
+   "category": "Криптовалюты"
+  },
+  "wire-idr": {
+   "id": 183,
+   "name": "Bank transfer",
+   "ticker": "IDR",
+   "category": "Bank accounts and cards"
+  },
+  "filecoin": {
+   "id": 184,
+   "name": "Filecoin",
+   "ticker": "FIL",
+   "category": "Криптовалюты"
+  },
+  "tron": {
+   "id": 185,
+   "name": "TRON",
+   "ticker": "TRX",
+   "category": "Криптовалюты"
+  },
+  "optimism": {
+   "id": 186,
+   "name": "Optimism",
+   "ticker": "OP",
+   "category": "Криптовалюты"
+  },
+  "erip": {
+   "id": 187,
+   "name": "ERIP Raschet",
+   "ticker": "BYN",
+   "category": "Bank accounts and cards"
+  },
+  "visa-mastercard-amd": {
+   "id": 5,
+   "name": "Bank card",
+   "ticker": "AMD",
+   "category": "Bank accounts and cards"
+  },
+  "vechain": {
+   "id": 8,
+   "name": "VeChain",
+   "ticker": "VET",
+   "category": "Криптовалюты"
+  },
+  "uscard": {
+   "id": 9,
+   "name": "UZCARD card",
+   "ticker": "UZS",
+   "category": "Bank accounts and cards"
+  },
+  "tether-trc20": {
+   "id": 10,
+   "name": "Tether TRC20",
+   "ticker": "USDT",
+   "category": "Криптовалюты"
+  },
+  "mobile-wallet-uah": {
+   "id": 12,
+   "name": "Mobile Wallet",
+   "ticker": "UAH",
+   "category": "Digital currencies"
+  },
+  "belarus-cash": {
+   "id": 13,
+   "name": "Cash",
+   "ticker": "BYN",
+   "category": "Cash"
+  },
+  "wire-ngn": {
+   "id": 188,
+   "name": "Bank transfer",
+   "ticker": "NGN",
+   "category": "Bank accounts and cards"
+  },
+  "uni-rub": {
+   "id": 14,
+   "name": "UNI",
+   "ticker": "RUB",
+   "category": "Money transfers"
+  },
+  "binance-coin-bep2": {
+   "id": 16,
+   "name": "BNB BEP2",
+   "ticker": "BNB",
+   "category": "Криптовалюты"
+  },
+  "mir": {
+   "id": 17,
+   "name": "Mir card",
+   "ticker": "RUB",
+   "category": "Bank accounts and cards"
+  },
+  "sbp": {
+   "id": 21,
+   "name": "SBP",
+   "ticker": "RUB",
+   "category": "Bank accounts and cards"
+  },
+  "ukrsibbank": {
+   "id": 22,
+   "name": "UkrSibbank",
+   "ticker": "UAH",
+   "category": "Online banking"
+  },
+  "usd-coin": {
+   "id": 23,
+   "name": "USDC ERC20",
+   "ticker": "USDC",
+   "category": "Криптовалюты"
+  },
+  "trueusd": {
+   "id": 24,
+   "name": "TrueUSD ERC20",
+   "ticker": "TUSD",
+   "category": "Криптовалюты"
+  },
+  "visa-mastercard-kgs": {
+   "id": 25,
+   "name": "Bank card",
+   "ticker": "KGS",
+   "category": "Bank accounts and cards"
+  },
+  "qtum": {
+   "id": 26,
+   "name": "Qtum",
+   "ticker": "QTUM",
+   "category": "Криптовалюты"
+  },
+  "bittorrent": {
+   "id": 27,
+   "name": "BitTorrent",
+   "ticker": "BTT",
+   "category": "Криптовалюты"
+  },
+  "mobile-wallet-byn": {
+   "id": 28,
+   "name": "Mobile Wallet",
+   "ticker": "BYN",
+   "category": "Digital currencies"
+  },
+  "wire-pln": {
+   "id": 29,
+   "name": "Bank transfer",
+   "ticker": "PLN",
+   "category": "Bank accounts and cards"
+  },
+  "visa-mastercard-cny": {
+   "id": 30,
+   "name": "Bank card",
+   "ticker": "CNY",
+   "category": "Bank accounts and cards"
+  },
+  "wire-byn": {
+   "id": 31,
+   "name": "Bank transfer",
+   "ticker": "BYN",
+   "category": "Bank accounts and cards"
+  },
+  "shiba-inu-bep20": {
+   "id": 32,
+   "name": "Shiba BEP20",
+   "ticker": "SHIB",
+   "category": "Криптовалюты"
+  },
+  "pax-dollar": {
+   "id": 189,
+   "name": "Pax Dollar",
+   "ticker": "USDP",
+   "category": "Криптовалюты"
+  },
+  "monobank-usd": {
+   "id": 190,
+   "name": "Monobank",
+   "ticker": "USD",
+   "category": "Online banking"
+  },
+  "advanced-cash-kzt": {
+   "id": 33,
+   "name": "Volet",
+   "ticker": "KZT",
+   "category": "Digital currencies"
+  },
+  "rosselhozbank": {
+   "id": 34,
+   "name": "RSHB",
+   "ticker": "RUB",
+   "category": "Online banking"
+  },
+  "paysera-euro": {
+   "id": 35,
+   "name": "PaySera",
+   "ticker": "EUR",
+   "category": "Digital currencies"
+  },
+  "tether-erc20": {
+   "id": 36,
+   "name": "Tether ERC20",
+   "ticker": "USDT",
+   "category": "Криптовалюты"
+  },
+  "sense-bank": {
+   "id": 37,
+   "name": "Sense Bank",
+   "ticker": "UAH",
+   "category": "Online banking"
+  },
+  "visa-mastercard-pln": {
+   "id": 38,
+   "name": "Bank card",
+   "ticker": "PLN",
+   "category": "Bank accounts and cards"
+  },
+  "wire-try": {
+   "id": 39,
+   "name": "Bank transfer",
+   "ticker": "TRY",
+   "category": "Bank accounts and cards"
+  },
+  "mts-bank": {
+   "id": 191,
+   "name": "MTS Bank",
+   "ticker": "RUB",
+   "category": "Online banking"
+  },
+  "revolut-usd": {
+   "id": 192,
+   "name": "Revolut",
+   "ticker": "USD",
+   "category": "Online banking"
+  },
+  "revolut-euro": {
+   "id": 193,
+   "name": "Revolut",
+   "ticker": "EUR",
+   "category": "Online banking"
+  },
+  "visa-mastercard-mdl": {
+   "id": 194,
+   "name": "Bank card",
+   "ticker": "MDL",
+   "category": "Bank accounts and cards"
+  },
+  "rosbank": {
+   "id": 195,
+   "name": "Rosbank",
+   "ticker": "RUB",
+   "category": "Online banking"
+  },
+  "wire-aed": {
+   "id": 196,
+   "name": "Bank transfer",
+   "ticker": "AED",
+   "category": "Bank accounts and cards"
+  },
+  "chainlink": {
+   "id": 197,
+   "name": "Chainlink",
+   "ticker": "LINK",
+   "category": "Криптовалюты"
+  },
+  "cosmos": {
+   "id": 198,
+   "name": "Cosmos",
+   "ticker": "ATOM",
+   "category": "Криптовалюты"
+  },
+  "humo": {
+   "id": 199,
+   "name": "HUMO card",
+   "ticker": "UZS",
+   "category": "Bank accounts and cards"
+  },
+  "nagad": {
+   "id": 200,
+   "name": "Nagad",
+   "ticker": "BDT",
+   "category": "Digital currencies"
+  },
+  "polkadot": {
+   "id": 201,
+   "name": "Polkadot",
+   "ticker": "DOT",
+   "category": "Криптовалюты"
+  },
+  "uniswap": {
+   "id": 202,
+   "name": "Uniswap",
+   "ticker": "UNI",
+   "category": "Криптовалюты"
+  },
+  "dai": {
+   "id": 203,
+   "name": "USDS (Dai)",
+   "ticker": "USDS",
+   "category": "Криптовалюты"
+  },
+  "pound-cash": {
+   "id": 204,
+   "name": "Cash",
+   "ticker": "GBP",
+   "category": "Cash"
+  },
+  "ravencoin": {
+   "id": 205,
+   "name": "Ravencoin",
+   "ticker": "RVN",
+   "category": "Криптовалюты"
+  },
+  "busd": {
+   "id": 206,
+   "name": "Binance USD",
+   "ticker": "BUSD",
+   "category": "Криптовалюты"
+  },
+  "jysan-bank": {
+   "id": 207,
+   "name": "Alatau City Bank",
+   "ticker": "KZT",
+   "category": "Online banking"
+  },
+  "tether-bep20": {
+   "id": 208,
+   "name": "Tether BEP20",
+   "ticker": "USDT",
+   "category": "Криптовалюты"
+  },
+  "ton": {
+   "id": 209,
+   "name": "Gram (Toncoin)",
+   "ticker": "GRAM",
+   "category": "Криптовалюты"
+  },
+  "shiba-inu": {
+   "id": 210,
+   "name": "Shiba ERC20",
+   "ticker": "SHIB",
+   "category": "Криптовалюты"
+  },
+  "dirham": {
+   "id": 211,
+   "name": "Cash",
+   "ticker": "AED",
+   "category": "Cash"
+  },
+  "ethereum-bep20": {
+   "id": 212,
+   "name": "Ethereum BEP20",
+   "ticker": "ETH",
+   "category": "Криптовалюты"
+  },
+  "saudi-cash": {
+   "id": 213,
+   "name": "Cash",
+   "ticker": "SAR",
+   "category": "Cash"
+  },
+  "usdc-near": {
+   "id": 214,
+   "name": "USDC NEAR",
+   "ticker": "USDC",
+   "category": "Криптовалюты"
+  },
+  "homecredit": {
+   "id": 215,
+   "name": "Home Credit",
+   "ticker": "RUB",
+   "category": "Online banking"
+  },
+  "algorand": {
+   "id": 216,
+   "name": "Algorand",
+   "ticker": "ALGO",
+   "category": "Криптовалюты"
+  },
+  "avalanche": {
+   "id": 217,
+   "name": "Avalanche",
+   "ticker": "AVAX",
+   "category": "Криптовалюты"
+  },
+  "wrapped-eth": {
+   "id": 218,
+   "name": "Wrapped ETH",
+   "ticker": "WETH",
+   "category": "Криптовалюты"
+  },
+  "wire-gel": {
+   "id": 219,
+   "name": "Bank transfer",
+   "ticker": "GEL",
+   "category": "Bank accounts and cards"
+  },
+  "yearn-finance": {
+   "id": 220,
+   "name": "Yearn Finance",
+   "ticker": "YFI",
+   "category": "Криптовалюты"
+  },
+  "visa-mastercard-cad": {
+   "id": 221,
+   "name": "Bank card",
+   "ticker": "CAD",
+   "category": "Bank accounts and cards"
+  },
+  "visa-mastercard-bgn": {
+   "id": 222,
+   "name": "Bank card",
+   "ticker": "BGN",
+   "category": "Bank accounts and cards"
+  },
+  "visa-mastercard-huf": {
+   "id": 223,
+   "name": "Bank card",
+   "ticker": "HUF",
+   "category": "Bank accounts and cards"
+  },
+  "visa-mastercard-czk": {
+   "id": 224,
+   "name": "Bank card",
+   "ticker": "CZK",
+   "category": "Bank accounts and cards"
+  },
+  "visa-mastercard-nok": {
+   "id": 225,
+   "name": "Bank card",
+   "ticker": "NOK",
+   "category": "Bank accounts and cards"
+  },
+  "capitalist-euro": {
+   "id": 226,
+   "name": "Capitalist",
+   "ticker": "EUR",
+   "category": "Digital currencies"
+  },
+  "decentraland": {
+   "id": 227,
+   "name": "Decentraland",
+   "ticker": "MANA",
+   "category": "Криптовалюты"
+  },
+  "usd-coin-sol": {
+   "id": 228,
+   "name": "USDC SOL",
+   "ticker": "USDC",
+   "category": "Криптовалюты"
+  },
+  "sberbank-qr-code": {
+   "id": 229,
+   "name": "Sberbank QR",
+   "ticker": "RUB",
+   "category": "Online banking"
+  },
+  "cash-cop": {
+   "id": 230,
+   "name": "Cash",
+   "ticker": "COP",
+   "category": "Cash"
+  },
+  "wire-aud": {
+   "id": 231,
+   "name": "Bank transfer",
+   "ticker": "AUD",
+   "category": "Bank accounts and cards"
+  },
+  "wire-jpy": {
+   "id": 232,
+   "name": "Bank transfer",
+   "ticker": "JPY",
+   "category": "Bank accounts and cards"
+  },
+  "wire-cad": {
+   "id": 233,
+   "name": "Bank transfer",
+   "ticker": "CAD",
+   "category": "Bank accounts and cards"
+  },
+  "wire-hkd": {
+   "id": 234,
+   "name": "Bank transfer",
+   "ticker": "HKD",
+   "category": "Bank accounts and cards"
+  },
+  "usd-coin-bep20": {
+   "id": 235,
+   "name": "USDC BEP20",
+   "ticker": "USDC",
+   "category": "Криптовалюты"
+  },
+  "cash-pln": {
+   "id": 236,
+   "name": "Cash",
+   "ticker": "PLN",
+   "category": "Cash"
+  },
+  "visa-mastercard-azn": {
+   "id": 237,
+   "name": "Bank card",
+   "ticker": "AZN",
+   "category": "Bank accounts and cards"
+  },
+  "visa-mastercard-gel": {
+   "id": 238,
+   "name": "Bank card",
+   "ticker": "GEL",
+   "category": "Bank accounts and cards"
+  },
+  "visa-mastercard-uzs": {
+   "id": 239,
+   "name": "Bank card",
+   "ticker": "UZS",
+   "category": "Bank accounts and cards"
+  },
+  "visa-mastercard-tjs": {
+   "id": 240,
+   "name": "Bank card",
+   "ticker": "TJS",
+   "category": "Bank accounts and cards"
+  },
+  "wechat": {
+   "id": 241,
+   "name": "WeChat",
+   "ticker": "CNY",
+   "category": "Digital currencies"
+  },
+  "wise-euro": {
+   "id": 242,
+   "name": "Wise",
+   "ticker": "EUR",
+   "category": "Online banking"
+  },
+  "cash-shekel": {
+   "id": 243,
+   "name": "Cash",
+   "ticker": "ILS",
+   "category": "Cash"
+  },
+  "cash-koruna": {
+   "id": 244,
+   "name": "Cash",
+   "ticker": "CZK",
+   "category": "Cash"
+  },
+  "cash-lari": {
+   "id": 245,
+   "name": "Cash",
+   "ticker": "GEL",
+   "category": "Cash"
+  },
+  "cash-dram": {
+   "id": 246,
+   "name": "Cash",
+   "ticker": "AMD",
+   "category": "Cash"
+  },
+  "cash-cad": {
+   "id": 247,
+   "name": "Cash",
+   "ticker": "CAD",
+   "category": "Cash"
+  },
+  "wire-vnd": {
+   "id": 248,
+   "name": "Bank transfer",
+   "ticker": "VND",
+   "category": "Bank accounts and cards"
+  },
+  "wire-myr": {
+   "id": 249,
+   "name": "Bank transfer",
+   "ticker": "MYR",
+   "category": "Bank accounts and cards"
+  },
+  "wire-nzd": {
+   "id": 250,
+   "name": "Bank transfer",
+   "ticker": "NZD",
+   "category": "Bank accounts and cards"
+  },
+  "wire-pkr": {
+   "id": 251,
+   "name": "Bank transfer",
+   "ticker": "PKR",
+   "category": "Bank accounts and cards"
+  },
+  "wire-ils": {
+   "id": 252,
+   "name": "Bank transfer",
+   "ticker": "ILS",
+   "category": "Bank accounts and cards"
+  },
+  "cash-thb": {
+   "id": 253,
+   "name": "Cash",
+   "ticker": "THB",
+   "category": "Cash"
+  },
+  "cash-aud": {
+   "id": 254,
+   "name": "Cash",
+   "ticker": "AUD",
+   "category": "Cash"
+  },
+  "wire-php": {
+   "id": 255,
+   "name": "Bank transfer",
+   "ticker": "PHP",
+   "category": "Bank accounts and cards"
+  },
+  "usdt-near": {
+   "id": 256,
+   "name": "Tether NEAR",
+   "ticker": "USDT",
+   "category": "Криптовалюты"
+  },
+  "usdc-optimism": {
+   "id": 257,
+   "name": "USDC OPTIMISM",
+   "ticker": "USDC",
+   "category": "Криптовалюты"
+  },
+  "visa-mastercard-ngn": {
+   "id": 258,
+   "name": "Bank card",
+   "ticker": "NGN",
+   "category": "Bank accounts and cards"
+  },
+  "cash-ngn": {
+   "id": 259,
+   "name": "Cash",
+   "ticker": "NGN",
+   "category": "Cash"
+  },
+  "cash-bgn": {
+   "id": 260,
+   "name": "Cash",
+   "ticker": "BGN",
+   "category": "Cash"
+  },
+  "cash-azn": {
+   "id": 261,
+   "name": "Cash",
+   "ticker": "AZN",
+   "category": "Cash"
+  },
+  "cash-mdl": {
+   "id": 262,
+   "name": "Cash",
+   "ticker": "MDL",
+   "category": "Cash"
+  },
+  "elcart": {
+   "id": 263,
+   "name": "Elcart card",
+   "ticker": "KGS",
+   "category": "Bank accounts and cards"
+  },
+  "paypal-cad": {
+   "id": 264,
+   "name": "PayPal",
+   "ticker": "CAD",
+   "category": "Digital currencies"
+  },
+  "paypal-aud": {
+   "id": 265,
+   "name": "PayPal",
+   "ticker": "AUD",
+   "category": "Digital currencies"
+  },
+  "bpay-usd": {
+   "id": 266,
+   "name": "BPay",
+   "ticker": "USD",
+   "category": "Digital currencies"
+  },
+  "trueusd-trc20": {
+   "id": 267,
+   "name": "TrueUSD TRC20",
+   "ticker": "TUSD",
+   "category": "Криптовалюты"
+  },
+  "tether-polygon": {
+   "id": 268,
+   "name": "Tether POLYGON",
+   "ticker": "USDT",
+   "category": "Криптовалюты"
+  },
+  "usd-coin-polygon": {
+   "id": 269,
+   "name": "USDC POLYGON",
+   "ticker": "USDC",
+   "category": "Криптовалюты"
+  },
+  "easypaisa": {
+   "id": 271,
+   "name": "EasyPaisa",
+   "ticker": "PKR",
+   "category": "Digital currencies"
+  },
+  "cash-chf": {
+   "id": 270,
+   "name": "Cash",
+   "ticker": "CHF",
+   "category": "Cash"
+  },
+  "cash-ron": {
+   "id": 272,
+   "name": "Cash",
+   "ticker": "RON",
+   "category": "Cash"
+  },
+  "wire-ron": {
+   "id": 273,
+   "name": "Bank transfer",
+   "ticker": "RON",
+   "category": "Bank accounts and cards"
+  },
+  "jazzcash": {
+   "id": 274,
+   "name": "JazzCash",
+   "ticker": "PKR",
+   "category": "Digital currencies"
+  },
+  "fasapay": {
+   "id": 275,
+   "name": "FasaPay",
+   "ticker": "USD",
+   "category": "Digital currencies"
+  },
+  "cash-idr": {
+   "id": 276,
+   "name": "Cash",
+   "ticker": "IDR",
+   "category": "Cash"
+  },
+  "renminbi-cash": {
+   "id": 277,
+   "name": "Cash",
+   "ticker": "CNY",
+   "category": "Cash"
+  },
+  "peso-cash": {
+   "id": 278,
+   "name": "Cash",
+   "ticker": "MXN",
+   "category": "Cash"
+  },
+  "sgd-cash": {
+   "id": 279,
+   "name": "Cash",
+   "ticker": "SGD",
+   "category": "Cash"
+  },
+  "won-cash": {
+   "id": 280,
+   "name": "Cash",
+   "ticker": "KRW",
+   "category": "Cash"
+  },
+  "real-cash": {
+   "id": 281,
+   "name": "Cash",
+   "ticker": "BRL",
+   "category": "Cash"
+  },
+  "sui": {
+   "id": 282,
+   "name": "Sui",
+   "ticker": "SUI",
+   "category": "Криптовалюты"
+  },
+  "pyusd": {
+   "id": 283,
+   "name": "PayPal USD",
+   "ticker": "PYUSD",
+   "category": "Криптовалюты"
+  },
+  "atm-qr-thb": {
+   "id": 284,
+   "name": "ATM QR code",
+   "ticker": "THB",
+   "category": "Bank accounts and cards"
+  },
+  "atm-qr-brl": {
+   "id": 285,
+   "name": "ATM QR code",
+   "ticker": "BRL",
+   "category": "Bank accounts and cards"
+  },
+  "pancakeswap": {
+   "id": 286,
+   "name": "PancakeSwap",
+   "ticker": "CAKE",
+   "category": "Криптовалюты"
+  },
+  "otpbank-uah": {
+   "id": 287,
+   "name": "OTP Bank",
+   "ticker": "UAH",
+   "category": "Online banking"
+  },
+  "visa-mastercard-inr": {
+   "id": 288,
+   "name": "Bank card",
+   "ticker": "INR",
+   "category": "Bank accounts and cards"
+  },
+  "visa-mastercard-aed": {
+   "id": 289,
+   "name": "Bank card",
+   "ticker": "AED",
+   "category": "Bank accounts and cards"
+  },
+  "wise-gbp": {
+   "id": 290,
+   "name": "Wise",
+   "ticker": "GBP",
+   "category": "Online banking"
+  },
+  "inr-cash": {
+   "id": 291,
+   "name": "Cash",
+   "ticker": "INR",
+   "category": "Cash"
+  },
+  "paytm": {
+   "id": 292,
+   "name": "Paytm",
+   "ticker": "INR",
+   "category": "Digital currencies"
+  },
+  "abank": {
+   "id": 293,
+   "name": "A-Bank",
+   "ticker": "UAH",
+   "category": "Online banking"
+  },
+  "izibank": {
+   "id": 294,
+   "name": "Izibank",
+   "ticker": "UAH",
+   "category": "Online banking"
+  },
+  "trump": {
+   "id": 295,
+   "name": "Official Trump",
+   "ticker": "TRUMP",
+   "category": "Криптовалюты"
+  },
+  "centercredit": {
+   "id": 296,
+   "name": "CenterCredit",
+   "ticker": "KZT",
+   "category": "Online banking"
+  },
+  "eurasian-bank": {
+   "id": 297,
+   "name": "Eurasian Bank",
+   "ticker": "KZT",
+   "category": "Online banking"
+  },
+  "yen-cash": {
+   "id": 298,
+   "name": "Cash",
+   "ticker": "JPY",
+   "category": "Cash"
+  },
+  "ars-cash": {
+   "id": 299,
+   "name": "Cash",
+   "ticker": "ARS",
+   "category": "Cash"
+  },
+  "wire-krw": {
+   "id": 300,
+   "name": "Bank transfer",
+   "ticker": "KRW",
+   "category": "Bank accounts and cards"
+  },
+  "mercado-pago": {
+   "id": 301,
+   "name": "Mercado Pago",
+   "ticker": "ARS",
+   "category": "Digital currencies"
+  },
+  "m10": {
+   "id": 302,
+   "name": "M10",
+   "ticker": "AZN",
+   "category": "Digital currencies"
+  },
+  "settlement-uah": {
+   "id": 303,
+   "name": "Company details",
+   "ticker": "UAH",
+   "category": "Bank accounts and cards"
+  },
+  "blik": {
+   "id": 304,
+   "name": "BLIK",
+   "ticker": "PLN",
+   "category": "Digital currencies"
+  },
+  "freedom-bank": {
+   "id": 305,
+   "name": "Freedom Bank",
+   "ticker": "KZT",
+   "category": "Online banking"
+  },
+  "xaut-erc20": {
+   "id": 306,
+   "name": "Tether Gold ERC20",
+   "ticker": "XAUT",
+   "category": "Криптовалюты"
+  },
+  "wire-ars": {
+   "id": 307,
+   "name": "Bank transfer",
+   "ticker": "ARS",
+   "category": "Bank accounts and cards"
+  },
+  "zelle": {
+   "id": 308,
+   "name": "Zelle",
+   "ticker": "USD",
+   "category": "Digital currencies"
+  },
+  "payoneer-euro": {
+   "id": 309,
+   "name": "Payoneer",
+   "ticker": "EUR",
+   "category": "Digital currencies"
+  },
+  "internet-computer": {
+   "id": 310,
+   "name": "Internet Computer",
+   "ticker": "ICP",
+   "category": "Криптовалюты"
+  },
+  "visa-mastercard-ron": {
+   "id": 311,
+   "name": "Bank card",
+   "ticker": "RON",
+   "category": "Bank accounts and cards"
+  },
+  "atm-nfc-rub": {
+   "id": 312,
+   "name": "ATM NFC",
+   "ticker": "RUB",
+   "category": "Bank accounts and cards"
+  },
+  "tether-ton": {
+   "id": 313,
+   "name": "Tether TON",
+   "ticker": "USDT",
+   "category": "Криптовалюты"
+  },
+  "tether-optimism": {
+   "id": 314,
+   "name": "Tether OPTIMISM",
+   "ticker": "USDT",
+   "category": "Криптовалюты"
+  },
+  "tether-arbitrum": {
+   "id": 315,
+   "name": "Tether ARBITRUM",
+   "ticker": "USDT",
+   "category": "Криптовалюты"
+  },
+  "notcoin": {
+   "id": 316,
+   "name": "Notcoin",
+   "ticker": "NOT",
+   "category": "Криптовалюты"
+  },
+  "som-cash": {
+   "id": 317,
+   "name": "Cash",
+   "ticker": "KGS",
+   "category": "Cash"
+  },
+  "egyptian-cash": {
+   "id": 318,
+   "name": "Cash",
+   "ticker": "EGP",
+   "category": "Cash"
+  },
+  "dong-cash": {
+   "id": 319,
+   "name": "Cash",
+   "ticker": "VND",
+   "category": "Cash"
+  },
+  "wire-sek": {
+   "id": 320,
+   "name": "Bank transfer",
+   "ticker": "SEK",
+   "category": "Bank accounts and cards"
+  },
+  "pix": {
+   "id": 321,
+   "name": "Pix",
+   "ticker": "BRL",
+   "category": "Digital currencies"
+  },
+  "atm-qr-dong": {
+   "id": 322,
+   "name": "ATM QR code",
+   "ticker": "VND",
+   "category": "Bank accounts and cards"
+  },
+  "kaspa": {
+   "id": 323,
+   "name": "Kaspa",
+   "ticker": "KAS",
+   "category": "Криптовалюты"
+  },
+  "privat24-euro": {
+   "id": 324,
+   "name": "Privat 24",
+   "ticker": "EUR",
+   "category": "Online banking"
+  },
+  "aave": {
+   "id": 325,
+   "name": "Aave",
+   "ticker": "AAVE",
+   "category": "Криптовалюты"
+  },
+  "visa-mastercard-idr": {
+   "id": 326,
+   "name": "Bank card",
+   "ticker": "IDR",
+   "category": "Bank accounts and cards"
+  },
+  "upi": {
+   "id": 327,
+   "name": "UPI",
+   "ticker": "INR",
+   "category": "Bank accounts and cards"
+  },
+  "wire-czk": {
+   "id": 328,
+   "name": "Bank transfer",
+   "ticker": "CZK",
+   "category": "Bank accounts and cards"
+  },
+  "wire-mxn": {
+   "id": 329,
+   "name": "Bank transfer",
+   "ticker": "MXN",
+   "category": "Bank accounts and cards"
+  },
+  "wire-uyu": {
+   "id": 330,
+   "name": "Bank transfer",
+   "ticker": "UYU",
+   "category": "Bank accounts and cards"
+  }
+ }
+}

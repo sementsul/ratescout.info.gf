@@ -1,0 +1,110 @@
+# Очистка истории git «по кнопке»: сворачивает всю историю main в ОДИН коммит (файлы сохраняются),
+# делает тег-бэкап старого HEAD и force-push. Запуск вручную (кнопка «🧹 Очистить историю» из
+# алерта repo-size-guard → Run workflow, подтверждение словом SQUASH).
+#
+# Защита ветки снимается/возвращается АВТОМАТИЧЕСКИ через секрет GH_PAT (тот же PAT владельца, что
+# у keepalive.yml). Порядок: снять Block force pushes → тег-бэкап → orphan-squash → force-with-lease →
+# вернуть защиту (шаг always, даже при ошибке) → уведомить в Telegram.
+#
+# Безопасность:
+#  · confirm=SQUASH — защита от случайного запуска.
+#  · тег backup/pre-squash-* пушится ДО перезаписи → откат: git reset --hard <tag>.
+#  · --force-with-lease=main:<OLD> — если main сдвинулся часовым deploy, push отклонится (история цела).
+#  · [skip ci] — force-push не триггерит deploy. Своя concurrency-группа — deploy её не отменит.
+#  · если GH_PAT без admin (не может трогать protection) — падаем ДО изменений, история не тронута.
+#  · restore защиты — always(); при неудаче кричим в TG «включи защиту вручную».
+name: history-squash
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Впишите SQUASH для подтверждения. Защита ветки снимется и вернётся автоматически.'
+        required: true
+        default: ''
+permissions:
+  contents: write
+concurrency:
+  group: history-squash
+  cancel-in-progress: false
+env:
+  GH_PAT: ${{ secrets.GH_PAT }}
+  REPO: ${{ github.repository }}
+jobs:
+  squash:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Guard — подтверждение
+        run: |
+          if [ "${{ github.event.inputs.confirm }}" != "SQUASH" ]; then
+            echo "::error::Не подтверждено. Впишите SQUASH в поле confirm."; exit 1
+          fi
+          if [ -z "$GH_PAT" ]; then echo "::error::нет секрета GH_PAT"; exit 1; fi
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Снять защиту ветки (allow_force_pushes=true)
+        id: unlock
+        run: |
+          set -e
+          API="https://api.github.com/repos/${REPO}/branches/main/protection"
+          H_AUTH="Authorization: token ${GH_PAT}"; H_ACC="Accept: application/vnd.github+json"
+          code=$(curl -s -o /tmp/prot.json -w '%{http_code}' -H "$H_AUTH" -H "$H_ACC" "$API")
+          echo "GET protection: $code"
+          if [ "$code" = "404" ]; then echo "защиты нет — снимать нечего"; echo "had=no" >>"$GITHUB_OUTPUT"; exit 0; fi
+          if [ "$code" != "200" ]; then echo "::error::GH_PAT не читает protection (нужен admin-scope). Ничего не менял."; cat /tmp/prot.json; exit 1; fi
+          MAP='{required_status_checks:(if .required_status_checks then {strict:.required_status_checks.strict,contexts:(.required_status_checks.contexts//[])} else null end),enforce_admins:(.enforce_admins.enabled//false),required_pull_request_reviews:(if .required_pull_request_reviews then {dismiss_stale_reviews:(.required_pull_request_reviews.dismiss_stale_reviews//false),require_code_owner_reviews:(.required_pull_request_reviews.require_code_owner_reviews//false),required_approving_review_count:(.required_pull_request_reviews.required_approving_review_count//0)} else null end),restrictions:(if .restrictions then {users:[.restrictions.users[].login],teams:[.restrictions.teams[].slug],apps:[.restrictions.apps[].slug]} else null end),allow_force_pushes:$f,allow_deletions:(.allow_deletions.enabled//false),required_conversation_resolution:(.required_conversation_resolution.enabled//false),required_linear_history:(.required_linear_history.enabled//false),block_creations:(.block_creations.enabled//false),lock_branch:(.lock_branch.enabled//false),allow_fork_syncing:(.allow_fork_syncing.enabled//false)}'
+          orig=$(jq '.allow_force_pushes.enabled // false' /tmp/prot.json)
+          jq --argjson f true  "$MAP" /tmp/prot.json > /tmp/put_on.json
+          jq --argjson f "$orig" "$MAP" /tmp/prot.json > /tmp/restore.json   # вернём исходное значение allow_force_pushes
+          put=$(curl -s -o /tmp/put_resp.json -w '%{http_code}' -X PUT -H "$H_AUTH" -H "$H_ACC" "$API" -d @/tmp/put_on.json)
+          echo "PUT allow_force_pushes=true: $put"
+          if [ "$put" != "200" ]; then echo "::error::не смог снять защиту (нужен admin-scope у GH_PAT)."; cat /tmp/put_resp.json; exit 1; fi
+          echo "had=yes" >>"$GITHUB_OUTPUT"
+      - name: Squash истории (+ тег-бэкап) и force-push
+        run: |
+          set -e
+          git config user.name "ratescout-bot"
+          git config user.email "ratescout-bot@users.noreply.github.com"
+          REMOTE="https://x-access-token:${GH_PAT}@github.com/${REPO}.git"
+          TAG="backup/pre-squash-$(date -u +%Y%m%d-%H%M)"
+          OLD=$(git rev-parse HEAD)
+          BEFORE=$(git rev-list --count HEAD)
+          echo "коммитов до: $BEFORE, HEAD=$OLD, бэкап=$TAG"
+          git tag "$TAG" "$OLD"
+          git push "$REMOTE" "refs/tags/$TAG"
+          git checkout --orphan squashed
+          git add -A
+          git commit -q -m "chore(history): squash до $(date -u +%F) — история свёрнута в 1 коммит (бэкап: $TAG) [skip ci]"
+          git push --force-with-lease=main:"$OLD" "$REMOTE" squashed:main
+          echo "готово: $BEFORE → 1. Бэкап: $TAG"
+          echo "TAG=$TAG" >> "$GITHUB_ENV"
+          echo "BEFORE=$BEFORE" >> "$GITHUB_ENV"
+      - name: Вернуть защиту ветки
+        if: always() && steps.unlock.outputs.had == 'yes'
+        run: |
+          API="https://api.github.com/repos/${REPO}/branches/main/protection"
+          code=$(curl -s -o /tmp/restore_resp.json -w '%{http_code}' -X PUT \
+            -H "Authorization: token ${GH_PAT}" -H "Accept: application/vnd.github+json" "$API" -d @/tmp/restore.json)
+          echo "restore protection: $code"
+          if [ "$code" != "200" ]; then
+            echo "::error::ЗАЩИТА НЕ ВОССТАНОВЛЕНА — включи Block force pushes вручную!"; cat /tmp/restore_resp.json
+            echo "PROT_FAIL=1" >> "$GITHUB_ENV"
+          fi
+      - name: Уведомить в Telegram
+        if: always()
+        env:
+          TG_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TG_CHAT: ${{ secrets.ALERT_CHAT_ID }}
+        run: |
+          { [ -z "$TG_TOKEN" ] || [ -z "$TG_CHAT" ]; } && { echo "TG не настроен — пропуск"; exit 0; }
+          if [ "${{ job.status }}" = "success" ]; then
+            MSG="🧹 История ${GITHUB_REPOSITORY} очищена: было ${BEFORE} коммитов → 1. Бэкап-тег: ${TAG} (откат: git reset --hard ${TAG}). Защита ветки возвращена."
+          else
+            MSG="⚠️ Очистка истории ${GITHUB_REPOSITORY} НЕ завершилась (см. Actions). История НЕ переписана (или откат по бэкап-тегу)."
+          fi
+          if [ "${PROT_FAIL:-0}" = "1" ]; then
+            MSG=$(printf '🔴 %s: защита ветки main НЕ восстановлена автоматически! Верни вручную (важно — сейчас force-push разрешён):\n1) Открой https://github.com/%s/settings/branches\n2) У правила ветки main нажми Edit.\n3) Поставь галку «Block force pushes».\n4) (если было) включи «Do not allow bypassing the above settings» — это enforce admins.\n5) Save changes.\n\n%s' "$GITHUB_REPOSITORY" "$GITHUB_REPOSITORY" "$MSG")
+          fi
+          curl -s -m 15 -X POST "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TG_CHAT}" --data-urlencode "text=${MSG}" \
+            -o /dev/null -w "telegram: %{http_code}\n" || true

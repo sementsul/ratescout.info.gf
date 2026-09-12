@@ -1,0 +1,29 @@
+name: Dependabot auto-merge (minor/patch)
+
+# Safe-авто-обновление: PR от Dependabot с обновлением actions авто-мёржится ТОЛЬКО если это
+# minor или patch (мелкие, обратно-совместимые). МАЖОРНЫЕ (напр. v5→v6) НЕ мёржатся автоматически —
+# остаются на ручной Merge (мажор может ломать). Так версии сами не устаревают, но риск ломающего
+# апгрейда без ревью исключён. Требует включённого в репо «Allow auto-merge».
+
+on: pull_request
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+    steps:
+      - name: Определить тип обновления
+        id: meta
+        uses: dependabot/fetch-metadata@v3
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Авто-мёрж только minor/patch
+        if: steps.meta.outputs.update-type == 'version-update:semver-minor' || steps.meta.outputs.update-type == 'version-update:semver-patch'
+        run: gh pr merge --auto --squash "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

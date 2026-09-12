@@ -1,0 +1,117 @@
+name: Watchdog (свежесть данных)
+
+# Сторож автономности: раз в сутки проверяет, что ежечасный сбор курсов реально идёт.
+# Смотрит возраст САМОЙ СВЕЖЕЙ точки в history.json (не generated_at — он пишется всегда;
+# важно, что реально добавляются точки). Если > STALE_H часов без новых данных — сбор встал
+# (истёк GH_PAT и крон заснул / сломался BestChange / падает сборка).
+#
+# Оповещение по ДВУМ каналам: (1) Telegram в личный чат владельца (TELEGRAM_TOKEN + ALERT_CHAT_ID),
+# (2) падение прогона → GitHub шлёт письмо. history.json тянем из raw (репо публичный) — без checkout.
+
+on:
+  schedule:
+    - cron: "23 */2 * * *"    # каждые 2 часа (маленькое окно застоя)
+  workflow_dispatch:
+    inputs:
+      stale_hours:
+        description: "Порог протухания в часах (для теста тревоги поставь 0 — придёт ТГ + прогон упадёт)"
+        required: false
+        default: ""
+      heal_hours:
+        description: "Порог автолечения в часах (форс deploy). По умолчанию 2 (для теста форса поставь 0)."
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: watchdog
+  cancel-in-progress: false
+
+env:
+  STALE_H: ${{ github.event.inputs.stale_hours || '8' }}
+  HEAL_H: ${{ github.event.inputs.heal_hours || '2' }}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Проверить свежесть history.json
+        id: check
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.request, datetime as dt
+          STALE_H = float(os.environ.get("STALE_H", "8"))
+          URL = "https://raw.githubusercontent.com/sementsul/ratescout.info.gf/main/history.json"
+          try:
+              with urllib.request.urlopen(URL, timeout=30) as r:
+                  data = json.load(r)
+          except Exception as e:
+              newest, age, stale = None, 1e9, True
+              print("::warning::не удалось получить history.json (%s)" % e)
+          else:
+              newest = None
+              for pts in data.get("series", {}).values():
+                  if pts:
+                      k = pts[-1][0]
+                      if newest is None or k > newest:
+                          newest = k
+              def parse(k):
+                  for f in ("%Y-%m-%d %H:00", "%Y-%m-%d"):
+                      try:
+                          return dt.datetime.strptime(k, f).replace(tzinfo=dt.timezone.utc)
+                      except ValueError:
+                          pass
+                  return None
+              now = dt.datetime.now(dt.timezone.utc)
+              t = parse(newest) if newest else None
+              age = (now - t).total_seconds() / 3600 if t else 1e9
+              stale = age > STALE_H
+          heal = age > float(os.environ.get("HEAL_H", "2"))
+          with open(os.environ["GITHUB_OUTPUT"], "a") as o:
+              o.write("heal=%s\n" % ("yes" if heal else "no"))
+              o.write("stale=%s\n" % ("yes" if stale else "no"))
+              o.write("newest=%s\n" % (newest or "нет данных"))
+              o.write("age_h=%.1f\n" % age)
+          print("новейшая точка: %s | возраст %.1f ч | порог %.0f ч | stale=%s" % (newest, age, STALE_H, stale))
+          PY
+
+      - name: Самолечение — форсировать сбор (deploy)
+        if: steps.check.outputs.heal == 'yes'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "Возраст ${{ steps.check.outputs.age_h }} ч > HEAL_H — форсирую deploy.yml…"
+          gh workflow run deploy.yml --repo "${{ github.repository }}" --ref main || echo "::warning::не удалось запустить deploy.yml"
+
+      - name: Telegram-алерт в личный чат (если протухло)
+        if: steps.check.outputs.stale == 'yes'
+        env:
+          TG_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TG_CHAT: ${{ secrets.ALERT_CHAT_ID }}
+        run: |
+          if [ -z "$TG_TOKEN" ] || [ -z "$TG_CHAT" ]; then
+            echo "Telegram не настроен (нет TELEGRAM_TOKEN/ALERT_CHAT_ID) — пропускаю ТГ, письмо всё равно уйдёт."
+            exit 0
+          fi
+          MSG="🔴 RateScout: автосбор курсов ОСТАНОВИЛСЯ.
+          Свежайшая точка: ${{ steps.check.outputs.newest }} (возраст ~${{ steps.check.outputs.age_h }} ч).
+          Сторож уже форсировал deploy. Если не помогло — вероятно падает сборка/кончились секреты (BestChange/токены).
+          Проверь вкладку Actions: https://github.com/sementsul/ratescout/actions"
+          curl -s -m 15 -X POST "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TG_CHAT}" \
+            --data-urlencode "text=${MSG}" \
+            -o /dev/null -w "telegram sendMessage: %{http_code}\n"
+
+      - name: Пометить сбой (письмо от GitHub + красный прогон)
+        if: steps.check.outputs.stale == 'yes'
+        run: |
+          echo "::error::RateScout: автосбор данных остановился — свежайшая точка ${{ steps.check.outputs.newest }} (возраст ${{ steps.check.outputs.age_h }} ч). Детали выше / в Telegram."
+          exit 1
+
+      - name: Данные свежие
+        if: steps.check.outputs.stale == 'no'
+        run: |
+          echo "OK: данные свежие (${{ steps.check.outputs.newest }}) - тревог нет."

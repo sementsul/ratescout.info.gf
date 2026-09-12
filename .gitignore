@@ -1,0 +1,22 @@
+# секреты — НИКОГДА в репозиторий
+.env
+.env.*
+!.env.example
+vk_secrets.txt          # bootstrap кладёт сюда VK_REFRESH_TOKEN/VK_DEVICE_ID (перенёс в Secrets — удали)
+vk_debug.txt            # bootstrap пишет сюда текст ошибки для диагностики (токенов не содержит)
+
+# генерится в CI (fetch_rates.py) — не коммитим
+rates.json
+
+# сборка и мусор
+dist/
+build/
+__pycache__/
+*.pyc
+*.spec
+.DS_Store
+market.json
+fng.json
+trending.json
+yandex.json
+metrika.json

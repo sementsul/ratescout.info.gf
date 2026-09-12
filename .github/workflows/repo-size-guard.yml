@@ -1,0 +1,41 @@
+# Предохранитель размера репозитория: раз в неделю читает размер репо через GitHub API
+# и, ТОЛЬКО если он >= порога, шлёт оповещение в Telegram (тот же бот, что watchdog).
+# Ничего не переписывает и не пушит — только чтение + уведомление. Squash делается ВРУЧНУЮ
+# (см. docs/project-notes.md), когда придёт алерт. Лимит GitHub Pages/репо ~1 ГБ.
+name: repo-size-guard
+on:
+  schedule:
+    - cron: "0 6 * * 1"      # еженедельно, понедельник 06:00 UTC
+  workflow_dispatch:          # можно запустить вручную для проверки
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check repo size and alert if above threshold
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TG_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TG_CHAT: ${{ secrets.ALERT_CHAT_ID }}
+          THRESHOLD_MB: "400"
+        run: |
+          SIZE_KB=$(curl -s -H "Authorization: Bearer ${GH_TOKEN}" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}" | grep -m1 '"size"' | grep -oE '[0-9]+')
+          [ -z "$SIZE_KB" ] && { echo "не смог прочитать size — выход"; exit 0; }
+          SIZE_MB=$((SIZE_KB / 1024))
+          echo "repo ${GITHUB_REPOSITORY}: ${SIZE_MB} MB (порог ${THRESHOLD_MB} MB)"
+          if [ "$SIZE_MB" -lt "$THRESHOLD_MB" ]; then
+            echo "ниже порога — ок, оповещение не нужно"; exit 0
+          fi
+          if [ -z "$TG_TOKEN" ] || [ -z "$TG_CHAT" ]; then
+            echo "TG не настроен (нет TELEGRAM_TOKEN/ALERT_CHAT_ID) — пропускаю"; exit 0
+          fi
+          MSG=$(printf '⚠️ Репозиторий %s: %s МБ (порог %s МБ). Пора почистить историю git.\n\n🧹 Как очистить (по шагам):\n1) Нажми кнопку «🧹 Очистить историю» ниже — откроется страница workflow на GitHub.\n2) Справа вверху нажми «Run workflow».\n3) В поле confirm впиши заглавными: SQUASH\n4) Нажми зелёную «Run workflow».\n5) Через ~1 мин придёт ответ «🧹 История очищена…».\n\nВсё остальное — автоматически: тег-бэкап, снятие и возврат защиты ветки, свёртка истории в 1 коммит. Откат всегда возможен по бэкап-тегу. Мягкий лимит GitHub ~1 ГБ.' "$GITHUB_REPOSITORY" "$SIZE_MB" "$THRESHOLD_MB")
+          BTN_URL="https://github.com/${GITHUB_REPOSITORY}/actions/workflows/history-squash.yml"
+          RM="{\"inline_keyboard\":[[{\"text\":\"🧹 Очистить историю\",\"url\":\"${BTN_URL}\"}]]}"
+          curl -s -m 15 -X POST "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TG_CHAT}" \
+            --data-urlencode "text=${MSG}" \
+            --data-urlencode "reply_markup=${RM}" \
+            -o /dev/null -w "telegram sendMessage: %{http_code}\n"

@@ -1,0 +1,121 @@
+{
+  "site": {
+    "name": "RateScout",
+    "domain": "ratescout.info.gf",
+    "ref": "1116359",
+    "tagline": "Guide des taux de change crypto et monnaies",
+    "lang": "fr",
+    "owner": "",
+    "owner_status": "",
+    "owner_inn": "",
+    "owner_email": "info@ratescout.info.gf",
+    "langs": [
+      "fr"
+    ]
+  },
+  "_comment_bc": "поле bc = слаг направления BestChange для deep-link /<bc_from>-to-<bc_to>.html. Верифицированы: tether-trc20, bitcoin, sberbank. Остальные — предварительно; в Фазе 2 берём авторитетный маппинг (ID/слаг) из партнёрского API.",
+  "currencies": {
+    "usdt-trc20": {
+      "title": "Tether TRC20 (USDT)",
+      "short": "USDT",
+      "kind": "crypto",
+      "bc": "tether-trc20"
+    },
+    "btc": {
+      "title": "Bitcoin (BTC)",
+      "short": "BTC",
+      "kind": "crypto",
+      "bc": "bitcoin"
+    },
+    "sberbank": {
+      "title": "Сбербанк RUB",
+      "short": "Сбербанк",
+      "kind": "fiat",
+      "bc": "sberbank"
+    },
+    "tinkoff": {
+      "title": "Тинькофф RUB",
+      "short": "Тинькофф",
+      "kind": "fiat",
+      "bc": "tinkoff"
+    },
+    "cash-rub": {
+      "title": "Наличные RUB",
+      "short": "Наличные RUB",
+      "kind": "cash",
+      "bc": "cash-ruble"
+    },
+    "usd-cash": {
+      "title": "Наличные USD",
+      "short": "Наличные USD",
+      "kind": "cash",
+      "bc": "cash-dollar"
+    }
+  },
+  "directions": [
+    {
+      "from": "usdt-trc20",
+      "to": "sberbank",
+      "best_rate": "78.42",
+      "unit": "RUB за 1 USDT",
+      "count": 42,
+      "reserve": "12 400 000 RUB"
+    },
+    {
+      "from": "usdt-trc20",
+      "to": "tinkoff",
+      "best_rate": "78.31",
+      "unit": "RUB за 1 USDT",
+      "count": 38,
+      "reserve": "9 800 000 RUB"
+    },
+    {
+      "from": "btc",
+      "to": "sberbank",
+      "best_rate": "5 812 000",
+      "unit": "RUB за 1 BTC",
+      "count": 27,
+      "reserve": "45 000 000 RUB"
+    },
+    {
+      "from": "sberbank",
+      "to": "usdt-trc20",
+      "best_rate": "79.10",
+      "unit": "RUB за 1 USDT",
+      "count": 40,
+      "reserve": "3 200 000 USDT"
+    },
+    {
+      "from": "btc",
+      "to": "usdt-trc20",
+      "best_rate": "74 020",
+      "unit": "USDT за 1 BTC",
+      "count": 31,
+      "reserve": "1 500 000 USDT"
+    },
+    {
+      "from": "usd-cash",
+      "to": "usdt-trc20",
+      "best_rate": "0.986",
+      "unit": "USDT за 1 USD",
+      "count": 14,
+      "reserve": "800 000 USDT"
+    },
+    {
+      "from": "usdt-trc20",
+      "to": "cash-rub",
+      "best_rate": "77.90",
+      "unit": "RUB за 1 USDT",
+      "count": 22,
+      "reserve": "20 000 000 RUB"
+    },
+    {
+      "from": "tinkoff",
+      "to": "btc",
+      "best_rate": "5 890 000",
+      "unit": "RUB за 1 BTC",
+      "count": 19,
+      "reserve": "38 BTC"
+    }
+  ]
+}

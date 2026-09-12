@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" shape-rendering="crispEdges">
+  <!-- DOS-бокс: синий фон + двойная циан-рамка (как .dosblue.dosborder) -->
+  <rect x="0" y="0" width="64" height="64" fill="#0000aa"/>
+  <rect x="3.5" y="3.5" width="57" height="57" fill="none" stroke="#55ffff" stroke-width="3"/>
+  <rect x="9.5" y="9.5" width="45" height="45" fill="none" stroke="#55ffff" stroke-width="2"/>
+  <!-- стрелки обмена ⇄ (жёлтые) -->
+  <g stroke="#ffff55" stroke-width="4" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+    <!-- верхняя: вправо -->
+    <line x1="19" y1="26" x2="43" y2="26"/>
+    <polyline points="37,20 45,26 37,32"/>
+    <!-- нижняя: влево -->
+    <line x1="45" y1="40" x2="21" y2="40"/>
+    <polyline points="27,34 19,40 27,46"/>
+  </g>
+</svg>
