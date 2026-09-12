@@ -1915,12 +1915,12 @@ METRIKA = """<!-- Yandex.Metrika counter -->
 <!-- /Yandex.Metrika counter -->"""
 
 GTAG = """<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PPN27D6JXS"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MW5VX98066"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-PPN27D6JXS');
+  gtag('config', 'G-MW5VX98066');
 </script>
 <!-- /Google tag -->"""
 
