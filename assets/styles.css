@@ -543,3 +543,7 @@ hr.bkdiv{border:0;border-top:1px dashed #55ffff;opacity:.5;margin:22px 0}
 .tile-cross.ay{cursor:ns-resize}
 .th-dos .tile-cross{background:#0ff;box-shadow:0 0 0 3px rgba(0,255,255,.22)}
 .th-dark .tile-cross{background:#7aa2f7;box-shadow:0 0 0 3px rgba(122,162,247,.22)}
+
+#langbanner{background:#0a1f14;border-bottom:1px solid #2ea043;color:#e6edf3;font:14px/1.5 -apple-system,"Segoe UI",Roboto,sans-serif;padding:8px 14px;text-align:center}
+#langbanner a{color:#58a6ff;font-weight:700}
+#langbanner button{background:none;border:1px solid #30363d;border-radius:6px;color:#8b949e;cursor:pointer;margin-left:10px;padding:0 8px}

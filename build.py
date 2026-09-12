@@ -65,6 +65,7 @@ CUR = CAT["currencies"]
 CATS = CAT["categories"]
 S = SITE
 BASE_URL = f"https://{S['domain']}"
+RU_BASE = "https://ratescout.ru"  # RU/EN-оригинал: кросс-доменный hreflang + баннер
 REF = S["ref"]
 ERID = "2VtzqvK5m96"
 INDEXNOW_KEY = "b394aeced6a92ed48a09e2bd30099905"  # публичный ключ IndexNow (ключ-файл на сайте)
@@ -1978,6 +1979,11 @@ def hreflangs(path):
         if path in _missing_set(lg):
             continue
         tags.append(f'<link rel="alternate" hreflang="{LOCALE[lg]}" href="{BASE_URL}{PREF[lg]}{path}">')
+    # кросс-домен: RU/EN-версии на ratescout.ru (только если страница там есть)
+    if path not in NO_RU:
+        tags.append(f'<link rel="alternate" hreflang="ru" href="{RU_BASE}{path}">')
+    if path not in NO_EN:
+        tags.append(f'<link rel="alternate" hreflang="en" href="{RU_BASE}/en{path}">')
     default_lg = next((lg for lg in LANGS if path not in _missing_set(lg)), LANGS[0])
     default = f"{BASE_URL}{PREF[default_lg]}{path}"
     tags.append(f'<link rel="alternate" hreflang="x-default" href="{default}">')
@@ -2093,6 +2099,26 @@ def mobile_drawer(lang):
     return f'<nav id="drawer">{"".join(groups)}</nav>'
 
 
+def lang_banner(lang):
+    """Баннер-предложение RU/EN-версии (без авторедиректа — SEO-safe).
+    Показ только при языке браузера ru/en, закрытие запоминается в localStorage."""
+    if lang != "fr":
+        return ""
+    return ("""<script>(function(){try{
+var L=(navigator.languages&&navigator.languages[0])||navigator.language||"";
+var ru=/^ru\\b/i.test(L),en=/^en\\b/i.test(L);
+if(!ru&&!en)return;
+if(localStorage.getItem("rs_rubanner")==="1")return;
+var p=location.pathname;
+var href=ru?("https://ratescout.ru"+p):("https://ratescout.ru/en"+p);
+var t=ru?'🇷🇺 Русская версия — <a href="'+href+'">ratescout.ru</a>':'🇬🇧 English version — <a href="'+href+'">ratescout.ru/en</a>';
+var d=document.createElement("div");d.id="langbanner";
+d.innerHTML='<span>'+t+'</span> <button type="button" aria-label="Close">✕</button>';
+d.querySelector("button").onclick=function(){try{localStorage.setItem("rs_rubanner","1");}catch(e){}d.remove();};
+document.body.insertBefore(d,document.body.firstChild);
+}catch(e){}})();</script>""")
+
+
 def header(lang, path):
     _missing = {"ru": NO_RU, "en": NO_EN, "fr": NO_FR}
     avail = [lg for lg in LANGS if lg != lang
@@ -2120,9 +2146,13 @@ def header(lang, path):
     <li><a href="{PREF[lang]}/napravleniya/">{tr(lang,'nav_dirs')}</a></li>
     <li><a href="{PREF[lang]}/faq/">{tr(lang,'nav_faq')}</a></li>
     <li><a href="{PREF[lang]}/slovar/">{tr(lang,'nav_glossary')}</a></li>
+
+
+
     <li><a href="{PREF[lang]}/raskrytie/">{tr(lang,'nav_disc')}</a></li>
   </ul>
-</div>"""
+</div>
+{lang_banner(lang)}"""
 
 
 def search_box(lang):
