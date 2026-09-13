@@ -5029,7 +5029,7 @@ def compliance_pages(lang):
         render_page(lang, "earn", "Gagner avec BestChange — programme d'affiliation",
                     "Gagnez avec BestChange : 30% sur chaque échange et AML-check jusqu'au 31/12/2026, puis 10%. Inscription via lien partenaire.",
                     f"""<h1>Gagner avec BestChange</h1>
-<p class="answer">Programme d'affiliation BestChange via <b>RateScout</b> : touchez une commission sur chaque échange de vos filleuls + une part des webmasters parrainés. Inscription via notre lien partenaire.</p>
+<p class="answer">BestChange propose un programme d'affiliation : en vous inscrivant via le lien partenaire de RateScout, vous pouvez percevoir une commission versée par BestChange sur les échanges de vos filleuls + une part des webmasters parrainés (conditions BestChange).</p>
 <h2>Conditions (affrules)</h2>
 <ul><li><b>30% du revenu BestChange</b> sur chaque échange AML + échange classique <b>jusqu'au 31 décembre 2026</b> inclus ;</li>
 <li><b>10% après le 1 janvier 2027</b> ;</li><li>exemple : check AML à $3.75 → $1.13 (30%), échange $100 → $30 ;</li>
