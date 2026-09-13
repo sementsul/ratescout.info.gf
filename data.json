@@ -5,11 +5,24 @@
     "ref": "1116359",
     "tagline": "Guide des taux de change crypto et monnaies",
     "lang": "fr",
-    "owner": "",
-    "owner_status": "",
+    "owner": "RateScout",
+    "owner_status": "Éditeur du site",
     "owner_inn": "",
     "owner_email": "info@ratescout.info.gf",
-    "langs": ["fr"]
+    "langs": ["fr"],
+    "legal": {
+      "editor_name": "RateScout",
+      "editor_form": "Service d'information indépendant",
+      "editor_address": "Guyane française — contact par e-mail",
+      "editor_email": "info@ratescout.info.gf",
+      "editor_phone": "",
+      "director": "Directeur de la publication : RateScout",
+      "host_name": "GitHub Pages (GitHub, Inc.)",
+      "host_address": "88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA",
+      "host_phone": "https://support.github.com/",
+      "siret": "",
+      "tva": ""
+    }
   },
   "_comment_bc": "поле bc = слаг направления BestChange для deep-link /<bc_from>-to-<bc_to>.html. Верифицированы: tether-trc20, bitcoin, sberbank. Остальные — предварительно; в Фазе 2 берём авторитетный маппинг (ID/слаг) из партнёрского API.",
   "currencies": {

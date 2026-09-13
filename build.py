@@ -1938,6 +1938,11 @@ GTM_BODY = """<!-- Google Tag Manager (noscript) -->
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->"""
 
+# CNIL/RGPD CMP — minimal consent banner for FR (loads GTM/GA only after accept)
+CMP_CSS = """<style>#cmp{position:fixed;bottom:0;left:0;right:0;background:#111;border-top:2px solid #2ea043;color:#e6edf3;padding:14px 16px;z-index:9999;font:14px/1.4 -apple-system,"Segoe UI",Roboto,sans-serif}#cmp p{margin:0 0 10px}#cmp .cmp-actions{display:flex;gap:8px;flex-wrap:wrap}#cmp button{border:1px solid #2ea043;border-radius:6px;padding:6px 12px;cursor:pointer}#cmp .accept{background:#2ea043;color:#fff}#cmp .refuse{background:#111;color:#8b949e}#cmp a{color:#58a6ff}</style>"""
+CMP_JS = """<script>(function(){var k="rs_cmp";function has(){try{return localStorage.getItem(k)}catch(e){return null}}function set(v){try{localStorage.setItem(k,v)}catch(e){}}function load(){if(window.__cmpLoaded)return;window.__cmpLoaded=1;var s=document.createElement("script");s.src="https://www.googletagmanager.com/gtag/js?id=G-MW5VX98066";s.async=1;document.head.appendChild(s);s.onload=function(){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;gtag("js",new Date());gtag("config","G-MW5VX98066",{anonymize_ip:true});};var s2=document.createElement("script");s2.text="(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-N328Z8XP');";document.head.appendChild(s2);}var c=has();if(c==="accept"){load();return;}if(c==="refuse")return;var d=document.createElement("div");d.id="cmp";d.innerHTML='<p>Nous utilisons des cookies de mesure d\'audience (Google Analytics via GTM). Choisissez votre préférence — <a href="/politika/">En savoir plus</a> / <a href="/raskrytie/">Mentions légales</a></p><div class="cmp-actions"><button class="accept" type="button">Accepter</button><button class="refuse" type="button">Refuser</button></div>';document.addEventListener("DOMContentLoaded",function(){document.body.appendChild(d);d.querySelector(".accept").onclick=function(){set("accept");load();d.remove();};d.querySelector(".refuse").onclick=function(){set("refuse");d.remove();};});})();</script>"""
+CMP_BANNER = CMP_CSS + CMP_JS
+
 LIVEINTERNET = """<!--LiveInternet counter--><a href="https://www.liveinternet.ru/click"
 target="_blank"><img id="licnt737E" width="88" height="31" style="border:0"
 title="LiveInternet: показано число просмотров и посетителей за 24 часа"
@@ -1979,11 +1984,12 @@ def hreflangs(path):
         if path in _missing_set(lg):
             continue
         tags.append(f'<link rel="alternate" hreflang="{LOCALE[lg]}" href="{BASE_URL}{PREF[lg]}{path}">')
-    # кросс-домен: RU/EN-версии на ratescout.ru (только если страница там есть)
-    if path not in NO_RU:
-        tags.append(f'<link rel="alternate" hreflang="ru" href="{RU_BASE}{path}">')
-    if path not in NO_EN:
-        tags.append(f'<link rel="alternate" hreflang="en" href="{RU_BASE}/en{path}">')
+    # кросс-домен только для многоязычной сборки; FR-only — чистый fr (требование CNIL/local SEO)
+    if LANGS != ["fr"]:
+        if path not in NO_RU:
+            tags.append(f'<link rel="alternate" hreflang="ru" href="{RU_BASE}{path}">')
+        if path not in NO_EN:
+            tags.append(f'<link rel="alternate" hreflang="en" href="{RU_BASE}/en{path}">')
     default_lg = next((lg for lg in LANGS if path not in _missing_set(lg)), LANGS[0])
     default = f"{BASE_URL}{PREF[default_lg]}{path}"
     tags.append(f'<link rel="alternate" hreflang="x-default" href="{default}">')
@@ -2005,12 +2011,17 @@ def head(lang, title, desc, path, extra="", og_image=None, og_w=1200, og_h=630):
     _ymeta = "" if lang == "fr" else ('<meta name="yandex-verification" content="4b39ef5046fa7e8a">\n<meta name="zen-verification" content="AvXwV96CkkGrgi2Dn4bnu0c3gAx52ezYYqNU79rdSigVe2IAJhfqL8E512dfovL5">')
     _ypre = "" if lang == "fr" else ('<link rel="preconnect" href="https://mc.yandex.ru">\n<link rel="dns-prefetch" href="https://mc.yandex.ru">')
     _metrika = "" if lang == "fr" else METRIKA
+    # FR: GTM/GA only after consent via CMP (RGPD)
+    _gtm = "" if lang == "fr" else GTM_HEAD
+    _gtag = "" if lang == "fr" else GTAG
+    _gbody = "" if lang == "fr" else GTM_BODY
+    _cmp = CMP_BANNER if lang == "fr" else ""
     return f"""<!doctype html>
 <html lang="{LOCALE[lang]}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-{GTM_HEAD}
+{_gtm}
 {langredir}
 <title>{title}</title>
 <meta name="description" content="{desc}">
@@ -2042,10 +2053,11 @@ def head(lang, title, desc, path, extra="", og_image=None, og_w=1200, og_h=630):
 <link rel="stylesheet" href="/assets/styles.css?v={VER['css']}">
 {extra}
 {_metrika}
-{GTAG}
+{_gtag}
+{_cmp}
 </head>
 <body>
-{GTM_BODY}
+{_gbody}
 <div id="wrapper">"""
 
 
@@ -2330,17 +2342,26 @@ def footer(lang):
                 f"Rates change. © {S['name']} {S['domain']}.<br>"
                 f"<span class=\"own\">Site owner: {S.get('owner','')} (self-employed, RU tax ID {S.get('owner_inn','')}).</span>")
     else:
+        _legal = S.get("legal", {})
+        _ed = _legal.get("editor_name", S.get("owner","RateScout"))
+        _host = _legal.get("host_name", "GitHub Pages")
+        _haddr = _legal.get("host_address", "")
         disc = ("RateScout est un service indépendant de suivi des taux de change. Nous ne sommes pas un bureau "
-                "de change et n'effectuons aucune opération. Les liens mènent vers BestChange (un moniteur des taux "
-                "des bureaux de change) ; via le programme d'affiliation, nous pouvons percevoir une commission, "
+                "de change, pas de PSAN, pas d\'AMF. Actifs numériques hautement volatils — risque de perte totale. "
+                "Aucun conseil financier. Les liens mènent vers BestChange (moniteur des taux) ; via l\'affiliation, nous pouvons percevoir une commission, "
                 "sans surcoût pour vous (<a href=\"/raskrytie/\">divulgation</a>).")
         links = (f'<a href="{PREF[lang]}/o-servise/">À propos</a> · <a href="{PREF[lang]}/aml/">Vérification AML</a> · '
                  f'<a href="{PREF[lang]}/vidzhet/">Widget</a> · <a href="{PREF[lang]}/redakciya/">Rédaction</a> · '
                  f'<a href="{PREF[lang]}/raskrytie/">Mentions légales</a> · '
-                 f'<a href="{PREF[lang]}/politika/">Confidentialité</a> · <a href="{PREF[lang]}/usloviya/">CGU</a>')
-        fine = ("18+. Informations données à titre indicatif, ni offre, ni conseil financier. "
+                 f'<a href="{PREF[lang]}/politika/">Confidentialité</a> · <a href="{PREF[lang]}/usloviya/">CGU</a> · '
+                 f'<a href="/politique-cookies/">Cookies</a>')
+        _addr = _legal.get("editor_address","")
+        _mail = S.get("owner_email","")
+        _dir = _legal.get("director","")
+        _siret = _legal.get("siret","")
+        fine = ("18+. Informations données à titre indicatif, ni offre, ni démarchage, ni conseil financier. "
                 f"Les taux évoluent. © {S['name']} {S['domain']}.<br>"
-                f"<span class=\"own\">Contact : {S.get('owner_email','')}.</span>" if S.get('owner_email') else "")
+                f"<span class=\"own\">Éditeur : {_ed}" + (f", {_addr}" if _addr else "") + (f" — {_dir}" if _dir else "") + (f" — SIRET {_siret}" if _siret else "") + f". Contact : {_mail}. Hébergeur : {_host}" + (f" — {_haddr}" if _haddr else "") + ".</span>")
     return f"""<div id="footer">
   <div class="disc">{disc}</div>
   <div class="links">{links}</div>
@@ -5038,34 +5059,57 @@ def compliance_pages(lang):
 <p>Un score AML complet (mixeurs, scams, darknet) relève de services spécialisés d'analyse blockchain. Ci-dessous — notre
    vérification <b>de base</b> : format de l'adresse et liste officielle des sanctions OFAC.</p>""" + aml_checker(lang),
                     "Vérification AML")
+        _l = S.get("legal", {})
         render_page(lang, "raskrytie", "Divulgation et mentions légales",
                     "Divulgation d'affiliation et informations légales de RateScout.",
                     f"""<h1>Divulgation et mentions légales</h1>
 <h2>Divulgation d'affiliation</h2><p>RateScout est un service d'information indépendant. Les liens mènent vers BestChange ; via
    le programme d'affiliation, nous pouvons percevoir une commission, sans surcoût pour vous. Certains services tiers peuvent être
    marqués « lien affilié » — nous pouvons aussi en percevoir une commission.</p>
-<h2>Avertissement</h2><p>Informations à titre indicatif, pas un conseil financier, d'investissement ni juridique. Les taux évoluent.
-   Vous décidez d'échanger seul et à vos risques. 18+.</p>
+<h2>Avertissement — actifs numériques (AMF)</h2><p>Crypto-actifs hautement volatils, risque de perte totale. Pas de conseil financier, pas de démarchage (art. L54-10-2 CMF), pas de statut PSAN. Faites vos recherches (DYOR) — <a href="https://www.amf-france.org" target="_blank" rel="noopener">AMF</a>. Informations à titre indicatif, pas un conseil financier, d'investissement ni juridique. Les taux évoluent. Vous décidez d'échanger seul et à vos risques. 18+.</p>
 <h2>Cadre</h2><ul><li><b>UE/FR :</b> site d'information indépendant ; liens affiliés signalés sur les pages et près des boutons.</li>
 <li><b>Sanctions :</b> service indisponible aux personnes/territoires sanctionnés (OFAC).</li></ul>
 <h2>Éditeur du site</h2>
-<p>RateScout — projet d'information indépendant, pas un bureau de change, aucune opération effectuée. Contact : {S.get('owner_email','')}.</p>"""
+<p>Éditeur : {_l.get('editor_name','RateScout')} — {_l.get('editor_form','')} — {_l.get('editor_address','')} — Directeur : {_l.get('director','')} — SIRET : {_l.get('siret','')} — Contact : {S.get('owner_email','')}.</p>
+<h2>Hébergeur</h2>
+<p>{_l.get('host_name','GitHub Pages')} — {_l.get('host_address','')} — {_l.get('host_phone','')}.</p>
+<h2>Juridiction & propriété</h2><p>Droit français. Médiation conso art. L612-1, juridiction : Tribunal judiciaire de Paris. Propriété intellectuelle : RateScout.</p>"""
                     + donations_block(lang),
                     "Divulgation")
-        render_page(lang, "politika", "Politique de confidentialité",
-                    f"Politique de traitement des données et cookies sur {S['domain']}.",
+        _l = S.get("legal", {})
+        render_page(lang, "politika", "Politique de confidentialité — RGPD",
+                    f"Politique de confidentialité et cookies — {S['domain']} (RGPD).",
                     f"""<h1>Politique de confidentialité</h1>
-<p>La présente politique décrit le traitement des données des visiteurs de {S['domain']}. Contact : {S.get('owner_email','')}.</p>
-<h2>Quelles données</h2><ul><li>données techniques du navigateur (IP, navigateur/OS, referer, date/heure) ;</li>
-<li>analyse web anonymisée ;</li><li>cookies.</li></ul>
-<h2>Analyse</h2><p>Google Analytics est utilisé (données anonymisées). Les cookies peuvent être désactivés dans le navigateur.</p>
-<h2>Droits</h2><p>Demande d'accès, de rectification ou de suppression, retrait du consentement — écrire à {S.get('owner_email','')}.
-   La version en vigueur est sur cette page.</p>""",
+<p>Éditeur : {_l.get('editor_name','RateScout')} — {_l.get('editor_address','')} — Contact : {S.get('owner_email','')} — Directeur : {_l.get('director','')}. Hébergeur : {_l.get('host_name','GitHub Pages')} — {_l.get('host_address','')}.</p>
+<h2>1. Responsable de traitement</h2><p>Le responsable est l'éditeur ci-dessus. Contact RGPD : {S.get('owner_email','')}.</p>
+<h2>2. Données traitées</h2><ul><li>données techniques (IP tronquée, user-agent, referer, horodatage) ;</li><li>mesure d'audience anonymisée (GTM/GA4) uniquement après consentement ;</li><li>cookies/traceurs (voir <a href="/politique-cookies/">politique cookies</a>).</li></ul>
+<h2>3. Finalités et bases légales</h2><ul><li>affichage du service (intérêt légitime, art.6-1-f) ;</li><li>mesure d'audience et amélioration (consentement art.6-1-a, ePrivacy art.82) ;</li><li>affiliation BestChange (intérêt légitime, information au clic).</li></ul>
+<h2>4. Durées</h2><p>Logs techniques 13 mois max. Cookies de mesure 13 mois, consentement 6 mois. Au-delà, suppression/anonymisation.</p>
+<h2>5. Destinataires et transferts</h2><p>Google LLC (GA4/GTM, USA) — transfert hors UE encadré par Clauses Contractuelles Types (SCC) et anonymisation IP. GitHub (hébergement). Aucune vente de données.</p>
+<h2>6. Vos droits</h2><p>Accès, rectification, effacement, limitation, portabilité, opposition, retrait du consentement (art.7-3) — écrire à {S.get('owner_email','')} . Réponse sous 1 mois. Recours CNIL : 3 Place de Fontenoy, TSA 80715, 75334 Paris Cedex 07 — <a href="https://www.cnil.fr" target="_blank" rel="noopener">cnil.fr</a>.</p>
+<h2>7. Cookies — gestion</h2><p>Aucun traceur non essentiel n'est déposé avant votre choix. Vous pouvez <em>Accepter</em> ou <em>Refuser</em> via le bandeau. Vous pouvez retirer votre consentement à tout moment en effaçant <code>rs_cmp</code> dans le stockage local ou via <a href="/politique-cookies/">cette page</a> (bouton « Retirer »).</p>
+<h2>8. Analyse</h2><p>GTM/GA4 uniquement après « Accepter », IP anonymisée (<code>anonymize_ip</code>), pas de Webvisor/Yandex sur FR. Voir détails traceurs sur <a href="/politique-cookies/">politique cookies</a>.</p>
+<h2>9. Modifications</h2><p>Version en vigueur sur cette page. Dernière mise à jour : {datetime.now(timezone.utc).strftime("%Y-%m-%d")}.</p>""",
                     "Confidentialité")
+        # page cookies distincte
+        render_page(lang, "politique-cookies", "Politique cookies — gestion du consentement",
+                    f"Cookies et traceurs — {S['domain']} (CNIL).",
+                    f"""<h1>Politique cookies</h1>
+<p>Cette page liste les cookies/traceurs de {S['domain']} (FR, CNIL).</p>
+<table class="rtbl"><thead><tr><th>Nom</th><th>Finalité</th><th>Éditeur</th><th>Durée</th><th>Choix</th></tr></thead><tbody>
+<tr><td><code>rs_cmp</code></td><td>mémorise votre choix Accepter/Refuser</td><td>RateScout (first-party, localStorage)</td><td>6 mois</td><td>effacer le stockage local</td></tr>
+<tr><td><code>_ga, _gid, _gat*</code></td><td>mesure d'audience GA4</td><td>Google LLC (USA, SCC)</td><td>13 mois</td><td>Refuser sur bandeau</td></tr>
+<tr><td><code>_gtm*</code></td><td>GTM</td><td>Google</td><td>13 mois</td><td>Refuser</td></tr>
+</tbody></table>
+<p><button type="button" onclick="try{{localStorage.removeItem('rs_cmp');location.reload()}}catch(e){{}}">Retirer mon consentement / re-choisir</button> — recharge la page et ré-affiche le bandeau.</p>
+<p>CNIL : guide <a href="https://www.cnil.fr/fr/cookies-et-traceurs-que-dit-la-loi" target="_blank" rel="noopener">cookies et traceurs</a>.</p>""",
+                    "Cookies")
         render_page(lang, "usloviya", "Conditions d'utilisation",
                     f"Conditions d'utilisation du site {S['domain']}.",
                     f"""<h1>Conditions d'utilisation</h1>
 <p>En utilisant {S['domain']}, vous acceptez les présentes conditions. Contact : {S.get('owner_email','')}.</p>
+<p><strong>Actifs numériques — avertissement AMF :</strong> crypto-actifs hautement volatils, risque de perte totale en capital, pas de protection AMF/ACPR, pas de statut PSAN pour RateScout. Aucun démarchage (art. L54-10-2 CMF). Faites vos propres recherches (DYOR). Voir <a href="https://www.amf-france.org" target="_blank" rel="noopener">AMF</a>.</p>
+<h2>Juridiction</h2><p>Droit français. Médiation consommation art. L612-1 Code de la consommation — en cas de litige, juridiction compétente : Tribunal judiciaire de Paris.</p>
 <h2>Service</h2><p>RateScout est un service indépendant de monitoring des taux. Données indicatives, pas une offre ni
    un conseil financier ou d'investissement. Vous décidez d'échanger seul et à vos risques. 18+.</p>
 <h2>Usage acceptable</h2><ul><li>respecter la loi applicable ;</li>
@@ -5074,6 +5118,15 @@ def compliance_pages(lang):
    responsable des décisions prises sur la base de données indicatives.</p>
 <h2>Modifications</h2><p>La version en vigueur est sur cette page. Questions : {S.get('owner_email','')}.</p>""",
                     "Conditions")
+        # alias FR pour contrôle DGCCRF/CNIL — /mentions-legales/ etc. doivent répondre 200
+        for _alias, _src in [("mentions-legales","raskrytie"), ("politique-de-confidentialite","politika"), ("cgu","usloviya"), ("donnees-personnelles","politika"), ("cookies","politique-cookies")]:
+            try:
+                _sp = os.path.join(DIST, _src, "index.html")
+                _dp = os.path.join(DIST, _alias, "index.html")
+                if os.path.exists(_sp):
+                    os.makedirs(os.path.dirname(_dp), exist_ok=True)
+                    shutil.copy(_sp, _dp)
+            except: pass
     else:
         render_page(lang, "o-servise", "What is BestChange",
                     "BestChange — an exchange office monitor: reference information about crypto and currency exchange rates.",
@@ -5445,6 +5498,8 @@ def static_files():
             items.append(u_entry(pr + "/slovar/", "weekly", "0.6"))
             items += [u_entry(pr + f"/slovar/{t['slug']}/", "monthly", "0.5") for t in GLOSSARY]
         items += [u_entry(pr + f"/{u}/", "monthly", "0.4") for u in ("o-servise", "aml", "raskrytie", "politika", "usloviya", "redakciya")]
+        if lg == "fr":
+            items += [u_entry(pr + f"/{u}/", "monthly", "0.4") for u in ("mentions-legales", "politique-de-confidentialite", "cgu", "politique-cookies", "donnees-personnelles", "cookies")]
         if lg == "en":
             items.append(u_entry(pr + "/earn/", "monthly", "0.5"))  # EN-only: партнёрка BestChange для не-РФ
     open(os.path.join(DIST, "sitemap.xml"), "w", encoding="utf-8").write(
@@ -5461,9 +5516,9 @@ def static_files():
     open(os.path.join(DIST, "robots.txt"), "w", encoding="utf-8").write(_robots)
     open(os.path.join(DIST, "CNAME"), "w", encoding="utf-8").write(S["domain"] + "\n")
     open(os.path.join(DIST, "manifest.webmanifest"), "w", encoding="utf-8").write(json.dumps({
-        "name": S["name"] + " — мониторинг курсов обмена", "short_name": S["name"],
+        "name": S["name"] + " — monitoring des taux de change" if LANGS==["fr"] else S["name"] + " — мониторинг курсов обмена", "short_name": S["name"],
         "description": S["tagline"], "start_url": "/", "scope": "/", "display": "standalone",
-        "background_color": "#111111", "theme_color": "#111111", "lang": "ru",
+        "background_color": "#111111", "theme_color": "#111111", "lang": LOCALE[LANGS[0]],
         "icons": [{"src": "/assets/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}]
     }, ensure_ascii=False, indent=2))
     open(os.path.join(DIST, "sw.js"), "w", encoding="utf-8").write(
