@@ -5027,22 +5027,22 @@ def compliance_pages(lang):
    à vous orienter et mène vers la liste des changeurs BestChange. Nous n'effectuons pas d'échanges nous-mêmes.</p>""",
                     "Qu'est-ce que BestChange")
         render_page(lang, "earn", "Gagner avec BestChange — programme d'affiliation",
-                    "Gagnez avec BestChange : 30% sur chaque échange et AML-check jusqu'au 31/12/2026, puis 10%. Inscription via lien partenaire p=1116359.",
+                    "Gagnez avec BestChange : 30% sur chaque échange et AML-check jusqu'au 31/12/2026, puis 10%. Inscription via lien partenaire.",
                     f"""<h1>Gagner avec BestChange</h1>
-<p class="answer">Programme d'affiliation BestChange via <b>RateScout</b> : touchez une commission sur chaque échange de vos filleuls + une part des webmasters parrainés. Inscription via notre lien partenaire <code>p=1116359</code>.</p>
+<p class="answer">Programme d'affiliation BestChange via <b>RateScout</b> : touchez une commission sur chaque échange de vos filleuls + une part des webmasters parrainés. Inscription via notre lien partenaire.</p>
 <h2>Conditions (affrules)</h2>
 <ul><li><b>30% du revenu BestChange</b> sur chaque échange AML + échange classique <b>jusqu'au 31 décembre 2026</b> inclus ;</li>
 <li><b>10% après le 1 janvier 2027</b> ;</li><li>exemple : check AML à $3.75 → $1.13 (30%), échange $100 → $30 ;</li>
 <li>seuil de paiement : <b>$1.00</b>, en <b>Bitcoin / Volet / WebMoney</b> ;</li>
 <li>bonus progression $0.10 + $0.05×10 + paliers $0.30-$1.05 (3-120 jours) ; 30% sur leur revenu, 10% au 2ᵉ niveau.</li></ul>
 <h2>Comment ça marche</h2>
-<ol class="steps"><li>Cliquez sur le bouton ci-dessous (lien partenaire <b>p=1116359</b>).</li>
+<ol class="steps"><li>Cliquez sur le bouton ci-dessous (lien partenaire).</li>
 <li>Inscrivez-vous chez BestChange et récupérez <b>votre lien p=XXXX</b>.</li>
 <li>Placez liens/widgets sur site, blog, YouTube, Telegram.</li>
 <li>Touchez commission sur chaque échange / check AML de vos filleuls + part des webmasters parrainés.</li></ol>
 <h2>Participer — lien partenaire RateScout</h2>
-<p><a id="bcPartner" class="cta" href="https://www.bestchange.com/partner/?p=1116359" target="_blank" rel="nofollow sponsored noopener">S'inscrire chez BestChange (p=1116359) &rarr;</a></p>
-<p class="updnote admark">Lien affilié RateScout p=1116359 — nous pouvons percevoir une commission (voir <a href="/raskrytie/">divulgation</a>). Sans surcoût pour vous.</p>
+<p><a id="bcPartner" class="cta" href="https://www.bestchange.com/partner/?p=1116359" target="_blank" rel="nofollow sponsored noopener">S'inscrire chez BestChange &rarr;</a></p>
+<p class="updnote admark">Lien affilié — nous pouvons percevoir une commission (voir <a href="/raskrytie/">divulgation</a>). Sans surcoût pour vous.</p>
 <p class="updnote">Conditions officielles : <a href="https://www.bestchange.ru/wiki/affrules.html" target="_blank" rel="noopener">affrules.html</a>. RateScout est indépendant, pas employeur, pas conseil financier.</p>"""
                     + geo_ref_script("bcPartner", "https://www.bestchange.com/partner/?p=1116359"),
                     "Gagner avec BestChange")
