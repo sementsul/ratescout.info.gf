@@ -2351,7 +2351,7 @@ def footer(lang):
                 "Aucun conseil financier. Les liens mènent vers BestChange (moniteur des taux) ; via l\'affiliation, nous pouvons percevoir une commission, "
                 "sans surcoût pour vous (<a href=\"/raskrytie/\">divulgation</a>).")
         links = (f'<a href="{PREF[lang]}/o-servise/">À propos</a> · <a href="{PREF[lang]}/aml/">Vérification AML</a> · '
-                 f'<a href="{PREF[lang]}/vidzhet/">Widget</a> · <a href="{PREF[lang]}/redakciya/">Rédaction</a> · '
+                 f'<a href="{PREF[lang]}/earn/">Gagner</a> · <a href="{PREF[lang]}/vidzhet/">Widget</a> · <a href="{PREF[lang]}/redakciya/">Rédaction</a> · '
                  f'<a href="{PREF[lang]}/raskrytie/">Mentions légales</a> · '
                  f'<a href="{PREF[lang]}/politika/">Confidentialité</a> · <a href="{PREF[lang]}/usloviya/">CGU</a> · '
                  f'<a href="/politique-cookies/">Cookies</a>')
@@ -5026,27 +5026,25 @@ def compliance_pages(lang):
 <p>Le moniteur référence des changeurs notés avec des réserves. RateScout est un service d'information indépendant qui vous aide
    à vous orienter et mène vers la liste des changeurs BestChange. Nous n'effectuons pas d'échanges nous-mêmes.</p>""",
                     "Qu'est-ce que BestChange")
-        render_page(lang, "earn", "Gagner avec BestChange — programme d'affiliation pour webmasters",
-                    "Monétisez le trafic crypto et finance avec le programme d'affiliation BestChange : commission sur "
-                    "les échanges plus une part des webmasters parrainés. Comment participer.",
-                    """<h1>Gagner avec BestChange</h1>
-<p class="answer">BestChange propose un programme d'affiliation : vous touchez une commission sur chaque échange effectué par les utilisateurs qui
-   suivent vos liens, plus une part des gains des webmasters que vous parrainez (deux niveaux). Paiements en crypto et monnaies électroniques.</p>
+        render_page(lang, "earn", "Gagner avec BestChange — programme d'affiliation",
+                    "Gagnez avec BestChange : 30% sur chaque échange et AML-check jusqu'au 31/12/2026, puis 10%. Inscription via lien partenaire p=1116359.",
+                    f"""<h1>Gagner avec BestChange</h1>
+<p class="answer">Programme d'affiliation BestChange via <b>RateScout</b> : touchez une commission sur chaque échange de vos filleuls + une part des webmasters parrainés. Inscription via notre lien partenaire <code>p=1116359</code>.</p>
+<h2>Conditions (affrules)</h2>
+<ul><li><b>30% du revenu BestChange</b> sur chaque échange AML + échange classique <b>jusqu'au 31 décembre 2026</b> inclus ;</li>
+<li><b>10% après le 1 janvier 2027</b> ;</li><li>exemple : check AML à $3.75 → $1.13 (30%), échange $100 → $30 ;</li>
+<li>seuil de paiement : <b>$1.00</b>, en <b>Bitcoin / Volet / WebMoney</b> ;</li>
+<li>bonus progression $0.10 + $0.05×10 + paliers $0.30-$1.05 (3-120 jours) ; 30% sur leur revenu, 10% au 2ᵉ niveau.</li></ul>
 <h2>Comment ça marche</h2>
-<ol class="steps"><li>Inscrivez-vous au programme d'affiliation BestChange.</li>
-<li>Placez liens ou widgets BestChange sur votre site, blog ou chaîne.</li>
-<li>Touchez une commission sur chaque échange via vos liens.</li>
-<li>Invitez d'autres webmasters et recevez aussi une part de leurs gains.</li></ol>
-<h2>Pour qui</h2>
-<ul><li>propriétaires de sites, blogs et chaînes finance et crypto ;</li>
-<li>spécialistes du trafic et de l'arbitrage ;</li>
-<li>toute personne avec une audience intéressée par la crypto et le change.</li></ul>
-<h2>Participer</h2>
-<p><a id="bcPartner" class="cta" href="https://www.bestchange.com/partner/" target="_blank" rel="nofollow sponsored noopener">Rejoindre le programme d'affiliation BestChange &rarr;</a></p>
-<p class="updnote admark">Lien affilié — nous pouvons percevoir une commission (voir <a href="/raskrytie/">divulgation</a>).</p>
-<p class="updnote">RateScout est un service d'information indépendant et affilié BestChange. Le bouton mène vers le
-   programme d'affiliation officiel BestChange. À titre indicatif ; ni offre d'emploi ni conseil financier.</p>"""
-                    + geo_ref_script("bcPartner", "https://www.bestchange.com/partner/"),
+<ol class="steps"><li>Cliquez sur le bouton ci-dessous (lien partenaire <b>p=1116359</b>).</li>
+<li>Inscrivez-vous chez BestChange et récupérez <b>votre lien p=XXXX</b>.</li>
+<li>Placez liens/widgets sur site, blog, YouTube, Telegram.</li>
+<li>Touchez commission sur chaque échange / check AML de vos filleuls + part des webmasters parrainés.</li></ol>
+<h2>Participer — lien partenaire RateScout</h2>
+<p><a id="bcPartner" class="cta" href="https://www.bestchange.com/partner/?p=1116359" target="_blank" rel="nofollow sponsored noopener">S'inscrire chez BestChange (p=1116359) &rarr;</a></p>
+<p class="updnote admark">Lien affilié RateScout p=1116359 — nous pouvons percevoir une commission (voir <a href="/raskrytie/">divulgation</a>). Sans surcoût pour vous.</p>
+<p class="updnote">Conditions officielles : <a href="https://www.bestchange.ru/wiki/affrules.html" target="_blank" rel="noopener">affrules.html</a>. RateScout est indépendant, pas employeur, pas conseil financier.</p>"""
+                    + geo_ref_script("bcPartner", "https://www.bestchange.com/partner/?p=1116359"),
                     "Gagner avec BestChange")
         render_page(lang, "aml", "Vérification AML d'adresse crypto — pourquoi et comment",
                     "Vérification AML : comment contrôler une adresse crypto pour des liens avec la fraude et les sanctions avant d'échanger.",
@@ -5118,8 +5116,8 @@ def compliance_pages(lang):
    responsable des décisions prises sur la base de données indicatives.</p>
 <h2>Modifications</h2><p>La version en vigueur est sur cette page. Questions : {S.get('owner_email','')}.</p>""",
                     "Conditions")
-        # alias FR pour contrôle DGCCRF/CNIL — /mentions-legales/ etc. doivent répondre 200
-        for _alias, _src in [("mentions-legales","raskrytie"), ("politique-de-confidentialite","politika"), ("cgu","usloviya"), ("donnees-personnelles","politika"), ("cookies","politique-cookies")]:
+        # alias FR pour contrôle DGCCRF/CNIL — /mentions-legales/ etc. doivent répondre 200 + /gagner/ → /earn/
+        for _alias, _src in [("mentions-legales","raskrytie"), ("politique-de-confidentialite","politika"), ("cgu","usloviya"), ("donnees-personnelles","politika"), ("cookies","politique-cookies"), ("gagner","earn")]:
             try:
                 _sp = os.path.join(DIST, _src, "index.html")
                 _dp = os.path.join(DIST, _alias, "index.html")
@@ -5500,8 +5498,10 @@ def static_files():
         items += [u_entry(pr + f"/{u}/", "monthly", "0.4") for u in ("o-servise", "aml", "raskrytie", "politika", "usloviya", "redakciya")]
         if lg == "fr":
             items += [u_entry(pr + f"/{u}/", "monthly", "0.4") for u in ("mentions-legales", "politique-de-confidentialite", "cgu", "politique-cookies", "donnees-personnelles", "cookies")]
-        if lg == "en":
-            items.append(u_entry(pr + "/earn/", "monthly", "0.5"))  # EN-only: партнёрка BestChange для не-РФ
+        if lg in ("en", "fr"):
+            items.append(u_entry(pr + "/earn/", "monthly", "0.5"))
+            if lg == "fr":
+                items.append(u_entry(pr + "/gagner/", "monthly", "0.5"))
     open(os.path.join(DIST, "sitemap.xml"), "w", encoding="utf-8").write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "\n".join(items) + "\n</urlset>")
