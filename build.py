@@ -2123,8 +2123,14 @@ def header(lang, path):
     _missing = {"ru": NO_RU, "en": NO_EN, "fr": NO_FR}
     avail = [lg for lg in LANGS if lg != lang
              and path not in _missing.get(lg, set()) and path not in _missing.get(lang, set())]
+    def _href(lg):
+        if lg == "ru":
+            return f"{RU_BASE}{path}"
+        if lg == "en":
+            return f"{RU_BASE}/en{path}" if path != "/" else f"{RU_BASE}/en/"
+        return f"{PREF[lg]}{path}"
     switch = (" / ".join(
-        f'<a class="langsw" data-lang="{lg}" href="{PREF[lg]}{path}">{lg.upper()}</a>' for lg in avail))
+        f'<a class="langsw" data-lang="{lg}" href="{_href(lg)}">{lg.upper()}</a>' for lg in avail))
     _tld = S["domain"][len(S["name"].lower()):] if S["domain"].lower().startswith(S["name"].lower()) else ""
     _blog_li = f'<li><a href="{PREF[lang]}/blog/">{tr(lang,"nav_blog")}</a></li>' if lang in ("ru", "en") else ""
     _obzor_li = f'<li><a href="{PREF[lang]}/obzor/sutki/">{tr(lang,"nav_reviews")}</a></li>' if lang in ("ru", "en", "fr") else ""
