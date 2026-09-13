@@ -1664,9 +1664,10 @@ TOP_SET = {(p["from"], p["to"]) for p in TOP}
 HI_CRYPTO = ["tether-trc20", "bitcoin", "ethereum", "tether-erc20", "tether-bep20", "usd-coin",
              "tron", "litecoin", "monero", "solana", "tether-polygon", "bitcoin-cash", "dogecoin",
              "tether-ton", "binance-coin", "dash", "cardano", "ripple"]
-HI_RECV = ["sberbank", "tinkoff", "sbp", "cash-ruble", "visa-mastercard-rub", "mir", "alfaclick",
-           "vtb", "gazprombank", "yoomoney", "raiffeisen-bank", "ozon", "visa-mastercard-usd",
-           "visa-mastercard-euro", "wise", "paypal-usd", "kaspi-bank", "monobank", "capitalist"]
+HI_RECV = ["sepa", "wise", "revolut-euro", "visa-mastercard-euro", "visa-mastercard-usd", "paypal-euro", "paypal-usd",
+            "sberbank", "tinkoff", "sbp", "cash-ruble", "mir", "vtb", "yoomoney"] if LANGS == ["fr"] else ["sberbank", "tinkoff", "sbp", "cash-ruble", "visa-mastercard-rub", "mir", "alfaclick",
+            "vtb", "gazprombank", "yoomoney", "raiffeisen-bank", "ozon", "visa-mastercard-usd",
+            "visa-mastercard-euro", "wise", "paypal-usd", "kaspi-bank", "monobank", "capitalist"]
 EXTRA_PAIRS = []
 _ep_seen = set()
 for _c in HI_CRYPTO:
@@ -1703,9 +1704,8 @@ for _f, _t in PAIR_SET_ALL:
     DIRS_BY_CUR.setdefault(_f, []).append((_f, _t, _c))
     DIRS_BY_CUR.setdefault(_t, []).append((_f, _t, _c))
 
-# Банковские хабы: «все монеты → конкретный получатель» (крупные RUB-направления).
-# Страница /na/<slug>/ агрегирует крипто→этот банк с курсами — высокоинтентный money-лендинг.
-BANK_HUB_LIST = ["sberbank", "tinkoff", "sbp", "cash-ruble", "visa-mastercard-rub",
+# Банковские хабы: для FR — SEPA/Wise/Revolut (актуально для Франции), для RU — крупные RUB-направления.
+BANK_HUB_LIST = ["sepa", "wise", "revolut-euro", "visa-mastercard-euro", "paypal-euro"] if LANGS == ["fr"] else ["sberbank", "tinkoff", "sbp", "cash-ruble", "visa-mastercard-rub",
                  "mir", "alfaclick", "vtb", "gazprombank", "yoomoney"]
 
 
