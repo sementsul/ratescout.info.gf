@@ -411,13 +411,15 @@ def render_home(lang):
     cat_html = ""
     for c in CATS:
         lst = GROUPED.get(c, [])
-        # FR: французские банки/системы наверху
         if lang == "fr":
+            lst = [x for x in lst if x[0] not in SANCTIONED_FR]
             lst = sorted(lst, key=lambda x: (0 if x[0] in FR_TOP_BANKS else 1, x[1]["name"]))
         items = "".join(f'<li><a href="{cpage(lang, slug)}">{info["name"]} <span>{info["ticker"]}</span></a></li>'
                         for slug, info in lst)
+        if not lst:
+            continue
         cat_html += (f'<h2 class="news"><a href="{cat_page(lang, c)}">{cat_name(c, lang)}</a> '
-                     f'<span class="cnt">{len(GROUPED.get(c, []))}</span></h2><ul class="dlist">{items}</ul>')
+                     f'<span class="cnt">{len(lst)}</span></h2><ul class="dlist">{items}</ul>')
     ld = jsonld({"@context": "https://schema.org", "@type": "WebSite", "name": S["name"],
                  "url": BASE_URL + PREF[lang] + "/", "inLanguage": LOCALE[lang], "description": S["tagline"]})
     org = jsonld({"@context": "https://schema.org", "@type": "Organization", "name": S["name"],
@@ -475,8 +477,9 @@ def render_home(lang):
         intro = (f"Répertoire des taux de change des cryptomonnaies et des monnaies. Données collectées via le "
                  f"monitoring des changeurs <b>BestChange</b> pour <b>{total}</b> monnaies, à titre indicatif. "
                  f'<a href="{PREF[lang]}/o-servise/">Qu\'est-ce que BestChange →</a>')
+    _top = [p for p in TOP if not (lang == "fr" and (p["from"] in SANCTIONED_FR or p["to"] in SANCTIONED_FR))] if lang == "fr" else TOP
     pop = (f'<h2 class="news">{tr(lang,"popular")}</h2><ul class="dlist">'
-           + "".join(pair_link_li(p, lang) for p in TOP[:16]) + "</ul>") if TOP else ""
+           + "".join(pair_link_li(p, lang) for p in _top[:16]) + "</ul>") if _top else ""
     # GEO answer-first: датированный сводный факт (число валют/категорий + пример курса) для главной.
     _ld = datetime.fromtimestamp(RATES_GENERATED, timezone.utc).strftime("%Y-%m-%d") if RATES_GENERATED else ""
     _btc = HISTORY.get("bitcoin") or []
@@ -1668,8 +1671,10 @@ TOP_SET = {(p["from"], p["to"]) for p in TOP}
 HI_CRYPTO = ["tether-trc20", "bitcoin", "ethereum", "tether-erc20", "tether-bep20", "usd-coin",
              "tron", "litecoin", "monero", "solana", "tether-polygon", "bitcoin-cash", "dogecoin",
              "tether-ton", "binance-coin", "dash", "cardano", "ripple"]
-# FR-приоритет: французские банки/системы всегда наверху списков (SEPA/Wise/Revolut)
+# FR-приоритет: французские банки/системы всегда наверху списков (SEPA/Wise/Revolut) + подсанкционные скрыты для FR
 FR_TOP_BANKS = {"sepa", "wise", "wise-euro", "wise-gbp", "revolut-euro", "revolut-gbp", "revolut-usd", "paypal-euro", "paypal-usd", "paypal-gbp", "visa-mastercard-euro", "visa-mastercard-usd", "sepa", "wise"}
+# Подсанкционные банки РФ — скрываем на FR-версии (EU sanctions)
+SANCTIONED_FR = {"sberbank", "sberbank-qr-code", "tinkoff", "tinkoff-cash-in", "tinkoff-qr-codes", "vtb", "gazprombank", "alfaclick", "alfabank-cash-in", "openbank", "psbank", "rosbank", "rnkb", "rosselhozbank", "mts-bank", "homecredit", "ozon", "russtandart", "avangard", "belarusbank", "pochta-bank", "post-bank", "uralsib", "binbank", "tochka", "sovcombank", "vtb", "zenit", "mts-bank"}
 HI_RECV = ["sepa", "wise", "revolut-euro", "visa-mastercard-euro", "visa-mastercard-usd", "paypal-euro", "paypal-usd",
             "sberbank", "tinkoff", "sbp", "cash-ruble", "mir", "vtb", "yoomoney"] if LANGS == ["fr"] else ["sberbank", "tinkoff", "sbp", "cash-ruble", "visa-mastercard-rub", "mir", "alfaclick",
             "vtb", "gazprombank", "yoomoney", "raiffeisen-bank", "ozon", "visa-mastercard-usd",
@@ -1788,7 +1793,7 @@ TR = {
     "fr": {
         "nav_monitor": "Moniteur", "nav_blog": "Blog", "nav_about": "Qu'est-ce que BestChange",
         "nav_aml": "Vérification AML", "nav_disc": "Mentions légales", "nav_faq": "Questions", "nav_glossary": "Glossaire", "nav_widget": "Widgets", "nav_charts": "Graphiques", "nav_rates": "Taux", "nav_dirs": "Directions", "nav_reviews": "Aperçus", "nav_svodka": "Synthèse", "nav_articles": "Articles", "nav_leaders": "Leaders du marché", "nav_mood": "Peur et avidité", "nav_compare": "Comparer les monnaies",
-        "search_ph": "Rechercher : BTC, USDT, Sberbank…", "search_aria": "Recherche de monnaie",
+        "search_ph": "Rechercher : BTC, USDT, SEPA, Wise…", "search_aria": "Recherche de monnaie",
         "monitor": "Moniteur", "sections": "Rubriques", "all_cur": "Toutes les monnaies",
         "catalog": "Catalogue des monnaies", "total": "au total", "popular": "Directions populaires",
         "about_cur": "À propos", "directions": "Directions d'échange", "how_to": "Comment échanger",
@@ -2633,6 +2638,8 @@ def rate_table(slug, info, lang, incoming=False, n=12):
     rated, unrated = [], []
     for ts, ti in CUR.items():
         if ts == slug:
+            continue
+        if lang == "fr" and ts in SANCTIONED_FR:
             continue
         r = _rate(ts)
         if r:
@@ -5464,9 +5471,9 @@ def static_files():
     for lg in LANGS:
         pr = PREF[lg]
         items.append(u_entry(pr + "/", "hourly", "1.0" if lg == "ru" else "0.9"))
-        items += [u_entry(pr + f"/valuta/{s}/", "hourly", "0.6") for s in CUR]
-        items += [u_entry(pr + f"/kupit/{s}/", "hourly", "0.6") for s in CUR]
-        items += [u_entry(pr + f"/obmen/{p['from']}-{p['to']}/", "hourly", "0.8") for p in PAIR_PAGES]
+        items += [u_entry(pr + f"/valuta/{s}/", "hourly", "0.6") for s in CUR if not (lg == "fr" and s in SANCTIONED_FR)]
+        items += [u_entry(pr + f"/kupit/{s}/", "hourly", "0.6") for s in CUR if not (lg == "fr" and s in SANCTIONED_FR)]
+        items += [u_entry(pr + f"/obmen/{p['from']}-{p['to']}/", "hourly", "0.8") for p in PAIR_PAGES if not (lg == "fr" and (p['from'] in SANCTIONED_FR or p['to'] in SANCTIONED_FR))]
         if lg == "ru":
             items += [u_entry(pr + f"/obmen/{p['from']}-{p['to']}/", "daily", "0.4") for p in PAIR_PAGES_RU]
         if ARTS[lg]:
@@ -5475,7 +5482,7 @@ def static_files():
             items += [u_entry(pr + f"/blog/page/{p}/", "weekly", "0.5") for p in range(2, _bpages + 1)]
             items += [u_entry(pr + f"/blog/{a['slug']}/", "monthly", "0.6") for a in ARTS[lg]]
         items += [u_entry(pr + f"/kategoriya/{CAT_SLUG[c]}/", "weekly", "0.7") for c in CATS]
-        items += [u_entry(pr + f"/na/{b}/", "hourly", "0.8") for b in BANK_HUBS]
+        items += [u_entry(pr + f"/na/{b}/", "hourly", "0.8") for b in BANK_HUBS if not (lg == "fr" and b in SANCTIONED_FR)]
         items.append(u_entry(pr + "/faq/", "monthly", "0.6"))
         items.append(u_entry(pr + "/kniga/", "monthly", "0.5"))
         items.append(u_entry(pr + "/vidzhet/", "monthly", "0.5"))
@@ -6602,12 +6609,16 @@ def main():
     for lang in LANGS:
         render_home(lang)
         for slug, info in CUR.items():
+            if lang == "fr" and slug in SANCTIONED_FR:
+                continue
             render_currency(slug, info, lang)
             render_buy(slug, info, lang)
         compliance_pages(lang)
         for _c in CATS:
             render_category(_c, lang)
         for _b in BANK_HUBS:
+            if lang == "fr" and _b in SANCTIONED_FR:
+                continue
             render_bank_hub(_b, lang)
         render_editorial(lang)
         render_glossary(lang)
@@ -6638,6 +6649,8 @@ def main():
         for a in ARTS[lang]:
             render_article(a, lang)
         for p in PAIR_PAGES:
+            if lang == "fr" and (p["from"] in SANCTIONED_FR or p["to"] in SANCTIONED_FR):
+                continue
             render_pair(p["from"], p["to"], lang)
         if lang == "ru":                    # RU-only расширение направлений (≥3 обменников)
             for p in PAIR_PAGES_RU:
