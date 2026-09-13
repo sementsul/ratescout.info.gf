@@ -9,11 +9,7 @@
     "owner_status": "",
     "owner_inn": "",
     "owner_email": "info@ratescout.info.gf",
-    "langs": [
-      "fr",
-      "ru",
-      "en"
-    ]
+    "langs": ["fr"]
   },
   "_comment_bc": "поле bc = слаг направления BestChange для deep-link /<bc_from>-to-<bc_to>.html. Верифицированы: tether-trc20, bitcoin, sberbank. Остальные — предварительно; в Фазе 2 берём авторитетный маппинг (ID/слаг) из партнёрского API.",
   "currencies": {
