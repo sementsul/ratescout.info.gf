@@ -410,8 +410,12 @@ def render_home(lang):
     total = len(CUR)
     cat_html = ""
     for c in CATS:
+        lst = GROUPED.get(c, [])
+        # FR: французские банки/системы наверху
+        if lang == "fr":
+            lst = sorted(lst, key=lambda x: (0 if x[0] in FR_TOP_BANKS else 1, x[1]["name"]))
         items = "".join(f'<li><a href="{cpage(lang, slug)}">{info["name"]} <span>{info["ticker"]}</span></a></li>'
-                        for slug, info in GROUPED.get(c, []))
+                        for slug, info in lst)
         cat_html += (f'<h2 class="news"><a href="{cat_page(lang, c)}">{cat_name(c, lang)}</a> '
                      f'<span class="cnt">{len(GROUPED.get(c, []))}</span></h2><ul class="dlist">{items}</ul>')
     ld = jsonld({"@context": "https://schema.org", "@type": "WebSite", "name": S["name"],
@@ -1664,6 +1668,8 @@ TOP_SET = {(p["from"], p["to"]) for p in TOP}
 HI_CRYPTO = ["tether-trc20", "bitcoin", "ethereum", "tether-erc20", "tether-bep20", "usd-coin",
              "tron", "litecoin", "monero", "solana", "tether-polygon", "bitcoin-cash", "dogecoin",
              "tether-ton", "binance-coin", "dash", "cardano", "ripple"]
+# FR-приоритет: французские банки/системы всегда наверху списков (SEPA/Wise/Revolut)
+FR_TOP_BANKS = {"sepa", "wise", "wise-euro", "wise-gbp", "revolut-euro", "revolut-gbp", "revolut-usd", "paypal-euro", "paypal-usd", "paypal-gbp", "visa-mastercard-euro", "visa-mastercard-usd", "sepa", "wise"}
 HI_RECV = ["sepa", "wise", "revolut-euro", "visa-mastercard-euro", "visa-mastercard-usd", "paypal-euro", "paypal-usd",
             "sberbank", "tinkoff", "sbp", "cash-ruble", "mir", "vtb", "yoomoney"] if LANGS == ["fr"] else ["sberbank", "tinkoff", "sbp", "cash-ruble", "visa-mastercard-rub", "mir", "alfaclick",
             "vtb", "gazprombank", "yoomoney", "raiffeisen-bank", "ozon", "visa-mastercard-usd",
