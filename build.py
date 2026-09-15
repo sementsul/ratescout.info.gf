@@ -2363,6 +2363,7 @@ def footer(lang):
                 "sans surcoût pour vous (<a href=\"/raskrytie/\">divulgation</a>).")
         links = (f'<a href="{PREF[lang]}/o-servise/">À propos</a> · <a href="{PREF[lang]}/aml/">Vérification AML</a> · '
                  f'<a href="{PREF[lang]}/earn/">Gagner</a> · <a href="{PREF[lang]}/vidzhet/">Widget</a> · <a href="{PREF[lang]}/redakciya/">Rédaction</a> · '
+                 f'<a href="https://ratescout-fr.blogspot.com/" target="_blank" rel="noopener me">Blog sur Blogger</a> · '
                  f'<a href="{PREF[lang]}/raskrytie/">Mentions légales</a> · '
                  f'<a href="{PREF[lang]}/politika/">Confidentialité</a> · <a href="{PREF[lang]}/usloviya/">CGU</a> · '
                  f'<a href="/politique-cookies/">Cookies</a>')
@@ -5084,6 +5085,8 @@ def compliance_pages(lang):
 <p>Éditeur : {_l.get('editor_name','RateScout')} — {_l.get('editor_form','')} — {_l.get('editor_address','')} — Directeur : {_l.get('director','')} — SIRET : {_l.get('siret','')} — Contact : {S.get('owner_email','')}.</p>
 <h2>Hébergeur</h2>
 <p>{_l.get('host_name','GitHub Pages')} — {_l.get('host_address','')} — {_l.get('host_phone','')}.</p>
+<h2>Blog officiel</h2>
+<p>Blog officiel du service : <a href="https://ratescout-fr.blogspot.com/" target="_blank" rel="noopener me">ratescout-fr.blogspot.com</a>.</p>
 <h2>Juridiction & propriété</h2><p>Droit français. Médiation conso art. L612-1, juridiction : Tribunal judiciaire de Paris. Propriété intellectuelle : RateScout.</p>"""
                     + donations_block(lang),
                     "Divulgation")
