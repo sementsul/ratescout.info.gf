@@ -66,6 +66,7 @@ CATS = CAT["categories"]
 S = SITE
 BASE_URL = f"https://{S['domain']}"
 RU_BASE = "https://ratescout.ru"  # RU/EN-оригинал: кросс-доменный hreflang + баннер
+ES_BASE = "https://ratescout.oc.com.ar"  # ES-Аргентина: кросс-доменный hreflang (только общие инфо-страницы)
 REF = S["ref"]
 ERID = "2VtzqvK5m96"
 INDEXNOW_KEY = "b394aeced6a92ed48a09e2bd30099905"  # публичный ключ IndexNow (ключ-файл на сайте)
@@ -75,7 +76,7 @@ PREF = {lg: ("" if i == 0 else "/" + lg) for i, lg in enumerate(LANGS)}
 # FR-only сайт (ratescout.info.gf): маркировка ERID неприменима — только FTC-disclosure.
 # Все точки простановки erid (?erid= в ссылках, window.__ERID__, monitor.json) смотрят на этот флаг.
 NO_ERID = (LANGS == ["fr"])
-LOCALE = {"ru": "ru", "en": "en", "fr": "fr"}
+LOCALE = {"ru": "ru", "en": "en", "fr": "fr", "es": "es"}
 BLOG_PER_PAGE = 6            # статей на страницу блога (пагинация 1 2 3 …)
 
 # Версии ассетов для кеш-бастинга (хеш содержимого) — заполняется в main() до рендера.
@@ -1992,16 +1993,33 @@ def _missing_set(lg):
 def hreflangs(path):
     # Не рекламируем alternate на язык, для которого страницы нет (иначе GSC-ошибки + 404).
     tags = []
+    seen = set()
     for lg in LANGS:
         if path in _missing_set(lg):
             continue
         tags.append(f'<link rel="alternate" hreflang="{LOCALE[lg]}" href="{BASE_URL}{PREF[lg]}{path}">')
+        seen.add(LOCALE[lg])
     # кросс-домен только для многоязычной сборки; FR-only — чистый fr (требование CNIL/local SEO)
     if LANGS != ["fr"]:
         if path not in NO_RU:
             tags.append(f'<link rel="alternate" hreflang="ru" href="{RU_BASE}{path}">')
         if path not in NO_EN:
             tags.append(f'<link rel="alternate" hreflang="en" href="{RU_BASE}/en{path}">')
+    else:
+        # FR-only сборка: обратные ссылки на RU/EN + ES для общих инфо-страниц
+        # (блога на FR нет — /blog/ исключён; взаимность с XDOM-связкой ES и RU)
+        XDOM_FR = {"/", "/o-servise/", "/aml/", "/raskrytie/",
+                   "/redakciya/", "/politika/", "/usloviya/"}
+        if path in XDOM_FR:
+            if path not in NO_RU and "ru" not in seen:
+                tags.append(f'<link rel="alternate" hreflang="ru" href="{RU_BASE}{path}">')
+                seen.add("ru")
+            if path not in NO_EN and "en" not in seen:
+                tags.append(f'<link rel="alternate" hreflang="en" href="{RU_BASE}/en{path}">')
+                seen.add("en")
+            if "es" not in seen:
+                tags.append(f'<link rel="alternate" hreflang="es" href="{ES_BASE}{path}">')
+                seen.add("es")
     default_lg = next((lg for lg in LANGS if path not in _missing_set(lg)), LANGS[0])
     default = f"{BASE_URL}{PREF[default_lg]}{path}"
     tags.append(f'<link rel="alternate" hreflang="x-default" href="{default}">')
