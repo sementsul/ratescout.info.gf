@@ -1,476 +1,581 @@
 {
- "terms": [
-  {
-   "slug": "monitoring-obmennikov",
-   "ru": "Мониторинг обменников",
-   "en": "Exchanger monitor",
-   "def_ru": "Сервис, который собирает курсы, резервы и рейтинги множества обменных пунктов и показывает их в одном месте — чтобы не обходить сайты вручную. Пример — BestChange.",
-   "def_en": "A service that collects rates, reserves and ratings of many exchange offices and shows them in one place, so you don't have to check each site manually. Example — BestChange.",
-   "see": [
-    "obmennik",
-    "kurs",
-    "rezerv"
-   ],
-   "ext_ru": "Мониторинг не проводит обмен сам — он лишь агрегатор: собирает предложения десятков обменников по нужному направлению и сортирует их по выгодности. Это экономит время (не нужно обходить сайты вручную) и деньги (видна разница курсов), а рейтинг и отзывы служат первым фильтром против мошенников. Итоговую сделку вы всё равно совершаете на сайте выбранного обменника.",
-   "ext_en": "A monitor does not perform the exchange itself — it is an aggregator: it collects offers from dozens of exchangers for your direction and sorts them by how favourable they are. This saves time (no need to check sites manually) and money (the rate difference is visible), while ratings and reviews act as a first filter against scammers. You still make the actual deal on the chosen exchanger's site."
-  },
-  {
-   "slug": "obmennik",
-   "ru": "Обменник (обменный пункт)",
-   "en": "Exchanger (exchange office)",
-   "def_ru": "Сервис, который проводит саму операцию обмена одной валюты на другую по своему курсу и из своего резерва. В отличие от биржи, работает по фиксированному курсу без стакана заявок.",
-   "def_en": "A service that performs the actual exchange of one currency for another at its own rate and from its own reserve. Unlike an exchange, it works at a fixed rate without an order book.",
-   "see": [
-    "birzha",
-    "kurs",
-    "rezerv"
-   ],
-   "ext_ru": "Обменник работает по фиксированному курсу и из собственного резерва: вы видите цену заранее, без торговли и стакана заявок, как на бирже. Именно поэтому обмен проще для новичка, но у каждого пункта свои курс, лимиты, комиссии и репутация. Выбирать вслепую невыгодно и рискованно — сравнивайте несколько обменников через мониторинг.",
-   "ext_en": "An exchanger works at a fixed rate and from its own reserve: you see the price in advance, without trading or an order book like on an exchange. That is why it is simpler for a beginner, but each office has its own rate, limits, fees and reputation. Choosing blindly is unprofitable and risky — compare several exchangers through a monitor."
-  },
-  {
-   "slug": "kurs",
-   "ru": "Курс обмена",
-   "en": "Exchange rate",
-   "def_ru": "Сколько единиц получаемой валюты дают за единицу отдаваемой. Лучший курс — не всегда лучшая сделка: учитывайте резерв, лимиты и комиссии.",
-   "def_en": "How many units of the received currency you get per unit of the sent one. The best rate isn't always the best deal: factor in reserve, limits and fees.",
-   "see": [
-    "spred",
-    "rezerv",
-    "komissiya-seti"
-   ],
-   "ext_ru": "Лучший курс в списке — не всегда лучшая сделка. Учитывайте резерв (хватит ли суммы), лимиты, комиссию сети и репутацию пункта: аномально выгодный курс часто оказывается приманкой. Курс постоянно меняется, поэтому смотрите его в моменте и не тяните с заявкой после выбора.",
-   "ext_en": "The best rate in the list is not always the best deal. Factor in the reserve (whether it covers your amount), limits, the network fee and the office's reputation: an abnormally favourable rate is often bait. The rate changes constantly, so check it at the moment and do not delay your order after choosing."
-  },
-  {
-   "slug": "rezerv",
-   "ru": "Резерв обменника",
-   "en": "Exchanger reserve",
-   "def_ru": "Объём валюты, доступный у обменника по конкретному направлению прямо сейчас. Если резерв меньше вашей суммы, обмен не пройдёт или займёт время.",
-   "def_en": "The amount of currency an exchanger has available for a given direction right now. If the reserve is smaller than your amount, the exchange won't go through or will take time.",
-   "see": [
-    "obmennik",
-    "kurs",
-    "limit"
-   ],
-   "ext_ru": "Резерв показывает, сколько обменник реально может выдать по направлению прямо сейчас. Если он меньше вашей суммы — сделка не пройдёт или придётся дробить её на части и ждать пополнения. Выбирайте пункт, у которого резерв заметно превышает вашу сумму: это и запас надёжности, и признак серьёзных объёмов.",
-   "ext_en": "The reserve shows how much the exchanger can actually pay out for a direction right now. If it is smaller than your amount, the deal will not go through, or you will have to split it and wait for a top-up. Choose an office whose reserve noticeably exceeds your amount: it is both a safety margin and a sign of serious volume."
-  },
-  {
-   "slug": "spred",
-   "ru": "Спред",
-   "en": "Spread",
-   "def_ru": "Разница между ценой покупки и продажи. Чем шире спред, тем дороже обходится вход и выход. По сути — скрытая наценка сервиса.",
-   "def_en": "The difference between the buy and sell price. The wider the spread, the costlier entering and exiting are. Essentially a hidden markup by the service.",
-   "see": [
-    "kurs",
-    "komissiya-obmennika"
-   ],
-   "ext_ru": "Спред — это скрытая наценка: обменник покупает у вас чуть дешевле, а продаёт чуть дороже. Чем шире спред, тем дороже вам обходятся вход и выход, особенно если вы часто меняете туда-обратно. Сравнение курсов нескольких пунктов по одному направлению косвенно показывает, у кого спред уже.",
-   "ext_en": "The spread is a hidden markup: the exchanger buys from you a little cheaper and sells a little dearer. The wider the spread, the more entering and exiting cost you, especially if you swap back and forth often. Comparing the rates of several offices for one direction indirectly shows whose spread is narrower."
-  },
-  {
-   "slug": "napravlenie",
-   "ru": "Направление обмена",
-   "en": "Exchange direction",
-   "def_ru": "Пара «что отдаёте → что получаете», например USDT → Сбербанк. У каждого направления свой курс, резерв и список обменников.",
-   "def_en": "The pair «what you send → what you receive», e.g. USDT → Sberbank. Each direction has its own rate, reserve and exchanger list.",
-   "see": [
-    "kurs",
-    "rezerv"
-   ],
-   "ext_ru": "У каждого направления свой курс, резерв, лимиты и список обменников, поэтому «USDT → Сбербанк» и «Сбербанк → USDT» — это две разные страницы с разными условиями. Прямая ссылка на нужное направление экономит клики. Если прямого направления нет или оно невыгодно, часто помогает промежуточный шаг через USDT.",
-   "ext_en": "Each direction has its own rate, reserve, limits and exchanger list, so «USDT → Sberbank» and «Sberbank → USDT» are two different pages with different terms. A direct link to the needed direction saves clicks. If a direct direction is missing or unfavourable, an intermediate step through USDT often helps."
-  },
-  {
-   "slug": "limit",
-   "ru": "Лимит обмена",
-   "en": "Exchange limit",
-   "def_ru": "Минимальная и максимальная сумма, которую примет обменник по направлению. Ваша сумма должна попадать в лимиты, иначе операция невозможна.",
-   "def_en": "The minimum and maximum amount an exchanger accepts for a direction. Your amount must fit within the limits, otherwise the operation isn't possible.",
-   "see": [
-    "rezerv",
-    "obmennik"
-   ],
-   "ext_ru": "Если ваша сумма меньше минимума или больше максимума — обменник её просто не примет, даже при отличном курсе. Крупную сумму иногда приходится дробить на несколько заявок в пределах лимитов. Лимиты стоит проверять вместе с резервом ещё до создания заявки.",
-   "ext_en": "If your amount is below the minimum or above the maximum, the exchanger simply will not accept it, even at a great rate. A large amount sometimes has to be split into several orders within the limits. Check limits together with the reserve before creating an order."
-  },
-  {
-   "slug": "stablecoin",
-   "ru": "Стейблкоин",
-   "en": "Stablecoin",
-   "def_ru": "Криптовалюта, привязанная к стоимости фиатной валюты, чаще доллара (USDT, USDC, DAI ≈ 1 USD). Удобна для хранения стоимости и переводов без скачков курса.",
-   "def_en": "A cryptocurrency pegged to the value of a fiat currency, usually the dollar (USDT, USDC, DAI ≈ 1 USD). Handy for storing value and transfers without price swings.",
-   "see": [
-    "fiat",
-    "volatilnost",
-    "token"
-   ],
-   "ext_ru": "Стейблкоины (USDT, USDC, DAI) — «рабочая лошадка» обмена: через них проходит больше всего направлений с лучшим курсом и резервом. В них удобно переждать волатильность, не выходя в фиат. Но привязка не абсолютна: при проблемах эмитента возможен депег, поэтому не держите крупные суммы в одном стейблкоине без нужды.",
-   "ext_en": "Stablecoins (USDT, USDC, DAI) are the workhorse of exchange: the most directions with the best rate and reserve pass through them. They are handy for waiting out volatility without going into fiat. But the peg is not absolute: an issuer's problems can cause a depeg, so do not hold large sums in a single stablecoin without need."
-  },
-  {
-   "slug": "altcoin",
-   "ru": "Альткоин",
-   "en": "Altcoin",
-   "def_ru": "Любая криптовалюта, кроме биткоина. Термин объединяет тысячи монет — от Ethereum до нишевых токенов.",
-   "def_en": "Any cryptocurrency other than Bitcoin. The term covers thousands of coins — from Ethereum to niche tokens.",
-   "see": [
-    "token",
-    "stablecoin"
-   ],
-   "ext_ru": "К альткоинам относят всё, кроме биткоина, — от крупных Ethereum и Solana до тысяч нишевых монет. У популярных альткоинов ликвидность высокая (много обменников, узкий спред), у редких — низкая, и обмен может быть невыгодным или невозможным. Часто выгоднее менять редкий альткоин через USDT, а не напрямую.",
-   "ext_en": "Altcoins are everything except Bitcoin — from large ones like Ethereum and Solana to thousands of niche coins. Popular altcoins have high liquidity (many exchangers, a narrow spread); rare ones have low liquidity, and exchange may be unprofitable or impossible. It is often better to exchange a rare altcoin through USDT rather than directly."
-  },
-  {
-   "slug": "token",
-   "ru": "Токен",
-   "en": "Token",
-   "def_ru": "Криптоактив, выпущенный поверх чужого блокчейна (например, USDT в сети Ethereum). В отличие от монеты сети, токен не оплачивает комиссию сети напрямую.",
-   "def_en": "A crypto asset issued on top of another blockchain (e.g., USDT on Ethereum). Unlike a network's coin, a token doesn't pay the network fee directly.",
-   "see": [
-    "set-blockchain",
-    "stablecoin",
-    "komissiya-seti"
-   ],
-   "ext_ru": "Токен живёт поверх чужого блокчейна (например, USDT в сети Ethereum), поэтому комиссию за перевод он платит в монете этой сети — для ERC20-токена нужен ETH на газ. Один и тот же токен бывает в разных сетях с разными адресами и комиссиями. Всегда сверяйте сеть токена на обеих сторонах обмена.",
-   "ext_en": "A token lives on top of another blockchain (e.g., USDT on Ethereum), so it pays the transfer fee in that network's coin — an ERC20 token needs ETH for gas. The same token can exist on different networks with different addresses and fees. Always verify the token's network on both sides of the exchange."
-  },
-  {
-   "slug": "set-blockchain",
-   "ru": "Сеть (блокчейн)",
-   "en": "Network (blockchain)",
-   "def_ru": "Среда, в которой выпускается и передаётся криптовалюта (TRC20, ERC20, BEP20 и др.). От сети зависят комиссия, скорость и совместимость адресов.",
-   "def_en": "The environment where a cryptocurrency is issued and transferred (TRC20, ERC20, BEP20, etc.). The network affects fees, speed and address compatibility.",
-   "see": [
-    "komissiya-seti",
-    "adres",
-    "token"
-   ],
-   "ext_ru": "Одна монета может ходить в разных сетях (TRC20, ERC20, BEP20, TON), и от выбора сети зависят комиссия, скорость и, главное, совместимость адресов. 🔴 Отправка не в ту сеть — самая частая причина безвозвратной потери средств у новичков. Перед переводом сверяйте сеть у отправителя и получателя буква в букву.",
-   "ext_en": "One coin can travel on different networks (TRC20, ERC20, BEP20, TON), and the network choice affects the fee, speed and, crucially, address compatibility. Sending to the wrong network is the most common cause of irreversible loss for beginners. Before transferring, match the network on the sender and receiver side exactly."
-  },
-  {
-   "slug": "komissiya-seti",
-   "ru": "Комиссия сети",
-   "en": "Network fee",
-   "def_ru": "Плата блокчейна за проведение перевода, не зависящая от обменника. В TRC20 обычно копейки, в Ethereum (gas) — плавающая и растёт в час пик.",
-   "def_en": "The blockchain's charge for processing a transfer, independent of the exchanger. On TRC20 it's usually tiny; on Ethereum (gas) it floats and rises at peak hours.",
-   "see": [
-    "gas",
-    "set-blockchain",
-    "tranzakciya"
-   ],
-   "ext_ru": "Комиссию сети получают майнеры/валидаторы, а не обменник, и она не зависит от курса. В TRC20 и TON она обычно копеечная, а в Ethereum (gas) — плавающая и в час пик может «съесть» заметную часть небольшой суммы. Для мелких переводов выбирайте дешёвую сеть и всегда закладывайте комиссию в расчёт выгоды.",
-   "ext_en": "The network fee goes to miners/validators, not the exchanger, and does not depend on the rate. On TRC20 and TON it is usually tiny, while on Ethereum (gas) it floats and at peak hours can eat a noticeable part of a small amount. For small transfers choose a cheap network and always include the fee in your profit calculation."
-  },
-  {
-   "slug": "gas",
-   "ru": "Газ (gas)",
-   "en": "Gas",
-   "def_ru": "Плата за вычисления и переводы в сети Ethereum и совместимых. Размер зависит от загрузки сети: в пик gas дорожает.",
-   "def_en": "The fee for computation and transfers on Ethereum and compatible networks. The amount depends on network load: at peak, gas gets more expensive.",
-   "see": [
-    "komissiya-seti",
-    "set-blockchain"
-   ],
-   "ext_ru": "Газ — плата за вычисления и переводы в Ethereum и совместимых сетях; измеряется в единицах, а итог зависит от загрузки сети. В час пик gas дорожает, и перевод мелкой суммы через ERC20 может стать невыгодным. Если сумма небольшая, разумнее выбрать сеть подешевле (TRC20, TON).",
-   "ext_en": "Gas is the fee for computation and transfers on Ethereum and compatible networks; it is measured in units, and the total depends on network load. At peak hours gas gets more expensive, and transferring a small amount via ERC20 can become unprofitable. If the amount is small, it is wiser to pick a cheaper network (TRC20, TON)."
-  },
-  {
-   "slug": "adres",
-   "ru": "Криптоадрес",
-   "en": "Crypto address",
-   "def_ru": "Идентификатор кошелька для приёма средств в конкретной сети. Адреса разных сетей несовместимы — отправка не в ту сеть грозит потерей средств.",
-   "def_en": "A wallet identifier for receiving funds on a specific network. Addresses of different networks are incompatible — sending to the wrong network can lose funds.",
-   "see": [
-    "set-blockchain",
-    "koshelek",
-    "tranzakciya"
-   ],
-   "ext_ru": "Криптоадрес привязан к конкретной сети, и адреса разных сетей несовместимы — отправка не в ту сеть грозит потерей средств. Всегда копируйте адрес, а не набирайте вручную, и сверяйте хотя бы первые и последние символы. Для первого перевода на новый адрес полезен тест небольшой суммой.",
-   "ext_en": "A crypto address is tied to a specific network, and addresses of different networks are incompatible — sending to the wrong network risks losing funds. Always copy the address rather than typing it by hand, and verify at least the first and last characters. For a first transfer to a new address, a small-amount test is useful."
-  },
-  {
-   "slug": "koshelek",
-   "ru": "Криптокошелёк",
-   "en": "Crypto wallet",
-   "def_ru": "Приложение или устройство для хранения ключей и управления криптовалютой. Бывает горячим (онлайн) и холодным (офлайн).",
-   "def_en": "An app or device for storing keys and managing crypto. It can be hot (online) or cold (offline).",
-   "see": [
-    "holodnyy-koshelek",
-    "privatnyy-klyuch",
-    "seed-fraza"
-   ],
-   "ext_ru": "Горячий кошелёк (онлайн-приложение) удобен для частых операций, но уязвимее; холодный (аппаратный/офлайн) надёжнее для хранения. Кто владеет приватным ключом и seed-фразой — владеет средствами, поэтому их нельзя никому передавать. Крупные суммы разумно держать в холодном кошельке, а на горячем — только рабочий остаток.",
-   "ext_en": "A hot wallet (an online app) is convenient for frequent operations but more vulnerable; a cold one (hardware/offline) is more reliable for storage. Whoever owns the private key and seed phrase owns the funds, so they must never be shared. It is wise to keep large sums in a cold wallet and only a working balance in a hot one."
-  },
-  {
-   "slug": "holodnyy-koshelek",
-   "ru": "Холодный кошелёк",
-   "en": "Cold wallet",
-   "def_ru": "Хранение ключей офлайн (аппаратный кошелёк, бумажный). Максимальная защита от взлома, но менее удобно для частых операций.",
-   "def_en": "Storing keys offline (hardware or paper wallet). Maximum protection from hacking, but less convenient for frequent operations.",
-   "see": [
-    "koshelek",
-    "privatnyy-klyuch"
-   ],
-   "ext_ru": "Холодный кошелёк хранит ключи офлайн (аппаратное устройство или бумажный носитель), поэтому его крайне трудно взломать удалённо. Расплата — меньше удобства: для каждой операции нужно подключать устройство. Такой кошелёк оптимален для долгого хранения крупных сумм, а не для частых обменов.",
-   "ext_en": "A cold wallet stores keys offline (a hardware device or paper), so it is extremely hard to hack remotely. The trade-off is less convenience: you must connect the device for each operation. It is optimal for long-term storage of large sums rather than frequent exchanges."
-  },
-  {
-   "slug": "privatnyy-klyuch",
-   "ru": "Приватный ключ",
-   "en": "Private key",
-   "def_ru": "Секретный ключ, дающий полный контроль над средствами на адресе. Кто знает приватный ключ — владеет монетами. Никому не передавайте.",
-   "def_en": "A secret key giving full control over the funds at an address. Whoever knows the private key owns the coins. Never share it.",
-   "see": [
-    "seed-fraza",
-    "koshelek",
-    "adres"
-   ],
-   "ext_ru": "Приватный ключ даёт полный контроль над средствами на адресе — фактически это и есть владение монетами. Его нельзя никому сообщать, вводить на сомнительных сайтах или хранить в открытом виде онлайн. Легитимному обмену приватный ключ не нужен: если его просят — это мошенничество.",
-   "ext_en": "A private key gives full control over the funds at an address — it is effectively ownership of the coins. It must never be shared, entered on dubious sites or stored in plain text online. A legitimate exchange does not need your private key: if someone asks for it, it is fraud."
-  },
-  {
-   "slug": "seed-fraza",
-   "ru": "Seed-фраза",
-   "en": "Seed phrase",
-   "def_ru": "Набор из 12–24 слов, восстанавливающий кошелёк и все ключи. Храните офлайн; утечка seed-фразы = потеря всех средств.",
-   "def_en": "A set of 12–24 words that restores a wallet and all keys. Keep it offline; leaking the seed phrase means losing all funds.",
-   "see": [
-    "privatnyy-klyuch",
-    "holodnyy-koshelek"
-   ],
-   "ext_ru": "Seed-фраза из 12–24 слов восстанавливает кошелёк и все его ключи на любом устройстве. Поэтому её хранят офлайн (на бумаге/металле), а не в заметках, мессенджерах или облаке. 🔴 Утечка seed-фразы = потеря всех средств; настоящий сервис никогда её не спрашивает.",
-   "ext_en": "A seed phrase of 12–24 words restores a wallet and all its keys on any device. That is why it is kept offline (on paper/metal), not in notes, messengers or the cloud. Leaking the seed phrase means losing all funds; a real service never asks for it."
-  },
-  {
-   "slug": "tranzakciya",
-   "ru": "Транзакция",
-   "en": "Transaction",
-   "def_ru": "Перевод средств в блокчейне. Каждая транзакция получает уникальный хэш (TxID) и проходит через подтверждения сети.",
-   "def_en": "A transfer of funds on the blockchain. Each transaction gets a unique hash (TxID) and passes through network confirmations.",
-   "see": [
-    "hash-tranzakcii",
-    "podtverzhdenie",
-    "komissiya-seti"
-   ],
-   "ext_ru": "Каждая транзакция получает уникальный хэш (TxID) и проходит через подтверждения сети, прежде чем считаться завершённой. По TxID можно отследить статус перевода в обозревателе блокчейна. Скорость и стоимость зависят от сети и её загрузки; обменники обычно зачисляют средства после нескольких подтверждений.",
-   "ext_en": "Each transaction gets a unique hash (TxID) and passes through network confirmations before it counts as complete. Using the TxID you can track the transfer's status in a blockchain explorer. Speed and cost depend on the network and its load; exchangers usually credit funds after several confirmations."
-  },
-  {
-   "slug": "hash-tranzakcii",
-   "ru": "Хэш транзакции (TxID)",
-   "en": "Transaction hash (TxID)",
-   "def_ru": "Уникальный идентификатор перевода в блокчейне. По нему можно проверить статус и детали транзакции в обозревателе сети.",
-   "def_en": "A unique identifier of a transfer on the blockchain. It lets you check the status and details of a transaction in a network explorer.",
-   "see": [
-    "tranzakciya",
-    "podtverzhdenie"
-   ],
-   "ext_ru": "Хэш (TxID) — это «номер квитанции» перевода в блокчейне: длинная строка, уникальная для каждой операции. Вставив его в обозреватель сети, вы увидите сумму, адреса, число подтверждений и статус — подтверждён перевод или ещё в обработке. TxID стоит сохранять: он главный аргумент в спорной ситуации с обменником.",
-   "ext_en": "A hash (TxID) is the «receipt number» of a transfer on the blockchain: a long string unique to each operation. Pasting it into a network explorer shows the amount, addresses, number of confirmations and status — whether the transfer is confirmed or still processing. Keep the TxID: it is your main argument in a dispute with an exchanger."
-  },
-  {
-   "slug": "podtverzhdenie",
-   "ru": "Подтверждение",
-   "en": "Confirmation",
-   "def_ru": "Включение транзакции в блок сети. Чем больше подтверждений, тем надёжнее перевод; обменники обычно ждут несколько подтверждений перед зачислением.",
-   "def_en": "Inclusion of a transaction in a network block. The more confirmations, the more reliable the transfer; exchangers usually wait for several before crediting.",
-   "see": [
-    "tranzakciya",
-    "hash-tranzakcii"
-   ],
-   "ext_ru": "Подтверждение — это включение транзакции в очередной блок сети; каждый следующий блок добавляет ещё одно подтверждение и делает перевод надёжнее. Обменники обычно ждут несколько подтверждений перед зачислением, поэтому средства приходят не мгновенно. В загруженной сети или при низкой комиссии подтверждений приходится ждать дольше.",
-   "ext_en": "A confirmation is the inclusion of a transaction in a network block; each next block adds another confirmation and makes the transfer more reliable. Exchangers usually wait for several confirmations before crediting, so funds do not arrive instantly. On a congested network or with a low fee, confirmations take longer to wait for."
-  },
-  {
-   "slug": "aml",
-   "ru": "AML-проверка",
-   "en": "AML check",
-   "def_ru": "Оценка криптоадреса или транзакции на связь с мошенничеством, даркнетом и санкциями. Снижает риск получить «грязные» монеты и блокировку средств.",
-   "def_en": "An assessment of a crypto address or transaction for links to fraud, darknet and sanctions. Reduces the risk of receiving «dirty» coins and frozen funds.",
-   "see": [
-    "kyc",
-    "tranzakciya",
-    "adres"
-   ],
-   "ext_ru": "AML-проверка отвечает на вопрос, не связан ли адрес или монета с мошенничеством, даркнетом или санкциями — «грязные» монеты могут заморозить на стороне получателя. Она особенно важна перед приёмом крупной суммы и перед выводом в наличные/банк. Базовая проверка (санкционные списки, ончейн-данные) — быстрый фильтр; полный скоринг делают специализированные сервисы.",
-   "ext_en": "An AML check answers whether an address or coin is linked to fraud, the darknet or sanctions — «dirty» coins can be frozen on the receiver's side. It is especially important before accepting a large amount and before withdrawing to cash/a bank. A basic check (sanctions lists, on-chain data) is a quick filter; a full score is done by specialized services."
-  },
-  {
-   "slug": "kyc",
-   "ru": "KYC (верификация)",
-   "en": "KYC (verification)",
-   "def_ru": "«Знай своего клиента» — проверка личности пользователя (документы) на биржах и части сервисов. Обменники из мониторинга часто работают без KYC для небольших сумм.",
-   "def_en": "«Know Your Customer» — identity verification (documents) on exchanges and some services. Monitored exchangers often work without KYC for small amounts.",
-   "see": [
-    "aml",
-    "birzha",
-    "verifikaciya"
-   ],
-   "ext_ru": "KYC — проверка личности по документам, обязательная на большинстве бирж и части сервисов. Обменники из мониторинга часто работают без KYC для небольших сумм, что удобно, но не отменяет ответственности за происхождение средств. Для крупных операций верификация может потребоваться, поэтому держите документы под рукой.",
-   "ext_en": "KYC is identity verification by documents, mandatory on most exchanges and some services. Monitored exchangers often work without KYC for small amounts, which is convenient but does not remove responsibility for the origin of funds. For large operations verification may be required, so keep your documents handy."
-  },
-  {
-   "slug": "volatilnost",
-   "ru": "Волатильность",
-   "en": "Volatility",
-   "def_ru": "Степень колебаний цены актива. У биткоина она высокая (курс скачет), у стейблкоинов — почти нулевая (привязка к доллару).",
-   "def_en": "The degree of price fluctuation of an asset. Bitcoin's is high (the rate jumps), stablecoins' is near zero (pegged to the dollar).",
-   "see": [
-    "stablecoin",
-    "likvidnost"
-   ],
-   "ext_ru": "Высокая волатильность (как у биткоина) означает, что курс может заметно измениться за минуты — это и риск, и возможность. У стейблкоинов волатильность почти нулевая, поэтому в них удобно фиксировать стоимость. При обмене волатильного актива не тяните между просмотром курса и заявкой: цена может уйти.",
-   "ext_en": "High volatility (as with Bitcoin) means the rate can change noticeably within minutes — both a risk and an opportunity. Stablecoins have near-zero volatility, so they are handy for locking in value. When exchanging a volatile asset, do not delay between checking the rate and placing the order: the price may move."
-  },
-  {
-   "slug": "likvidnost",
-   "ru": "Ликвидность",
-   "en": "Liquidity",
-   "def_ru": "Насколько легко обменять актив без сильного изменения цены. У популярных пар (USDT, BTC) ликвидность высокая — больше обменников и лучше курс.",
-   "def_en": "How easily an asset can be exchanged without a big price change. Popular pairs (USDT, BTC) have high liquidity — more exchangers and better rates.",
-   "see": [
-    "kurs",
-    "spred",
-    "volatilnost"
-   ],
-   "ext_ru": "Высокая ликвидность означает, что актив легко обменять без сильного сдвига цены: по популярным парам (USDT, BTC) много обменников, узкий спред и хороший резерв. У неликвидных монет — наоборот: мало предложений, широкий спред, обмен может застрять. Поэтому редкие активы часто выгоднее менять через ликвидный USDT.",
-   "ext_en": "High liquidity means an asset is easy to exchange without a big price shift: popular pairs (USDT, BTC) have many exchangers, a narrow spread and a good reserve. Illiquid coins are the opposite: few offers, a wide spread, and the exchange can get stuck. That is why rare assets are often better exchanged through liquid USDT."
-  },
-  {
-   "slug": "fiat",
-   "ru": "Фиат",
-   "en": "Fiat",
-   "def_ru": "Обычные государственные деньги — рубли, доллары, евро. Противопоставляется криптовалюте; обмен «крипта ↔ фиат» — самое частое направление.",
-   "def_en": "Ordinary state-issued money — rubles, dollars, euros. Contrasted with cryptocurrency; «crypto ↔ fiat» is the most common exchange direction.",
-   "see": [
-    "stablecoin",
-    "sbp"
-   ],
-   "ext_ru": "Фиат — обычные государственные деньги (рубли, доллары, евро), и направление «крипта ↔ фиат» самое частое в обмене. Ввод и вывод фиата идут через карты, СБП или наличные, у которых свои лимиты, комиссии и риски (например, чарджбэк). Стейблкоины часто служат мостом между криптой и фиатом.",
-   "ext_en": "Fiat is ordinary state-issued money (rubles, dollars, euros), and the «crypto ↔ fiat» direction is the most common in exchange. Fiat deposits and withdrawals go through cards, SBP or cash, each with its own limits, fees and risks (e.g., chargebacks). Stablecoins often serve as a bridge between crypto and fiat."
-  },
-  {
-   "slug": "sbp",
-   "ru": "СБП (Система быстрых платежей)",
-   "en": "SBP (Faster Payments System)",
-   "def_ru": "Сервис Банка России для мгновенных переводов между банками по номеру телефона. Многие обменники выдают рубли через СБП — быстро и удобно.",
-   "def_en": "A Bank of Russia service for instant transfers between banks by phone number. Many exchangers pay out rubles via SBP — fast and convenient.",
-   "see": [
-    "fiat",
-    "ekvayring"
-   ],
-   "ext_ru": "СБП позволяет получать рубли мгновенно по номеру телефона между банками, поэтому многие обменники используют её для быстрой выдачи. Это удобно и обычно без комиссии для получателя, но есть лимиты банков и антифрод-контроль. Проверьте, что ваш банк подключён к СБП и реквизиты указаны верно.",
-   "ext_en": "SBP lets you receive rubles instantly by phone number between banks, so many exchangers use it for fast payouts. It is convenient and usually free for the recipient, but banks have limits and anti-fraud controls. Check that your bank is connected to SBP and that the details are entered correctly."
-  },
-  {
-   "slug": "ekvayring",
-   "ru": "Эквайринг",
-   "en": "Acquiring",
-   "def_ru": "Приём платежей по банковским картам. При обмене «крипта ↔ карта» задействуется банковский эквайринг, у которого свои лимиты и правила.",
-   "def_en": "Accepting payments by bank cards. In «crypto ↔ card» exchanges, bank acquiring is involved, with its own limits and rules.",
-   "see": [
-    "sbp",
-    "chardzhbek",
-    "fiat"
-   ],
-   "ext_ru": "При обмене «крипта ↔ карта» задействуется банковский эквайринг со своими лимитами, комиссиями и правилами. Он удобен, но несёт риск чарджбэка для продавца и повышенное внимание антифрода банка. Из-за этого курс по картам иногда хуже, чем по СБП или наличным.",
-   "ext_en": "In «crypto ↔ card» exchanges, bank acquiring is involved, with its own limits, fees and rules. It is convenient but carries a chargeback risk for the seller and heightened bank anti-fraud attention. Because of this, the card rate is sometimes worse than via SBP or cash."
-  },
-  {
-   "slug": "chardzhbek",
-   "ru": "Чарджбэк",
-   "en": "Chargeback",
-   "def_ru": "Оспаривание и возврат платежа по карте через банк. В крипто-обмене — риск для продавца: покупатель может отозвать перевод после получения монет.",
-   "def_en": "Disputing and reversing a card payment through the bank. In crypto exchange it's a risk for the seller: the buyer can reverse the payment after receiving coins.",
-   "see": [
-    "ekvayring",
-    "p2p"
-   ],
-   "ext_ru": "Чарджбэк — возврат платежа по карте через банк; в крипто-обмене это риск для продавца, ведь покупатель может отозвать перевод уже после получения монет (которые вернуть нельзя). Из-за этого обменники строже относятся к карточным направлениям и иногда просят подтверждения. Честному пользователю важно платить со своей карты и сохранять чеки.",
-   "ext_en": "A chargeback is the reversal of a card payment through the bank; in crypto exchange it is a risk for the seller, since the buyer can reverse the payment after receiving coins (which cannot be returned). Because of this, exchangers treat card directions more strictly and sometimes ask for confirmations. An honest user should pay from their own card and keep receipts."
-  },
-  {
-   "slug": "p2p",
-   "ru": "P2P-обмен",
-   "en": "P2P exchange",
-   "def_ru": "Обмен напрямую между людьми через площадку-гаранта, которая держит крипту в эскроу до оплаты. Бывает выгоднее по курсу, но зависит от контрагента.",
-   "def_en": "Exchanging directly between people via a guarantor platform that holds crypto in escrow until payment. Can be better on rate, but depends on the counterparty.",
-   "see": [
-    "escrow",
-    "obmennik",
-    "chardzhbek"
-   ],
-   "ext_ru": "В P2P вы меняете напрямую с другим человеком, а площадка-гарант держит крипту в эскроу до подтверждения оплаты — это защищает обе стороны. Курс бывает выгоднее, чем у обменника, но сделка зависит от контрагента и его скорости. Внимательно проверяйте условия и не выпускайте средства из эскроу до реального поступления оплаты.",
-   "ext_en": "In P2P you exchange directly with another person, while a guarantor platform holds the crypto in escrow until payment is confirmed — this protects both sides. The rate can be better than an exchanger's, but the deal depends on the counterparty and their speed. Check the terms carefully and do not release funds from escrow until payment has actually arrived."
-  },
-  {
-   "slug": "escrow",
-   "ru": "Эскроу",
-   "en": "Escrow",
-   "def_ru": "Заморозка средств третьей стороной (площадкой) до выполнения условий сделки. В P2P эскроу защищает обе стороны от обмана.",
-   "def_en": "Freezing of funds by a third party (the platform) until the deal's terms are met. In P2P, escrow protects both sides from fraud.",
-   "see": [
-    "p2p"
-   ],
-   "ext_ru": "Эскроу замораживает средства у третьей стороны (площадки) до выполнения условий сделки, снимая необходимость доверять контрагенту напрямую. Это основа безопасности P2P-обмена: продавец уверен, что крипта уйдёт только после оплаты, а покупатель — что получит её. Никогда не переводите вне эскроу «по договорённости» — это классическая схема обмана.",
-   "ext_en": "Escrow freezes funds with a third party (the platform) until the deal's terms are met, removing the need to trust the counterparty directly. It is the basis of P2P safety: the seller is sure the crypto goes out only after payment, and the buyer that they will receive it. Never transfer outside escrow «by agreement» — that is a classic scam."
-  },
-  {
-   "slug": "birzha",
-   "ru": "Криптобиржа",
-   "en": "Crypto exchange",
-   "def_ru": "Торговая площадка со стаканом заявок, где цену формируют покупатели и продавцы. Дешевле на объёме, но требует аккаунта и понимания торгов.",
-   "def_en": "A trading venue with an order book where buyers and sellers set the price. Cheaper at volume, but requires an account and trading knowledge.",
-   "see": [
-    "obmennik",
-    "likvidnost",
-    "kyc"
-   ],
-   "ext_ru": "Биржа формирует цену через стакан заявок покупателей и продавцов и выгоднее на объёме, но требует аккаунта, верификации (KYC) и понимания торгов. Обменник проще: фиксированный курс, без стакана, для разовой задачи «поменять и вывести». Новичку для простого обмена обычно удобнее обменник из мониторинга, а для активной торговли — биржа.",
-   "ext_en": "An exchange sets the price through a buyer/seller order book and is cheaper at volume, but requires an account, verification (KYC) and trading knowledge. An exchanger is simpler: a fixed rate, no order book, for the one-off task of «swap and withdraw». For a simple exchange a beginner usually finds a monitored exchanger more convenient, and an exchange for active trading."
-  },
-  {
-   "slug": "verifikaciya",
-   "ru": "Верификация",
-   "en": "Verification",
-   "def_ru": "Подтверждение личности или данных пользователя/операции. На биржах — KYC по документам; в обмене может требоваться для крупных сумм.",
-   "def_en": "Confirmation of a user's or operation's identity/data. On exchanges — KYC by documents; in exchange it may be required for large amounts.",
-   "see": [
-    "kyc",
-    "aml"
-   ],
-   "ext_ru": "Верификация подтверждает личность или данные пользователя/операции: на биржах это KYC по документам, в обмене может потребоваться для крупных сумм или карточных направлений. Она повышает доверие и снижает риск блокировок, но требует времени. Держите документы наготове, если планируете крупную операцию.",
-   "ext_en": "Verification confirms the identity or data of a user/operation: on exchanges it is KYC by documents; in exchange it may be required for large amounts or card directions. It increases trust and reduces the risk of blocks, but takes time. Keep your documents ready if you plan a large operation."
-  },
-  {
-   "slug": "decentralizaciya",
-   "ru": "Децентрализация",
-   "en": "Decentralization",
-   "def_ru": "Отсутствие единого управляющего центра: сеть работает на множестве независимых узлов. Свойство большинства криптовалют.",
-   "def_en": "The absence of a single controlling center: the network runs on many independent nodes. A property of most cryptocurrencies.",
-   "see": [
-    "set-blockchain",
-    "token"
-   ],
-   "ext_ru": "Децентрализация означает, что сеть работает на множестве независимых узлов без единого управляющего центра, поэтому её трудно отключить или подделать записи. Это повышает устойчивость и прозрачность, но и переносит ответственность на пользователя: нет «поддержки», которая вернёт ошибочный перевод. Отсюда важность самостоятельной проверки адресов и сетей.",
-   "ext_en": "Decentralization means the network runs on many independent nodes with no single controlling center, so it is hard to shut down or forge records. This increases resilience and transparency, but also shifts responsibility to the user: there is no «support» to reverse a mistaken transfer. Hence the importance of checking addresses and networks yourself."
-  },
-  {
-   "slug": "deep-link",
-   "ru": "Deep-link (прямая ссылка)",
-   "en": "Deep link",
-   "def_ru": "Ссылка сразу на конкретное направление обмена в мониторинге, а не на главную. Экономит клики: открывается готовый список обменников по паре.",
-   "def_en": "A link straight to a specific exchange direction in a monitor, not the homepage. Saves clicks: opens a ready exchanger list for the pair.",
-   "see": [
-    "napravlenie",
-    "monitoring-obmennikov"
-   ],
-   "ext_ru": "Deep-link открывает сразу нужное направление обмена в мониторинге, а не главную страницу, — готовый список обменников по паре загружается в один клик. Это удобно для быстрого сравнения и для ссылок из статей или закладок. Экономит время, особенно если вы часто меняете одно и то же направление.",
-   "ext_en": "A deep link opens the exact exchange direction in a monitor rather than the homepage — a ready exchanger list for the pair loads in one click. It is handy for quick comparison and for links from articles or bookmarks. It saves time, especially if you often exchange the same direction."
-  }
- ]
+  "terms": [
+    {
+      "slug": "monitoring-obmennikov",
+      "ru": "Мониторинг обменников",
+      "en": "Exchanger monitor",
+      "def_ru": "Сервис, который собирает курсы, резервы и рейтинги множества обменных пунктов и показывает их в одном месте — чтобы не обходить сайты вручную. Пример — BestChange.",
+      "def_en": "A service that collects rates, reserves and ratings of many exchange offices and shows them in one place, so you don't have to check each site manually. Example — BestChange.",
+      "see": [
+        "obmennik",
+        "kurs",
+        "rezerv"
+      ],
+      "ext_ru": "Мониторинг не проводит обмен сам — он лишь агрегатор: собирает предложения десятков обменников по нужному направлению и сортирует их по выгодности. Это экономит время (не нужно обходить сайты вручную) и деньги (видна разница курсов), а рейтинг и отзывы служат первым фильтром против мошенников. Итоговую сделку вы всё равно совершаете на сайте выбранного обменника.",
+      "ext_en": "A monitor does not perform the exchange itself — it is an aggregator: it collects offers from dozens of exchangers for your direction and sorts them by how favourable they are. This saves time (no need to check sites manually) and money (the rate difference is visible), while ratings and reviews act as a first filter against scammers. You still make the actual deal on the chosen exchanger's site.",
+      "fr": "Moniteur de changeurs",
+      "def_fr": "Service qui collecte les taux, les réserves et les notes de nombreux bureaux de change et les affiche au même endroit, pour éviter de vérifier chaque site manuellement. Exemple : BestChange.",
+      "ext_fr": "Un moniteur n'effectue pas l'échange lui-même — c'est un agrégateur : il rassemble les offres de dizaines de changeurs pour votre direction et les trie par avantage. Cela fait gagner du temps (fini la vérification manuelle des sites) et de l'argent (l'écart des taux est visible), tandis que les notes et les avis servent de premier filtre contre les arnaques. La transaction finale a toujours lieu sur le site du changeur choisi."
+    },
+    {
+      "slug": "obmennik",
+      "ru": "Обменник (обменный пункт)",
+      "en": "Exchanger (exchange office)",
+      "def_ru": "Сервис, который проводит саму операцию обмена одной валюты на другую по своему курсу и из своего резерва. В отличие от биржи, работает по фиксированному курсу без стакана заявок.",
+      "def_en": "A service that performs the actual exchange of one currency for another at its own rate and from its own reserve. Unlike an exchange, it works at a fixed rate without an order book.",
+      "see": [
+        "birzha",
+        "kurs",
+        "rezerv"
+      ],
+      "ext_ru": "Обменник работает по фиксированному курсу и из собственного резерва: вы видите цену заранее, без торговли и стакана заявок, как на бирже. Именно поэтому обмен проще для новичка, но у каждого пункта свои курс, лимиты, комиссии и репутация. Выбирать вслепую невыгодно и рискованно — сравнивайте несколько обменников через мониторинг.",
+      "ext_en": "An exchanger works at a fixed rate and from its own reserve: you see the price in advance, without trading or an order book like on an exchange. That is why it is simpler for a beginner, but each office has its own rate, limits, fees and reputation. Choosing blindly is unprofitable and risky — compare several exchangers through a monitor.",
+      "fr": "Changeur (bureau de change)",
+      "def_fr": "Service qui effectue l'échange d'une monnaie contre une autre à son propre taux et depuis sa propre réserve. Contrairement à une plateforme d'échange, il fonctionne à taux fixe, sans carnet d'ordres.",
+      "ext_fr": "Le changeur fonctionne à taux fixe et depuis sa propre réserve : vous voyez le prix à l'avance, sans trading ni carnet d'ordres comme sur une plateforme. C'est pourquoi il est plus simple pour un débutant, mais chaque bureau a son taux, ses limites, ses frais et sa réputation. Choisir à l'aveugle coûte cher et reste risqué — comparez plusieurs changeurs via un moniteur."
+    },
+    {
+      "slug": "kurs",
+      "ru": "Курс обмена",
+      "en": "Exchange rate",
+      "def_ru": "Сколько единиц получаемой валюты дают за единицу отдаваемой. Лучший курс — не всегда лучшая сделка: учитывайте резерв, лимиты и комиссии.",
+      "def_en": "How many units of the received currency you get per unit of the sent one. The best rate isn't always the best deal: factor in reserve, limits and fees.",
+      "see": [
+        "spred",
+        "rezerv",
+        "komissiya-seti"
+      ],
+      "ext_ru": "Лучший курс в списке — не всегда лучшая сделка. Учитывайте резерв (хватит ли суммы), лимиты, комиссию сети и репутацию пункта: аномально выгодный курс часто оказывается приманкой. Курс постоянно меняется, поэтому смотрите его в моменте и не тяните с заявкой после выбора.",
+      "ext_en": "The best rate in the list is not always the best deal. Factor in the reserve (whether it covers your amount), limits, the network fee and the office's reputation: an abnormally favourable rate is often bait. The rate changes constantly, so check it at the moment and do not delay your order after choosing.",
+      "fr": "Taux de change",
+      "def_fr": "Le nombre d'unités de la monnaie reçue pour une unité de la monnaie envoyée. Le meilleur taux n'est pas toujours la meilleure affaire : tenez compte de la réserve, des limites et des frais.",
+      "ext_fr": "Le meilleur taux de la liste n'est pas toujours la meilleure affaire. Tenez compte de la réserve (couvre-t-elle votre montant ?), des limites, des frais de réseau et de la réputation du bureau : un taux anormalement favorable est souvent un appât. Le taux évolue en permanence, vérifiez-le au moment même et ne tardez pas à créer l'ordre une fois choisi."
+    },
+    {
+      "slug": "rezerv",
+      "ru": "Резерв обменника",
+      "en": "Exchanger reserve",
+      "def_ru": "Объём валюты, доступный у обменника по конкретному направлению прямо сейчас. Если резерв меньше вашей суммы, обмен не пройдёт или займёт время.",
+      "def_en": "The amount of currency an exchanger has available for a given direction right now. If the reserve is smaller than your amount, the exchange won't go through or will take time.",
+      "see": [
+        "obmennik",
+        "kurs",
+        "limit"
+      ],
+      "ext_ru": "Резерв показывает, сколько обменник реально может выдать по направлению прямо сейчас. Если он меньше вашей суммы — сделка не пройдёт или придётся дробить её на части и ждать пополнения. Выбирайте пункт, у которого резерв заметно превышает вашу сумму: это и запас надёжности, и признак серьёзных объёмов.",
+      "ext_en": "The reserve shows how much the exchanger can actually pay out for a direction right now. If it is smaller than your amount, the deal will not go through, or you will have to split it and wait for a top-up. Choose an office whose reserve noticeably exceeds your amount: it is both a safety margin and a sign of serious volume.",
+      "fr": "Réserve du changeur",
+      "def_fr": "Le montant disponible chez un changeur pour une direction donnée, à l'instant présent. Si la réserve est inférieure à votre montant, l'échange n'aura pas lieu ou prendra du temps.",
+      "ext_fr": "La réserve montre ce que le changeur peut réellement verser pour une direction, ici et maintenant. Si elle est inférieure à votre montant, l'opération n'aura pas lieu, ou il faudra la fractionner et attendre un réapprovisionnement. Choisissez un bureau dont la réserve dépasse nettement votre montant : c'est à la fois une marge de sécurité et le signe d'un volume sérieux."
+    },
+    {
+      "slug": "spred",
+      "ru": "Спред",
+      "en": "Spread",
+      "def_ru": "Разница между ценой покупки и продажи. Чем шире спред, тем дороже обходится вход и выход. По сути — скрытая наценка сервиса.",
+      "def_en": "The difference between the buy and sell price. The wider the spread, the costlier entering and exiting are. Essentially a hidden markup by the service.",
+      "see": [
+        "kurs",
+        "komissiya-obmennika"
+      ],
+      "ext_ru": "Спред — это скрытая наценка: обменник покупает у вас чуть дешевле, а продаёт чуть дороже. Чем шире спред, тем дороже вам обходятся вход и выход, особенно если вы часто меняете туда-обратно. Сравнение курсов нескольких пунктов по одному направлению косвенно показывает, у кого спред уже.",
+      "ext_en": "The spread is a hidden markup: the exchanger buys from you a little cheaper and sells a little dearer. The wider the spread, the more entering and exiting cost you, especially if you swap back and forth often. Comparing the rates of several offices for one direction indirectly shows whose spread is narrower.",
+      "fr": "Spread",
+      "def_fr": "L'écart entre le prix d'achat et le prix de vente. Plus le spread est large, plus l'aller-retour coûte cher. C'est pour l'essentiel une marge cachée du service.",
+      "ext_fr": "Le spread est une marge cachée : le changeur vous achète un peu moins cher et vous vend un peu plus cher. Plus le spread est large, plus les allers-retours vous coûtent, surtout si vous échangez souvent dans les deux sens. Comparer les taux de plusieurs bureaux pour une même direction montre indirectement qui a le spread le plus étroit."
+    },
+    {
+      "slug": "napravlenie",
+      "ru": "Направление обмена",
+      "en": "Exchange direction",
+      "def_ru": "Пара «что отдаёте → что получаете», например USDT → Сбербанк. У каждого направления свой курс, резерв и список обменников.",
+      "def_en": "The pair «what you send → what you receive», e.g. USDT → Sberbank. Each direction has its own rate, reserve and exchanger list.",
+      "see": [
+        "kurs",
+        "rezerv"
+      ],
+      "ext_ru": "У каждого направления свой курс, резерв, лимиты и список обменников, поэтому «USDT → Сбербанк» и «Сбербанк → USDT» — это две разные страницы с разными условиями. Прямая ссылка на нужное направление экономит клики. Если прямого направления нет или оно невыгодно, часто помогает промежуточный шаг через USDT.",
+      "ext_en": "Each direction has its own rate, reserve, limits and exchanger list, so «USDT → Sberbank» and «Sberbank → USDT» are two different pages with different terms. A direct link to the needed direction saves clicks. If a direct direction is missing or unfavourable, an intermediate step through USDT often helps.",
+      "fr": "Direction d'échange",
+      "def_fr": "La paire « ce que vous envoyez → ce que vous recevez », par ex. USDT → virement SEPA. Chaque direction a son taux, sa réserve et sa liste de changeurs.",
+      "ext_fr": "Chaque direction a son taux, sa réserve, ses limites et sa liste de changeurs : « USDT → SEPA » et « SEPA → USDT » sont donc deux pages différentes aux conditions différentes. Un lien direct vers la direction voulue fait gagner des clics. Si une direction directe manque ou est défavorable, une étape intermédiaire via USDT aide souvent."
+    },
+    {
+      "slug": "limit",
+      "ru": "Лимит обмена",
+      "en": "Exchange limit",
+      "def_ru": "Минимальная и максимальная сумма, которую примет обменник по направлению. Ваша сумма должна попадать в лимиты, иначе операция невозможна.",
+      "def_en": "The minimum and maximum amount an exchanger accepts for a direction. Your amount must fit within the limits, otherwise the operation isn't possible.",
+      "see": [
+        "rezerv",
+        "obmennik"
+      ],
+      "ext_ru": "Если ваша сумма меньше минимума или больше максимума — обменник её просто не примет, даже при отличном курсе. Крупную сумму иногда приходится дробить на несколько заявок в пределах лимитов. Лимиты стоит проверять вместе с резервом ещё до создания заявки.",
+      "ext_en": "If your amount is below the minimum or above the maximum, the exchanger simply will not accept it, even at a great rate. A large amount sometimes has to be split into several orders within the limits. Check limits together with the reserve before creating an order.",
+      "fr": "Limite d'échange",
+      "def_fr": "Les montants minimal et maximal qu'un changeur accepte pour une direction. Votre montant doit entrer dans les limites, sinon l'opération est impossible.",
+      "ext_fr": "Si votre montant est inférieur au minimum ou supérieur au maximum, le changeur ne l'acceptera tout simplement pas, même à un excellent taux. Un gros montant doit parfois être fractionné en plusieurs ordres dans les limites. Vérifiez les limites avec la réserve avant de créer un ordre."
+    },
+    {
+      "slug": "stablecoin",
+      "ru": "Стейблкоин",
+      "en": "Stablecoin",
+      "def_ru": "Криптовалюта, привязанная к стоимости фиатной валюты, чаще доллара (USDT, USDC, DAI ≈ 1 USD). Удобна для хранения стоимости и переводов без скачков курса.",
+      "def_en": "A cryptocurrency pegged to the value of a fiat currency, usually the dollar (USDT, USDC, DAI ≈ 1 USD). Handy for storing value and transfers without price swings.",
+      "see": [
+        "fiat",
+        "volatilnost",
+        "token"
+      ],
+      "ext_ru": "Стейблкоины (USDT, USDC, DAI) — «рабочая лошадка» обмена: через них проходит больше всего направлений с лучшим курсом и резервом. В них удобно переждать волатильность, не выходя в фиат. Но привязка не абсолютна: при проблемах эмитента возможен депег, поэтому не держите крупные суммы в одном стейблкоине без нужды.",
+      "ext_en": "Stablecoins (USDT, USDC, DAI) are the workhorse of exchange: the most directions with the best rate and reserve pass through them. They are handy for waiting out volatility without going into fiat. But the peg is not absolute: an issuer's problems can cause a depeg, so do not hold large sums in a single stablecoin without need.",
+      "fr": "Stablecoin",
+      "def_fr": "Cryptomonnaie adossée à une monnaie fiduciaire, généralement le dollar (USDT, USDC, DAI ≈ 1 USD). Pratique pour conserver de la valeur et transférer sans à-coups de prix.",
+      "ext_fr": "Les stablecoins (USDT, USDC, DAI) sont la cheville ouvrière de l'échange : la plupart des directions, avec le meilleur taux et la meilleure réserve, passent par eux. Ils sont pratiques pour attendre que la volatilité passe sans repasser en fiat. Mais l'ancrage n'est pas absolu : des problèmes chez l'émetteur peuvent provoquer un depeg, ne conservez donc pas sans besoin de gros montants dans un seul stablecoin."
+    },
+    {
+      "slug": "altcoin",
+      "ru": "Альткоин",
+      "en": "Altcoin",
+      "def_ru": "Любая криптовалюта, кроме биткоина. Термин объединяет тысячи монет — от Ethereum до нишевых токенов.",
+      "def_en": "Any cryptocurrency other than Bitcoin. The term covers thousands of coins — from Ethereum to niche tokens.",
+      "see": [
+        "token",
+        "stablecoin"
+      ],
+      "ext_ru": "К альткоинам относят всё, кроме биткоина, — от крупных Ethereum и Solana до тысяч нишевых монет. У популярных альткоинов ликвидность высокая (много обменников, узкий спред), у редких — низкая, и обмен может быть невыгодным или невозможным. Часто выгоднее менять редкий альткоин через USDT, а не напрямую.",
+      "ext_en": "Altcoins are everything except Bitcoin — from large ones like Ethereum and Solana to thousands of niche coins. Popular altcoins have high liquidity (many exchangers, a narrow spread); rare ones have low liquidity, and exchange may be unprofitable or impossible. It is often better to exchange a rare altcoin through USDT rather than directly.",
+      "fr": "Altcoin",
+      "def_fr": "Toute cryptomonnaie autre que Bitcoin. Le terme couvre des milliers de monnaies — d'Ethereum aux jetons de niche.",
+      "ext_fr": "Les altcoins, c'est tout sauf Bitcoin — des grandes comme Ethereum et Solana à des milliers de monnaies de niche. Les altcoins populaires ont une forte liquidité (beaucoup de changeurs, spread étroit) ; les rares ont une faible liquidité, et l'échange peut être peu rentable, voire impossible. Il vaut souvent mieux échanger un altcoin rare via USDT plutôt qu'en direct."
+    },
+    {
+      "slug": "token",
+      "ru": "Токен",
+      "en": "Token",
+      "def_ru": "Криптоактив, выпущенный поверх чужого блокчейна (например, USDT в сети Ethereum). В отличие от монеты сети, токен не оплачивает комиссию сети напрямую.",
+      "def_en": "A crypto asset issued on top of another blockchain (e.g., USDT on Ethereum). Unlike a network's coin, a token doesn't pay the network fee directly.",
+      "see": [
+        "set-blockchain",
+        "stablecoin",
+        "komissiya-seti"
+      ],
+      "ext_ru": "Токен живёт поверх чужого блокчейна (например, USDT в сети Ethereum), поэтому комиссию за перевод он платит в монете этой сети — для ERC20-токена нужен ETH на газ. Один и тот же токен бывает в разных сетях с разными адресами и комиссиями. Всегда сверяйте сеть токена на обеих сторонах обмена.",
+      "ext_en": "A token lives on top of another blockchain (e.g., USDT on Ethereum), so it pays the transfer fee in that network's coin — an ERC20 token needs ETH for gas. The same token can exist on different networks with different addresses and fees. Always verify the token's network on both sides of the exchange.",
+      "fr": "Token",
+      "def_fr": "Actif crypto émis au-dessus d'une autre blockchain (par ex. USDT sur Ethereum). Contrairement à la monnaie du réseau, un token ne paie pas directement les frais de réseau.",
+      "ext_fr": "Un token vit au-dessus d'une autre blockchain (par ex. USDT sur Ethereum) : il paie donc les frais de transfert dans la monnaie du réseau — un token ERC20 a besoin d'ETH pour le gas. Le même token peut exister sur plusieurs réseaux, avec des adresses et des frais différents. Vérifiez toujours le réseau du token des deux côtés de l'échange."
+    },
+    {
+      "slug": "set-blockchain",
+      "ru": "Сеть (блокчейн)",
+      "en": "Network (blockchain)",
+      "def_ru": "Среда, в которой выпускается и передаётся криптовалюта (TRC20, ERC20, BEP20 и др.). От сети зависят комиссия, скорость и совместимость адресов.",
+      "def_en": "The environment where a cryptocurrency is issued and transferred (TRC20, ERC20, BEP20, etc.). The network affects fees, speed and address compatibility.",
+      "see": [
+        "komissiya-seti",
+        "adres",
+        "token"
+      ],
+      "ext_ru": "Одна монета может ходить в разных сетях (TRC20, ERC20, BEP20, TON), и от выбора сети зависят комиссия, скорость и, главное, совместимость адресов. 🔴 Отправка не в ту сеть — самая частая причина безвозвратной потери средств у новичков. Перед переводом сверяйте сеть у отправителя и получателя буква в букву.",
+      "ext_en": "One coin can travel on different networks (TRC20, ERC20, BEP20, TON), and the network choice affects the fee, speed and, crucially, address compatibility. Sending to the wrong network is the most common cause of irreversible loss for beginners. Before transferring, match the network on the sender and receiver side exactly.",
+      "fr": "Réseau (blockchain)",
+      "def_fr": "L'environnement où une cryptomonnaie est émise et transférée (TRC20, ERC20, BEP20, etc.). Le réseau influe sur les frais, la vitesse et la compatibilité des adresses.",
+      "ext_fr": "Une même monnaie peut circuler sur plusieurs réseaux (TRC20, ERC20, BEP20, TON), et ce choix influe sur les frais, la vitesse et, surtout, la compatibilité des adresses. Envoyer vers le mauvais réseau est la cause la plus fréquente de perte irréversible chez les débutants. Avant de transférer, faites correspondre exactement le réseau côté expéditeur et côté destinataire."
+    },
+    {
+      "slug": "komissiya-seti",
+      "ru": "Комиссия сети",
+      "en": "Network fee",
+      "def_ru": "Плата блокчейна за проведение перевода, не зависящая от обменника. В TRC20 обычно копейки, в Ethereum (gas) — плавающая и растёт в час пик.",
+      "def_en": "The blockchain's charge for processing a transfer, independent of the exchanger. On TRC20 it's usually tiny; on Ethereum (gas) it floats and rises at peak hours.",
+      "see": [
+        "gas",
+        "set-blockchain",
+        "tranzakciya"
+      ],
+      "ext_ru": "Комиссию сети получают майнеры/валидаторы, а не обменник, и она не зависит от курса. В TRC20 и TON она обычно копеечная, а в Ethereum (gas) — плавающая и в час пик может «съесть» заметную часть небольшой суммы. Для мелких переводов выбирайте дешёвую сеть и всегда закладывайте комиссию в расчёт выгоды.",
+      "ext_en": "The network fee goes to miners/validators, not the exchanger, and does not depend on the rate. On TRC20 and TON it is usually tiny, while on Ethereum (gas) it floats and at peak hours can eat a noticeable part of a small amount. For small transfers choose a cheap network and always include the fee in your profit calculation.",
+      "fr": "Frais de réseau",
+      "def_fr": "Le prélèvement de la blockchain pour traiter un transfert, indépendant du changeur. Sur TRC20, il est généralement minime ; sur Ethereum (gas), il flotte et monte aux heures de pointe.",
+      "ext_fr": "Les frais de réseau vont aux mineurs et validateurs, pas au changeur, et ne dépendent pas du taux. Sur TRC20 et TON, ils sont généralement minimes, tandis que sur Ethereum (gas) ils flottent et, aux heures de pointe, peuvent rogner une part notable d'un petit montant. Pour les petits transferts, choisissez un réseau bon marché et intégrez toujours les frais dans votre calcul de rentabilité."
+    },
+    {
+      "slug": "gas",
+      "ru": "Газ (gas)",
+      "en": "Gas",
+      "def_ru": "Плата за вычисления и переводы в сети Ethereum и совместимых. Размер зависит от загрузки сети: в пик gas дорожает.",
+      "def_en": "The fee for computation and transfers on Ethereum and compatible networks. The amount depends on network load: at peak, gas gets more expensive.",
+      "see": [
+        "komissiya-seti",
+        "set-blockchain"
+      ],
+      "ext_ru": "Газ — плата за вычисления и переводы в Ethereum и совместимых сетях; измеряется в единицах, а итог зависит от загрузки сети. В час пик gas дорожает, и перевод мелкой суммы через ERC20 может стать невыгодным. Если сумма небольшая, разумнее выбрать сеть подешевле (TRC20, TON).",
+      "ext_en": "Gas is the fee for computation and transfers on Ethereum and compatible networks; it is measured in units, and the total depends on network load. At peak hours gas gets more expensive, and transferring a small amount via ERC20 can become unprofitable. If the amount is small, it is wiser to pick a cheaper network (TRC20, TON).",
+      "fr": "Gas",
+      "def_fr": "Les frais de calcul et de transfert sur Ethereum et les réseaux compatibles. Le montant dépend de la charge du réseau : à la pointe, le gas coûte plus cher.",
+      "ext_fr": "Le gas, ce sont les frais de calcul et de transfert sur Ethereum et les réseaux compatibles ; il se mesure en unités, et le total dépend de la charge du réseau. Aux heures de pointe, le gas coûte plus cher, et transférer un petit montant via ERC20 peut devenir non rentable. Si le montant est petit, mieux vaut choisir un réseau moins cher (TRC20, TON)."
+    },
+    {
+      "slug": "adres",
+      "ru": "Криптоадрес",
+      "en": "Crypto address",
+      "def_ru": "Идентификатор кошелька для приёма средств в конкретной сети. Адреса разных сетей несовместимы — отправка не в ту сеть грозит потерей средств.",
+      "def_en": "A wallet identifier for receiving funds on a specific network. Addresses of different networks are incompatible — sending to the wrong network can lose funds.",
+      "see": [
+        "set-blockchain",
+        "koshelek",
+        "tranzakciya"
+      ],
+      "ext_ru": "Криптоадрес привязан к конкретной сети, и адреса разных сетей несовместимы — отправка не в ту сеть грозит потерей средств. Всегда копируйте адрес, а не набирайте вручную, и сверяйте хотя бы первые и последние символы. Для первого перевода на новый адрес полезен тест небольшой суммой.",
+      "ext_en": "A crypto address is tied to a specific network, and addresses of different networks are incompatible — sending to the wrong network risks losing funds. Always copy the address rather than typing it by hand, and verify at least the first and last characters. For a first transfer to a new address, a small-amount test is useful.",
+      "fr": "Adresse crypto",
+      "def_fr": "L'identifiant d'un portefeuille pour recevoir des fonds sur un réseau donné. Les adresses de réseaux différents sont incompatibles — envoyer vers le mauvais réseau peut faire perdre les fonds.",
+      "ext_fr": "Une adresse crypto est liée à un réseau précis, et les adresses de réseaux différents sont incompatibles — envoyer vers le mauvais réseau risque de faire perdre les fonds. Copiez toujours l'adresse plutôt que de la saisir à la main, et vérifiez au moins les premiers et derniers caractères. Pour un premier transfert vers une nouvelle adresse, un petit montant d'essai est utile."
+    },
+    {
+      "slug": "koshelek",
+      "ru": "Криптокошелёк",
+      "en": "Crypto wallet",
+      "def_ru": "Приложение или устройство для хранения ключей и управления криптовалютой. Бывает горячим (онлайн) и холодным (офлайн).",
+      "def_en": "An app or device for storing keys and managing crypto. It can be hot (online) or cold (offline).",
+      "see": [
+        "holodnyy-koshelek",
+        "privatnyy-klyuch",
+        "seed-fraza"
+      ],
+      "ext_ru": "Горячий кошелёк (онлайн-приложение) удобен для частых операций, но уязвимее; холодный (аппаратный/офлайн) надёжнее для хранения. Кто владеет приватным ключом и seed-фразой — владеет средствами, поэтому их нельзя никому передавать. Крупные суммы разумно держать в холодном кошельке, а на горячем — только рабочий остаток.",
+      "ext_en": "A hot wallet (an online app) is convenient for frequent operations but more vulnerable; a cold one (hardware/offline) is more reliable for storage. Whoever owns the private key and seed phrase owns the funds, so they must never be shared. It is wise to keep large sums in a cold wallet and only a working balance in a hot one.",
+      "fr": "Portefeuille crypto",
+      "def_fr": "Une appli ou un appareil pour conserver les clés et gérer la crypto. Il peut être chaud (en ligne) ou froid (hors ligne).",
+      "ext_fr": "Un portefeuille chaud (une appli en ligne) est pratique pour les opérations fréquentes mais plus vulnérable ; un froid (matériel, hors ligne) est plus fiable pour la conservation. Celui qui détient la clé privée et la phrase seed détient les fonds : il ne faut donc jamais les partager. Il est sage de garder les gros montants au froid et seulement un solde de travail au chaud."
+    },
+    {
+      "slug": "holodnyy-koshelek",
+      "ru": "Холодный кошелёк",
+      "en": "Cold wallet",
+      "def_ru": "Хранение ключей офлайн (аппаратный кошелёк, бумажный). Максимальная защита от взлома, но менее удобно для частых операций.",
+      "def_en": "Storing keys offline (hardware or paper wallet). Maximum protection from hacking, but less convenient for frequent operations.",
+      "see": [
+        "koshelek",
+        "privatnyy-klyuch"
+      ],
+      "ext_ru": "Холодный кошелёк хранит ключи офлайн (аппаратное устройство или бумажный носитель), поэтому его крайне трудно взломать удалённо. Расплата — меньше удобства: для каждой операции нужно подключать устройство. Такой кошелёк оптимален для долгого хранения крупных сумм, а не для частых обменов.",
+      "ext_en": "A cold wallet stores keys offline (a hardware device or paper), so it is extremely hard to hack remotely. The trade-off is less convenience: you must connect the device for each operation. It is optimal for long-term storage of large sums rather than frequent exchanges.",
+      "fr": "Portefeuille froid",
+      "def_fr": "La conservation des clés hors ligne (matériel ou portefeuille papier). Protection maximale contre le piratage, mais moins pratique pour les opérations fréquentes.",
+      "ext_fr": "Un portefeuille froid conserve les clés hors ligne (appareil matériel ou papier) : il est donc extrêmement difficile à pirater à distance. Le revers, c'est le confort : il faut connecter l'appareil à chaque opération. Il convient au stockage long terme de gros montants plutôt qu'aux échanges fréquents."
+    },
+    {
+      "slug": "privatnyy-klyuch",
+      "ru": "Приватный ключ",
+      "en": "Private key",
+      "def_ru": "Секретный ключ, дающий полный контроль над средствами на адресе. Кто знает приватный ключ — владеет монетами. Никому не передавайте.",
+      "def_en": "A secret key giving full control over the funds at an address. Whoever knows the private key owns the coins. Never share it.",
+      "see": [
+        "seed-fraza",
+        "koshelek",
+        "adres"
+      ],
+      "ext_ru": "Приватный ключ даёт полный контроль над средствами на адресе — фактически это и есть владение монетами. Его нельзя никому сообщать, вводить на сомнительных сайтах или хранить в открытом виде онлайн. Легитимному обмену приватный ключ не нужен: если его просят — это мошенничество.",
+      "ext_en": "A private key gives full control over the funds at an address — it is effectively ownership of the coins. It must never be shared, entered on dubious sites or stored in plain text online. A legitimate exchange does not need your private key: if someone asks for it, it is fraud.",
+      "fr": "Clé privée",
+      "def_fr": "Une clé secrète donnant le contrôle total des fonds à une adresse. Celui qui connaît la clé privée possède les monnaies. Ne la partagez jamais.",
+      "ext_fr": "Une clé privée donne le contrôle total des fonds à une adresse — c'est en pratique la propriété des monnaies. Il ne faut jamais la partager, la saisir sur des sites douteux ni la stocker en clair en ligne. Un changeur légitime n'a pas besoin de votre clé privée : si on vous la demande, c'est une arnaque."
+    },
+    {
+      "slug": "seed-fraza",
+      "ru": "Seed-фраза",
+      "en": "Seed phrase",
+      "def_ru": "Набор из 12–24 слов, восстанавливающий кошелёк и все ключи. Храните офлайн; утечка seed-фразы = потеря всех средств.",
+      "def_en": "A set of 12–24 words that restores a wallet and all keys. Keep it offline; leaking the seed phrase means losing all funds.",
+      "see": [
+        "privatnyy-klyuch",
+        "holodnyy-koshelek"
+      ],
+      "ext_ru": "Seed-фраза из 12–24 слов восстанавливает кошелёк и все его ключи на любом устройстве. Поэтому её хранят офлайн (на бумаге/металле), а не в заметках, мессенджерах или облаке. 🔴 Утечка seed-фразы = потеря всех средств; настоящий сервис никогда её не спрашивает.",
+      "ext_en": "A seed phrase of 12–24 words restores a wallet and all its keys on any device. That is why it is kept offline (on paper/metal), not in notes, messengers or the cloud. Leaking the seed phrase means losing all funds; a real service never asks for it.",
+      "fr": "Phrase seed",
+      "def_fr": "Un jeu de 12 à 24 mots qui restaure un portefeuille et toutes les clés. Gardez-la hors ligne ; fuiter la phrase seed, c'est perdre tous les fonds.",
+      "ext_fr": "Une phrase seed de 12 à 24 mots restaure un portefeuille et toutes ses clés sur n'importe quel appareil. C'est pourquoi on la garde hors ligne (sur papier ou métal), pas dans des notes, des messageries ou le cloud. Fuiter la phrase seed, c'est perdre tous les fonds ; un vrai service ne la demande jamais."
+    },
+    {
+      "slug": "tranzakciya",
+      "ru": "Транзакция",
+      "en": "Transaction",
+      "def_ru": "Перевод средств в блокчейне. Каждая транзакция получает уникальный хэш (TxID) и проходит через подтверждения сети.",
+      "def_en": "A transfer of funds on the blockchain. Each transaction gets a unique hash (TxID) and passes through network confirmations.",
+      "see": [
+        "hash-tranzakcii",
+        "podtverzhdenie",
+        "komissiya-seti"
+      ],
+      "ext_ru": "Каждая транзакция получает уникальный хэш (TxID) и проходит через подтверждения сети, прежде чем считаться завершённой. По TxID можно отследить статус перевода в обозревателе блокчейна. Скорость и стоимость зависят от сети и её загрузки; обменники обычно зачисляют средства после нескольких подтверждений.",
+      "ext_en": "Each transaction gets a unique hash (TxID) and passes through network confirmations before it counts as complete. Using the TxID you can track the transfer's status in a blockchain explorer. Speed and cost depend on the network and its load; exchangers usually credit funds after several confirmations.",
+      "fr": "Transaction",
+      "def_fr": "Un transfert de fonds sur la blockchain. Chaque transaction reçoit un hash unique (TxID) et passe par les confirmations du réseau.",
+      "ext_fr": "Chaque transaction reçoit un hash unique (TxID) et passe par les confirmations du réseau avant d'être considérée comme définitive. Avec le TxID, vous pouvez suivre l'état du transfert dans un explorateur de blockchain. Vitesse et coût dépendent du réseau et de sa charge ; les changeurs créditent généralement les fonds après plusieurs confirmations."
+    },
+    {
+      "slug": "hash-tranzakcii",
+      "ru": "Хэш транзакции (TxID)",
+      "en": "Transaction hash (TxID)",
+      "def_ru": "Уникальный идентификатор перевода в блокчейне. По нему можно проверить статус и детали транзакции в обозревателе сети.",
+      "def_en": "A unique identifier of a transfer on the blockchain. It lets you check the status and details of a transaction in a network explorer.",
+      "see": [
+        "tranzakciya",
+        "podtverzhdenie"
+      ],
+      "ext_ru": "Хэш (TxID) — это «номер квитанции» перевода в блокчейне: длинная строка, уникальная для каждой операции. Вставив его в обозреватель сети, вы увидите сумму, адреса, число подтверждений и статус — подтверждён перевод или ещё в обработке. TxID стоит сохранять: он главный аргумент в спорной ситуации с обменником.",
+      "ext_en": "A hash (TxID) is the «receipt number» of a transfer on the blockchain: a long string unique to each operation. Pasting it into a network explorer shows the amount, addresses, number of confirmations and status — whether the transfer is confirmed or still processing. Keep the TxID: it is your main argument in a dispute with an exchanger.",
+      "fr": "Hash de transaction (TxID)",
+      "def_fr": "L'identifiant unique d'un transfert sur la blockchain. Il permet de vérifier l'état et le détail d'une transaction dans un explorateur du réseau.",
+      "ext_fr": "Un hash (TxID), c'est le « numéro de reçu » d'un transfert sur la blockchain : une longue chaîne unique à chaque opération. Collé dans un explorateur du réseau, il montre le montant, les adresses, le nombre de confirmations et le statut — transfert confirmé ou encore en cours. Gardez le TxID : c'est votre principal argument en cas de litige avec un changeur."
+    },
+    {
+      "slug": "podtverzhdenie",
+      "ru": "Подтверждение",
+      "en": "Confirmation",
+      "def_ru": "Включение транзакции в блок сети. Чем больше подтверждений, тем надёжнее перевод; обменники обычно ждут несколько подтверждений перед зачислением.",
+      "def_en": "Inclusion of a transaction in a network block. The more confirmations, the more reliable the transfer; exchangers usually wait for several before crediting.",
+      "see": [
+        "tranzakciya",
+        "hash-tranzakcii"
+      ],
+      "ext_ru": "Подтверждение — это включение транзакции в очередной блок сети; каждый следующий блок добавляет ещё одно подтверждение и делает перевод надёжнее. Обменники обычно ждут несколько подтверждений перед зачислением, поэтому средства приходят не мгновенно. В загруженной сети или при низкой комиссии подтверждений приходится ждать дольше.",
+      "ext_en": "A confirmation is the inclusion of a transaction in a network block; each next block adds another confirmation and makes the transfer more reliable. Exchangers usually wait for several confirmations before crediting, so funds do not arrive instantly. On a congested network or with a low fee, confirmations take longer to wait for.",
+      "fr": "Confirmation",
+      "def_fr": "L'inclusion d'une transaction dans un bloc du réseau. Plus il y a de confirmations, plus le transfert est fiable ; les changeurs attendent généralement plusieurs confirmations avant de créditer.",
+      "ext_fr": "Une confirmation, c'est l'inclusion d'une transaction dans un bloc du réseau ; chaque bloc suivant ajoute une confirmation et rend le transfert plus fiable. Les changeurs attendent généralement plusieurs confirmations avant de créditer : les fonds n'arrivent donc pas instantanément. Sur un réseau encombré ou avec des frais faibles, les confirmations se font attendre."
+    },
+    {
+      "slug": "aml",
+      "ru": "AML-проверка",
+      "en": "AML check",
+      "def_ru": "Оценка криптоадреса или транзакции на связь с мошенничеством, даркнетом и санкциями. Снижает риск получить «грязные» монеты и блокировку средств.",
+      "def_en": "An assessment of a crypto address or transaction for links to fraud, darknet and sanctions. Reduces the risk of receiving «dirty» coins and frozen funds.",
+      "see": [
+        "kyc",
+        "tranzakciya",
+        "adres"
+      ],
+      "ext_ru": "AML-проверка отвечает на вопрос, не связан ли адрес или монета с мошенничеством, даркнетом или санкциями — «грязные» монеты могут заморозить на стороне получателя. Она особенно важна перед приёмом крупной суммы и перед выводом в наличные/банк. Базовая проверка (санкционные списки, ончейн-данные) — быстрый фильтр; полный скоринг делают специализированные сервисы.",
+      "ext_en": "An AML check answers whether an address or coin is linked to fraud, the darknet or sanctions — «dirty» coins can be frozen on the receiver's side. It is especially important before accepting a large amount and before withdrawing to cash/a bank. A basic check (sanctions lists, on-chain data) is a quick filter; a full score is done by specialized services.",
+      "fr": "Vérification AML",
+      "def_fr": "L'évaluation d'une adresse crypto ou transaction quant à ses liens avec la fraude, le darknet et les sanctions. Réduit le risque de recevoir des monnaies « sales » et des fonds bloqués.",
+      "ext_fr": "Une vérification AML dit si une adresse ou des monnaies sont liées à la fraude, au darknet ou aux sanctions — les monnaies « sales » peuvent être gelées côté destinataire. Elle compte surtout avant d'accepter un gros montant et avant de retirer vers du cash ou une banque. Un contrôle de base (listes de sanctions, données on-chain) est un filtre rapide ; un score complet relève de services spécialisés."
+    },
+    {
+      "slug": "kyc",
+      "ru": "KYC (верификация)",
+      "en": "KYC (verification)",
+      "def_ru": "«Знай своего клиента» — проверка личности пользователя (документы) на биржах и части сервисов. Обменники из мониторинга часто работают без KYC для небольших сумм.",
+      "def_en": "«Know Your Customer» — identity verification (documents) on exchanges and some services. Monitored exchangers often work without KYC for small amounts.",
+      "see": [
+        "aml",
+        "birzha",
+        "verifikaciya"
+      ],
+      "ext_ru": "KYC — проверка личности по документам, обязательная на большинстве бирж и части сервисов. Обменники из мониторинга часто работают без KYC для небольших сумм, что удобно, но не отменяет ответственности за происхождение средств. Для крупных операций верификация может потребоваться, поэтому держите документы под рукой.",
+      "ext_en": "KYC is identity verification by documents, mandatory on most exchanges and some services. Monitored exchangers often work without KYC for small amounts, which is convenient but does not remove responsibility for the origin of funds. For large operations verification may be required, so keep your documents handy.",
+      "fr": "KYC (vérification)",
+      "def_fr": "« Know Your Customer » — la vérification d'identité (documents) sur les plateformes et certains services. Les changeurs suivis fonctionnent souvent sans KYC pour les petits montants.",
+      "ext_fr": "Le KYC, c'est la vérification d'identité par documents, obligatoire sur la plupart des plateformes et certains services. Les changeurs suivis fonctionnent souvent sans KYC pour les petits montants, ce qui est pratique mais n'enlève rien à la responsabilité sur l'origine des fonds. Pour les grosses opérations, une vérification peut être exigée : gardez vos documents à portée de main."
+    },
+    {
+      "slug": "volatilnost",
+      "ru": "Волатильность",
+      "en": "Volatility",
+      "def_ru": "Степень колебаний цены актива. У биткоина она высокая (курс скачет), у стейблкоинов — почти нулевая (привязка к доллару).",
+      "def_en": "The degree of price fluctuation of an asset. Bitcoin's is high (the rate jumps), stablecoins' is near zero (pegged to the dollar).",
+      "see": [
+        "stablecoin",
+        "likvidnost"
+      ],
+      "ext_ru": "Высокая волатильность (как у биткоина) означает, что курс может заметно измениться за минуты — это и риск, и возможность. У стейблкоинов волатильность почти нулевая, поэтому в них удобно фиксировать стоимость. При обмене волатильного актива не тяните между просмотром курса и заявкой: цена может уйти.",
+      "ext_en": "High volatility (as with Bitcoin) means the rate can change noticeably within minutes — both a risk and an opportunity. Stablecoins have near-zero volatility, so they are handy for locking in value. When exchanging a volatile asset, do not delay between checking the rate and placing the order: the price may move.",
+      "fr": "Volatilité",
+      "def_fr": "Le degré de fluctuation du prix d'un actif. Celui de Bitcoin est élevé (le taux saute), celui des stablecoins est proche de zéro (adossé au dollar).",
+      "ext_fr": "Une forte volatilité (comme celle de Bitcoin) signifie que le taux peut bouger nettement en quelques minutes — à la fois un risque et une opportunité. Les stablecoins ont une volatilité proche de zéro : pratiques pour figer de la valeur. Quand vous échangez un actif volatil, ne tardez pas entre la vérification du taux et la création de l'ordre : le prix peut bouger."
+    },
+    {
+      "slug": "likvidnost",
+      "ru": "Ликвидность",
+      "en": "Liquidity",
+      "def_ru": "Насколько легко обменять актив без сильного изменения цены. У популярных пар (USDT, BTC) ликвидность высокая — больше обменников и лучше курс.",
+      "def_en": "How easily an asset can be exchanged without a big price change. Popular pairs (USDT, BTC) have high liquidity — more exchangers and better rates.",
+      "see": [
+        "kurs",
+        "spred",
+        "volatilnost"
+      ],
+      "ext_ru": "Высокая ликвидность означает, что актив легко обменять без сильного сдвига цены: по популярным парам (USDT, BTC) много обменников, узкий спред и хороший резерв. У неликвидных монет — наоборот: мало предложений, широкий спред, обмен может застрять. Поэтому редкие активы часто выгоднее менять через ликвидный USDT.",
+      "ext_en": "High liquidity means an asset is easy to exchange without a big price shift: popular pairs (USDT, BTC) have many exchangers, a narrow spread and a good reserve. Illiquid coins are the opposite: few offers, a wide spread, and the exchange can get stuck. That is why rare assets are often better exchanged through liquid USDT.",
+      "fr": "Liquidité",
+      "def_fr": "La facilité avec laquelle un actif s'échange sans grand mouvement de prix. Les paires populaires (USDT, BTC) ont une forte liquidité — plus de changeurs et de meilleurs taux.",
+      "ext_fr": "Une forte liquidité signifie qu'un actif s'échange facilement sans grand mouvement de prix : les paires populaires (USDT, BTC) ont beaucoup de changeurs, un spread étroit et une bonne réserve. Les monnaies illiquides, c'est l'inverse : peu d'offres, spread large, et l'échange peut se bloquer. C'est pourquoi les actifs rares s'échangent souvent mieux via l'USDT liquide."
+    },
+    {
+      "slug": "fiat",
+      "ru": "Фиат",
+      "en": "Fiat",
+      "def_ru": "Обычные государственные деньги — рубли, доллары, евро. Противопоставляется криптовалюте; обмен «крипта ↔ фиат» — самое частое направление.",
+      "def_en": "Ordinary state-issued money — rubles, dollars, euros. Contrasted with cryptocurrency; «crypto ↔ fiat» is the most common exchange direction.",
+      "see": [
+        "stablecoin",
+        "sbp"
+      ],
+      "ext_ru": "Фиат — обычные государственные деньги (рубли, доллары, евро), и направление «крипта ↔ фиат» самое частое в обмене. Ввод и вывод фиата идут через карты, СБП или наличные, у которых свои лимиты, комиссии и риски (например, чарджбэк). Стейблкоины часто служат мостом между криптой и фиатом.",
+      "ext_en": "Fiat is ordinary state-issued money (rubles, dollars, euros), and the «crypto ↔ fiat» direction is the most common in exchange. Fiat deposits and withdrawals go through cards, SBP or cash, each with its own limits, fees and risks (e.g., chargebacks). Stablecoins often serve as a bridge between crypto and fiat.",
+      "fr": "Fiat",
+      "def_fr": "La monnaie ordinaire émise par les États — euros, dollars. Opposée à la cryptomonnaie ; « crypto ↔ fiat » est la direction d'échange la plus courante.",
+      "ext_fr": "Le fiat, c'est la monnaie ordinaire émise par les États (euros, dollars), et la direction « crypto ↔ fiat » est la plus courante à l'échange. Dépôts et retraits fiat passent par cartes, virement SEPA ou espèces, chacun avec ses limites, ses frais et ses risques (par ex. les chargebacks). Les stablecoins servent souvent de pont entre crypto et fiat."
+    },
+    {
+      "slug": "sbp",
+      "ru": "СБП (Система быстрых платежей)",
+      "en": "SBP (Faster Payments System)",
+      "def_ru": "Сервис Банка России для мгновенных переводов между банками по номеру телефона. Многие обменники выдают рубли через СБП — быстро и удобно.",
+      "def_en": "A Bank of Russia service for instant transfers between banks by phone number. Many exchangers pay out rubles via SBP — fast and convenient.",
+      "see": [
+        "fiat",
+        "ekvayring"
+      ],
+      "ext_ru": "СБП позволяет получать рубли мгновенно по номеру телефона между банками, поэтому многие обменники используют её для быстрой выдачи. Это удобно и обычно без комиссии для получателя, но есть лимиты банков и антифрод-контроль. Проверьте, что ваш банк подключён к СБП и реквизиты указаны верно.",
+      "ext_en": "SBP lets you receive rubles instantly by phone number between banks, so many exchangers use it for fast payouts. It is convenient and usually free for the recipient, but banks have limits and anti-fraud controls. Check that your bank is connected to SBP and that the details are entered correctly.",
+      "fr": "SBP (paiements instantanés)",
+      "def_fr": "Service de la Banque de Russie pour les transferts instantanés entre banques par numéro de téléphone. Beaucoup de changeurs versent les roubles via SBP — vite et pratique.",
+      "ext_fr": "Le SBP permet de recevoir des roubles instantanément par numéro de téléphone entre banques : beaucoup de changeurs l'utilisent donc pour des versements rapides. C'est pratique et généralement gratuit pour le destinataire, mais les banques appliquent limites et contrôles antifraude. Vérifiez que votre banque est connectée au SBP et que les coordonnées sont saisies correctement."
+    },
+    {
+      "slug": "ekvayring",
+      "ru": "Эквайринг",
+      "en": "Acquiring",
+      "def_ru": "Приём платежей по банковским картам. При обмене «крипта ↔ карта» задействуется банковский эквайринг, у которого свои лимиты и правила.",
+      "def_en": "Accepting payments by bank cards. In «crypto ↔ card» exchanges, bank acquiring is involved, with its own limits and rules.",
+      "see": [
+        "sbp",
+        "chardzhbek",
+        "fiat"
+      ],
+      "ext_ru": "При обмене «крипта ↔ карта» задействуется банковский эквайринг со своими лимитами, комиссиями и правилами. Он удобен, но несёт риск чарджбэка для продавца и повышенное внимание антифрода банка. Из-за этого курс по картам иногда хуже, чем по СБП или наличным.",
+      "ext_en": "In «crypto ↔ card» exchanges, bank acquiring is involved, with its own limits, fees and rules. It is convenient but carries a chargeback risk for the seller and heightened bank anti-fraud attention. Because of this, the card rate is sometimes worse than via SBP or cash.",
+      "fr": "Acquisition bancaire",
+      "def_fr": "L'acceptation des paiements par cartes bancaires. Dans les échanges « crypto ↔ carte », l'acquisition bancaire intervient, avec ses limites et ses règles.",
+      "ext_fr": "Dans les échanges « crypto ↔ carte », l'acquisition bancaire intervient, avec ses limites, ses frais et ses règles. C'est pratique mais cela fait porter au vendeur un risque de chargeback et attire l'attention antifraude des banques. Pour cette raison, le taux par carte est parfois moins bon que via virement ou espèces."
+    },
+    {
+      "slug": "chardzhbek",
+      "ru": "Чарджбэк",
+      "en": "Chargeback",
+      "def_ru": "Оспаривание и возврат платежа по карте через банк. В крипто-обмене — риск для продавца: покупатель может отозвать перевод после получения монет.",
+      "def_en": "Disputing and reversing a card payment through the bank. In crypto exchange it's a risk for the seller: the buyer can reverse the payment after receiving coins.",
+      "see": [
+        "ekvayring",
+        "p2p"
+      ],
+      "ext_ru": "Чарджбэк — возврат платежа по карте через банк; в крипто-обмене это риск для продавца, ведь покупатель может отозвать перевод уже после получения монет (которые вернуть нельзя). Из-за этого обменники строже относятся к карточным направлениям и иногда просят подтверждения. Честному пользователю важно платить со своей карты и сохранять чеки.",
+      "ext_en": "A chargeback is the reversal of a card payment through the bank; in crypto exchange it is a risk for the seller, since the buyer can reverse the payment after receiving coins (which cannot be returned). Because of this, exchangers treat card directions more strictly and sometimes ask for confirmations. An honest user should pay from their own card and keep receipts.",
+      "fr": "Chargeback",
+      "def_fr": "La contestation et l'annulation d'un paiement par carte via la banque. Dans l'échange crypto, c'est un risque pour le vendeur : l'acheteur peut annuler le paiement après avoir reçu les monnaies.",
+      "ext_fr": "Un chargeback, c'est l'annulation d'un paiement par carte via la banque ; dans l'échange crypto, c'est un risque pour le vendeur, car l'acheteur peut annuler le paiement après avoir reçu des monnaies (qu'on ne peut pas rendre). Pour cette raison, les changeurs traitent les directions par carte plus strictement et demandent parfois des confirmations. Un utilisateur honnête paie depuis sa propre carte et garde les reçus."
+    },
+    {
+      "slug": "p2p",
+      "ru": "P2P-обмен",
+      "en": "P2P exchange",
+      "def_ru": "Обмен напрямую между людьми через площадку-гаранта, которая держит крипту в эскроу до оплаты. Бывает выгоднее по курсу, но зависит от контрагента.",
+      "def_en": "Exchanging directly between people via a guarantor platform that holds crypto in escrow until payment. Can be better on rate, but depends on the counterparty.",
+      "see": [
+        "escrow",
+        "obmennik",
+        "chardzhbek"
+      ],
+      "ext_ru": "В P2P вы меняете напрямую с другим человеком, а площадка-гарант держит крипту в эскроу до подтверждения оплаты — это защищает обе стороны. Курс бывает выгоднее, чем у обменника, но сделка зависит от контрагента и его скорости. Внимательно проверяйте условия и не выпускайте средства из эскроу до реального поступления оплаты.",
+      "ext_en": "In P2P you exchange directly with another person, while a guarantor platform holds the crypto in escrow until payment is confirmed — this protects both sides. The rate can be better than an exchanger's, but the deal depends on the counterparty and their speed. Check the terms carefully and do not release funds from escrow until payment has actually arrived.",
+      "fr": "Échange P2P",
+      "def_fr": "Échanger directement entre particuliers via une plateforme garante qui bloque la crypto en séquestre jusqu'au paiement. Parfois meilleur en taux, mais dépend de la contrepartie.",
+      "ext_fr": "En P2P, vous échangez directement avec une autre personne, tandis qu'une plateforme garante bloque la crypto en séquestre jusqu'à la confirmation du paiement — cela protège les deux côtés. Le taux peut être meilleur que chez un changeur, mais l'opération dépend de la contrepartie et de sa rapidité. Lisez bien les conditions et ne libérez pas les fonds du séquestre avant que le paiement soit réellement arrivé."
+    },
+    {
+      "slug": "escrow",
+      "ru": "Эскроу",
+      "en": "Escrow",
+      "def_ru": "Заморозка средств третьей стороной (площадкой) до выполнения условий сделки. В P2P эскроу защищает обе стороны от обмана.",
+      "def_en": "Freezing of funds by a third party (the platform) until the deal's terms are met. In P2P, escrow protects both sides from fraud.",
+      "see": [
+        "p2p"
+      ],
+      "ext_ru": "Эскроу замораживает средства у третьей стороны (площадки) до выполнения условий сделки, снимая необходимость доверять контрагенту напрямую. Это основа безопасности P2P-обмена: продавец уверен, что крипта уйдёт только после оплаты, а покупатель — что получит её. Никогда не переводите вне эскроу «по договорённости» — это классическая схема обмана.",
+      "ext_en": "Escrow freezes funds with a third party (the platform) until the deal's terms are met, removing the need to trust the counterparty directly. It is the basis of P2P safety: the seller is sure the crypto goes out only after payment, and the buyer that they will receive it. Never transfer outside escrow «by agreement» — that is a classic scam.",
+      "fr": "Séquestre (escrow)",
+      "def_fr": "Le blocage des fonds par un tiers (la plateforme) jusqu'à l'exécution des conditions de l'opération. En P2P, le séquestre protège les deux côtés contre la fraude.",
+      "ext_fr": "Le séquestre bloque les fonds chez un tiers (la plateforme) jusqu'à l'exécution des conditions, sans avoir à faire confiance directement à la contrepartie. C'est le fondement de la sécurité P2P : le vendeur est sûr que la crypto ne part qu'après paiement, et l'acheteur qu'il la recevra. Ne transférez jamais hors séquestre « à l'amiable » — c'est une arnaque classique."
+    },
+    {
+      "slug": "birzha",
+      "ru": "Криптобиржа",
+      "en": "Crypto exchange",
+      "def_ru": "Торговая площадка со стаканом заявок, где цену формируют покупатели и продавцы. Дешевле на объёме, но требует аккаунта и понимания торгов.",
+      "def_en": "A trading venue with an order book where buyers and sellers set the price. Cheaper at volume, but requires an account and trading knowledge.",
+      "see": [
+        "obmennik",
+        "likvidnost",
+        "kyc"
+      ],
+      "ext_ru": "Биржа формирует цену через стакан заявок покупателей и продавцов и выгоднее на объёме, но требует аккаунта, верификации (KYC) и понимания торгов. Обменник проще: фиксированный курс, без стакана, для разовой задачи «поменять и вывести». Новичку для простого обмена обычно удобнее обменник из мониторинга, а для активной торговли — биржа.",
+      "ext_en": "An exchange sets the price through a buyer/seller order book and is cheaper at volume, but requires an account, verification (KYC) and trading knowledge. An exchanger is simpler: a fixed rate, no order book, for the one-off task of «swap and withdraw». For a simple exchange a beginner usually finds a monitored exchanger more convenient, and an exchange for active trading.",
+      "fr": "Plateforme d'échange crypto",
+      "def_fr": "Une place de marché avec carnet d'ordres où acheteurs et vendeurs fixent le prix. Moins cher en volume, mais exige un compte et des connaissances de trading.",
+      "ext_fr": "Une plateforme fixe le prix via le carnet d'ordres des acheteurs et vendeurs : moins cher en volume, mais cela exige un compte, une vérification (KYC) et des connaissances de trading. Un changeur est plus simple : un taux fixe, pas de carnet d'ordres, pour la tâche unique « échanger et retirer ». Pour un simple échange, un débutant trouve généralement un changeur suivi plus pratique, et une plateforme pour le trading actif."
+    },
+    {
+      "slug": "verifikaciya",
+      "ru": "Верификация",
+      "en": "Verification",
+      "def_ru": "Подтверждение личности или данных пользователя/операции. На биржах — KYC по документам; в обмене может требоваться для крупных сумм.",
+      "def_en": "Confirmation of a user's or operation's identity/data. On exchanges — KYC by documents; in exchange it may be required for large amounts.",
+      "see": [
+        "kyc",
+        "aml"
+      ],
+      "ext_ru": "Верификация подтверждает личность или данные пользователя/операции: на биржах это KYC по документам, в обмене может потребоваться для крупных сумм или карточных направлений. Она повышает доверие и снижает риск блокировок, но требует времени. Держите документы наготове, если планируете крупную операцию.",
+      "ext_en": "Verification confirms the identity or data of a user/operation: on exchanges it is KYC by documents; in exchange it may be required for large amounts or card directions. It increases trust and reduces the risk of blocks, but takes time. Keep your documents ready if you plan a large operation.",
+      "fr": "Vérification",
+      "def_fr": "La confirmation de l'identité ou des données d'un utilisateur ou d'une opération. Sur les plateformes — le KYC par documents ; à l'échange, elle peut être exigée pour les gros montants.",
+      "ext_fr": "La vérification confirme l'identité ou les données d'un utilisateur ou d'une opération : sur les plateformes, c'est le KYC par documents ; à l'échange, elle peut être exigée pour les gros montants ou les directions par carte. Elle augmente la confiance et réduit le risque de blocage, mais prend du temps. Gardez vos documents prêts si vous prévoyez une grosse opération."
+    },
+    {
+      "slug": "decentralizaciya",
+      "ru": "Децентрализация",
+      "en": "Decentralization",
+      "def_ru": "Отсутствие единого управляющего центра: сеть работает на множестве независимых узлов. Свойство большинства криптовалют.",
+      "def_en": "The absence of a single controlling center: the network runs on many independent nodes. A property of most cryptocurrencies.",
+      "see": [
+        "set-blockchain",
+        "token"
+      ],
+      "ext_ru": "Децентрализация означает, что сеть работает на множестве независимых узлов без единого управляющего центра, поэтому её трудно отключить или подделать записи. Это повышает устойчивость и прозрачность, но и переносит ответственность на пользователя: нет «поддержки», которая вернёт ошибочный перевод. Отсюда важность самостоятельной проверки адресов и сетей.",
+      "ext_en": "Decentralization means the network runs on many independent nodes with no single controlling center, so it is hard to shut down or forge records. This increases resilience and transparency, but also shifts responsibility to the user: there is no «support» to reverse a mistaken transfer. Hence the importance of checking addresses and networks yourself.",
+      "fr": "Décentralisation",
+      "def_fr": "L'absence d'un centre de contrôle unique : le réseau tourne sur de nombreux nœuds indépendants. Une propriété de la plupart des cryptomonnaies.",
+      "ext_fr": "La décentralisation signifie que le réseau tourne sur de nombreux nœuds indépendants sans centre de contrôle unique : il est donc difficile de l'arrêter ou de falsifier les registres. Cela augmente résilience et transparence, mais reporte aussi la responsabilité sur l'utilisateur : il n'y a pas de « support » pour annuler un transfert erroné. D'où l'importance de vérifier soi-même adresses et réseaux."
+    },
+    {
+      "slug": "deep-link",
+      "ru": "Deep-link (прямая ссылка)",
+      "en": "Deep link",
+      "def_ru": "Ссылка сразу на конкретное направление обмена в мониторинге, а не на главную. Экономит клики: открывается готовый список обменников по паре.",
+      "def_en": "A link straight to a specific exchange direction in a monitor, not the homepage. Saves clicks: opens a ready exchanger list for the pair.",
+      "see": [
+        "napravlenie",
+        "monitoring-obmennikov"
+      ],
+      "ext_ru": "Deep-link открывает сразу нужное направление обмена в мониторинге, а не главную страницу, — готовый список обменников по паре загружается в один клик. Это удобно для быстрого сравнения и для ссылок из статей или закладок. Экономит время, особенно если вы часто меняете одно и то же направление.",
+      "ext_en": "A deep link opens the exact exchange direction in a monitor rather than the homepage — a ready exchanger list for the pair loads in one click. It is handy for quick comparison and for links from articles or bookmarks. It saves time, especially if you often exchange the same direction.",
+      "fr": "Lien profond",
+      "def_fr": "Un lien direct vers une direction d'échange précise dans un moniteur, pas la page d'accueil. Fait gagner des clics : ouvre une liste de changeurs prête pour la paire.",
+      "ext_fr": "Un lien profond ouvre la direction d'échange exacte dans un moniteur plutôt que la page d'accueil — une liste de changeurs prête pour la paire se charge en un clic. C'est pratique pour comparer vite et pour les liens depuis des articles ou des favoris. Cela fait gagner du temps, surtout si vous échangez souvent la même direction."
+    }
+  ]
 }

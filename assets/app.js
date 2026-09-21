@@ -147,8 +147,8 @@
 
   function fmtNum(v) {
     if (!isFinite(v)) return "";
-    if (v >= 1000) return v.toLocaleString("ru-RU", { maximumFractionDigits: 0 });
-    if (v >= 1) return v.toLocaleString("ru-RU", { maximumFractionDigits: 2 });
+    if (v >= 1000) return v.toLocaleString("fr-FR", { maximumFractionDigits: 0 });
+    if (v >= 1) return v.toLocaleString("fr-FR", { maximumFractionDigits: 2 });
     if (v >= 0.01) return v.toFixed(4).replace(/0+$/, "").replace(/\.$/, "");
     return v.toFixed(10).replace(/0+$/, "").replace(/\.$/, "");
   }
@@ -202,8 +202,8 @@
   function tms(s) { var p = s.split(/[- :]/); return Date.UTC(+p[0], +p[1] - 1, +p[2], +p[3] || 0, +p[4] || 0); }
   var ALL = raw.map(function (d) { return { t: tms(d[0]), v: d[1], hourly: d[0].indexOf(":") >= 0 }; });
   function fmt(v) {
-    if (v >= 1000) return v.toLocaleString("ru-RU", { maximumFractionDigits: 0 });
-    if (v >= 1) return v.toLocaleString("ru-RU", { maximumFractionDigits: 2 });
+    if (v >= 1000) return v.toLocaleString("fr-FR", { maximumFractionDigits: 0 });
+    if (v >= 1) return v.toLocaleString("fr-FR", { maximumFractionDigits: 2 });
     if (v >= 0.01) return (+v.toFixed(4)).toString();
     return (+v.toFixed(8)).toString();
   }
@@ -432,8 +432,8 @@
   function esc(x) { return (x || "").replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
   function fmt(v) {
     if (!isFinite(v)) return "—";
-    if (v >= 1000) return v.toLocaleString("ru-RU", { maximumFractionDigits: 0 });
-    if (v >= 1) return v.toLocaleString("ru-RU", { maximumFractionDigits: 2 });
+    if (v >= 1000) return v.toLocaleString("fr-FR", { maximumFractionDigits: 0 });
+    if (v >= 1) return v.toLocaleString("fr-FR", { maximumFractionDigits: 2 });
     if (v >= 0.0001) return (+v.toFixed(6)).toString();
     return v.toFixed(12).replace(/0+$/, "").replace(/\.$/, "") || "0";  // малые числа — без научной нотации
   }

@@ -18,7 +18,7 @@
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function dnum(s) { var p = s.slice(0, 10).split("-"); return Date.UTC(+p[0], +p[1] - 1, +p[2]) / 86400000 + (s.length > 10 ? (+s.slice(11, 13)) / 24 : 0); }
   function fmtDate(s) { return s.slice(8, 10) + "." + s.slice(5, 7); }
-  function fmtNum(v) { if (v == null || isNaN(v)) return "—"; var a = Math.abs(v); if (a >= 1000) return Math.round(v).toLocaleString("ru-RU"); if (a >= 1) return v.toFixed(2); if (a >= 0.01) return v.toFixed(4); return v.toPrecision(3); }
+  function fmtNum(v) { if (v == null || isNaN(v)) return "—"; var a = Math.abs(v); if (a >= 1000) return Math.round(v).toLocaleString("fr-FR"); if (a >= 1) return v.toFixed(2); if (a >= 0.01) return v.toFixed(4); return v.toPrecision(3); }
   function fmtPct(p) { if (p == null || isNaN(p)) return ""; return (p >= 0 ? "+" : "") + p.toFixed(1) + "%"; }
   function name(s) { return (DATA.cur[s] || {}).n || s; }
   function ticker(s) { return (DATA.cur[s] || {}).t || ""; }
@@ -338,7 +338,7 @@
   function availH() { return isFull() ? Math.max(400, (window.innerHeight || 800) - (bar.offsetHeight || 44) - 20) : 560; }
 
   // ---------------- панели ----------------
-  var PTITLE = { chart: T("График", "Chart", "Graphique"), watch: "Watchlist", movers: T("Муверы", "Movers", "Mouvements"), heat: T("Тепловая карта", "Heatmap", "Carte thermique"), screen: T("Скринер", "Screener", "Screener"), demand: T("Спрос из поиска", "Search demand", "Demande de recherche") };
+  var PTITLE = { chart: T("График", "Chart", "Graphique"), watch: T("Watchlist", "Watchlist", "Suivis"), movers: T("Муверы", "Movers", "Mouvements"), heat: T("Тепловая карта", "Heatmap", "Carte thermique"), screen: T("Скринер", "Screener", "Screener"), demand: T("Спрос из поиска", "Search demand", "Demande de recherche") };
   function nextPos() { var n = STATE.panels.length; return [24 + (n % 4) * 28, 24 + (n % 4) * 28, 440, 300]; }
   function addPanel(t) {
     var cfg;
@@ -1102,8 +1102,8 @@
     if (chartableCur(slug)) items.push({ l: "📈 " + (inActiveChart(slug) ? T("Убрать с активного графика", "Remove from active chart", "Retirer du graphique actif") : T("Добавить на активный график", "Add to active chart", "Ajouter au graphique actif")), f: function () { addToActiveChart(slug); } });
     if (ours) items.push({ l: "↗ " + T("Страница валюты на сайте", "Currency page on site", "Page de la monnaie sur le site"), f: function () { openUrl(curUrl(slug)); } });
     items.push({ sep: 1 });
-    items.push({ l: "🔍 Google: " + q, f: function () { webSearch("g", q + " курс криптовалюта"); } });
-    items.push({ l: "🔍 " + T("Яндекс", "Yandex", "Bing") + ": " + q, f: function () { webSearch("y", q + " курс криптовалюта"); } });
+    items.push({ l: "🔍 Google: " + q, f: function () { webSearch("g", q + " cours crypto"); } });
+    items.push({ l: "🔍 " + T("Яндекс", "Yandex", "Bing") + ": " + q, f: function () { webSearch("y", q + " cours crypto"); } });
     showMenu(items, x, y);
   }
   // меню по направлению/паре (правый клик по строке направления)
