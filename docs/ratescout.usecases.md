@@ -1488,17 +1488,17 @@ Last-Modified/ETag — отдаёт GitHub Pages сам (все страницы
 **Проверка:** build EXIT 0; `licnt737E` на index/valuta/en/faq/404 (по 2). **Статус:** ✅ в проде.
 
 ## UC-129. Страницы книги /kniga/ (магазин Amazon + DOCX) ✅
-**Предусловие:** первая книга вышла на Amazon: «Crypto Exchange Without Losses».
+**Предусловие:** первая книга вышла на Amazon: «Crypto Exchange Without Losses» (FR: «Échanger des cryptos sans pertes»).
 **Шаги:** `render_book(lang)` (через `render_page`) → `/kniga/`: у первой книги вместо
-`<a download>` на DOCX — кнопка Amazon, у второй («Professional Crypto Rate Monitor»)
-— по-прежнему `<a download>` на DOCX + заглушка «скоро в магазинах». Файлы `book/*.docx` копируются в `dist/book/` в `copy_assets()`.
+`<a download>` на DOCX — кнопка Amazon (`https://www.amazon.com/dp/B0HJZS298H`), у второй («Moniteur professionnel des taux crypto»)
+— по-прежнему `<a download>` на DOCX `professional-monitor-EN.docx` + заглушка «Le deuxième livre est en cours de publication en librairies». FR-ветка полностью на французском (h1 «Livres RateScout», crumb «Livres»). Файлы `book/*.docx` копируются в `dist/book/` в `copy_assets()`.
 Обе страницы в sitemap. Вызов в главном цикле языков.
-**Ожидаемо:** страницы открываются, DOCX качается (RU→obmen-kriptovalyuty-RU.docx, EN→crypto-exchange-EN.docx).
+**Ожидаемо:** страницы открываются, DOCX качается (RU→obmen-kriptovalyuty-RU.docx, EN→crypto-exchange-EN.docx, FR→кнопка Amazon + professional-monitor-EN.docx).
 🔴 Позже: заменить блок скачивания DOCX на ссылки магазинов (Ridero/OZON/Bookmate/Amazon/…).
 **РАДИУС:** `build.py` (`render_book`, `copy_assets`, sitemap, main-loop) + `book/*.docx`. СОСЕДИ: прочие страницы не тронуты;
-обе языковые версии есть (NO_RU/NO_EN не нужны). **Проверка:** build EXIT 0; `dist/kniga/` и `dist/en/kniga/` есть, DOCX в dist/book,
-ссылки корректны, sitemap ×2, заголовок с одним брендом. **Статус:** ✅ в проде.
-- 🧭 Ссылка «📖 Книга» добавлена в меню «Разделы» (оба sblock, RU+EN). Кросс-язык-ссылки (English/Русская версия) со страниц книги убраны по запросу.
+FR-версия — обычная страница (из NO_FR убраны `/blog/`, `/kniga/`; книга и блог в навигации FR — шторка, sblock, topnav). **Проверка:** build EXIT 0; `dist/kniga/` есть (FR), DOCX в dist/book,
+ссылки корректны, sitemap ×1 (FR-only), заголовок с одним брендом. **Статус:** ✅ в проде.
+- 🧭 Ссылка «📖 Книга» добавлена в меню «Разделы» (оба sblock, RU+EN; FR: «📖 Livres»). Кросс-язык-ссылки (English/Русская версия) со страниц книги убраны по запросу.
 
 ## UC-130. Наполнение словаря + ссылка TXID в AML ✅
 **Предусловие:** страницы терминов словаря почти пустые (определение ~100–140 симв.); на /aml/ не было ссылки на статью про TxID.

@@ -47,7 +47,7 @@
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function dnum(s) { var p = s.slice(0, 10).split("-"); return Date.UTC(+p[0], +p[1] - 1, +p[2]) / 86400000 + (s.length > 10 ? (+s.slice(11, 13)) / 24 : 0); }
   function fmtDate(s) { return s.slice(8, 10) + "." + s.slice(5, 7); }
-  function fmtNum(v) { if (v == null || isNaN(v)) return "—"; var a = Math.abs(v); if (a >= 1000) return Math.round(v).toLocaleString("ru-RU"); if (a >= 1) return v.toFixed(2); if (a >= 0.01) return v.toFixed(4); return v.toPrecision(3); }
+  function fmtNum(v) { if (v == null || isNaN(v)) return "—"; var a = Math.abs(v); if (a >= 1000) return Math.round(v).toLocaleString("fr-FR"); if (a >= 1) return v.toFixed(2); if (a >= 0.01) return v.toFixed(4); return v.toPrecision(3); }
   function fmtPct(p) { if (p == null || isNaN(p)) return ""; return (p >= 0 ? "+" : "") + p.toFixed(1) + "%"; }
   function name(s) { return (DATA.cur[s] || {}).n || s; }
   function ticker(s) { return (DATA.cur[s] || {}).t || ""; }
@@ -119,7 +119,7 @@
     if (!catsEl || !DATA.cats) return;
     var all = '<button type="button" data-c=""' + (catFilter ? "" : ' class="on"') + ">" + T("Все", "All", "Toutes") + "</button>";
     catsEl.innerHTML = all + DATA.cats.map(function (c) {
-      return '<button type="button" data-c="' + c.s + '"' + (catFilter === c.s ? ' class="on"' : "") + ">" + esc(EN ? c.en : c.ru) + "</button>";
+      return '<button type="button" data-c="' + c.s + '"' + (catFilter === c.s ? ' class="on"' : "") + ">" + esc(FR ? (c.fr || c.en) : (EN ? c.en : c.ru)) + "</button>";
     }).join("");
     Array.prototype.forEach.call(catsEl.querySelectorAll("button"), function (b) {
       b.addEventListener("click", function () {
