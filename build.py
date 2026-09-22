@@ -2381,7 +2381,7 @@ def footer(lang):
                 "de change, pas de PSAN, pas d\'AMF. Actifs numériques hautement volatils — risque de perte totale. "
                 "Aucun conseil financier. Les liens mènent vers BestChange (moniteur des taux) ; via l\'affiliation, nous pouvons percevoir une commission, "
                 "sans surcoût pour vous (<a href=\"/raskrytie/\">divulgation</a>).")
-        links = (f'<a href="{PREF[lang]}/o-servise/">À propos</a> · <a href="{PREF[lang]}/aml/">Vérification AML</a> · '
+        links = (f'<a href="{PREF[lang]}/kniga/">📖 Livres</a> · <a href="{PREF[lang]}/o-servise/">À propos</a> · <a href="{PREF[lang]}/aml/">Vérification AML</a> · '
                  f'<a href="{PREF[lang]}/earn/">Gagner</a> · <a href="{PREF[lang]}/vidzhet/">Widget</a> · <a href="{PREF[lang]}/redakciya/">Rédaction</a> · '
                  f'<a href="https://ratescout-fr.blogspot.com/" target="_blank" rel="noopener me">Blog sur Blogger</a> · '
                  f'<a href="{PREF[lang]}/raskrytie/">Mentions légales</a> · '
