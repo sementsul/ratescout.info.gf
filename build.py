@@ -5070,7 +5070,7 @@ def compliance_pages(lang):
 <h2>Participer — lien partenaire RateScout</h2>
 <p><a id="bcPartner" class="cta" href="{router_link(partner=True, lang=lang)}" target="_blank" rel="nofollow sponsored noopener">S'inscrire chez BestChange &rarr;</a></p>
 <p class="updnote admark">Lien affilié — nous pouvons percevoir une commission (voir <a href="/raskrytie/">divulgation</a>). Sans surcoût pour vous.</p>
-<p class="updnote">Conditions officielles : affrules.html. RateScout est indépendant, pas employeur, pas conseil financier.</p>""",
+<p class="updnote">Conditions officielles : <a href="https://www.bestchange.com/wiki/affrules.html" target="_blank" rel="noopener nofollow">affrules.html</a>. RateScout est indépendant, pas employeur, pas conseil financier.</p>""",
                     "Gagner avec BestChange")
         render_page(lang, "aml", "Vérification AML d'adresse crypto — pourquoi et comment",
                     "Vérification AML : comment contrôler une adresse crypto pour des liens avec la fraude et les sanctions avant d'échanger.",
