@@ -123,13 +123,13 @@
   var PREF = EN ? "/en" : "";
   var PAIRS = {}; // "from-to" -> 1 (ядровые пары со страницей /obmen/)
   function curUrl(slug) { return PREF + "/valuta/" + slug + "/"; }
-  function bcErid() { return (DATA && DATA.erid) || ""; }
-  function bcEr() { var e = bcErid(); return e ? "&erid=" + e : ""; }
-  function bcDom() { return EN || FR ? "https://www.bestchange.com" : "https://www.bestchange.ru"; }
+  // все партнёрские ссылки — через роутер основного домена (метка ?p= и erid добавляются в воркере)
+  function bcDom() { return (DATA && DATA.router) || "https://ratescout.ru/go/bestchange"; }
   function bcLink(a, b) {
     var fa = DATA.cur[a] || {}, fb = DATA.cur[b] || {};
-    if (fa.num || fb.num) return bcDom() + "/index.php?mt=rates&from=" + (fa.id || "") + "&to=" + (fb.id || "") + "&p=" + DATA.ref + bcEr();
-    return bcDom() + "/" + a + "-to-" + b + ".html?p=" + DATA.ref + bcEr();
+    var lg = EN ? "&lang=en" : (FR ? "&lang=fr" : "");
+    if (fa.num || fb.num) return bcDom() + "?fid=" + (fa.id || "") + "&tid=" + (fb.id || "") + lg + "&noerid=1";
+    return bcDom() + "?from=" + encodeURIComponent(a) + "&to=" + encodeURIComponent(b) + lg + "&noerid=1";
   }
   function pairUrl(a, b) { return PAIRS[a + "-" + b] ? PREF + "/obmen/" + a + "-" + b + "/" : bcLink(a, b); }
   function pairHasPage(a, b) { return !!PAIRS[a + "-" + b]; }

@@ -1,13 +1,18 @@
 // Конвертер направления по ПОЛНОМУ каталогу BestChange (catalog.js).
-// Выбор «отдаю/получаю» → CTA-ссылка на конкретное направление BestChange с реф-меткой.
+// Выбор «отдаю/получаю» → CTA-ссылка на конкретное направление через роутер основного домена.
 (function () {
   var C = window.__CATALOG__;
-  var REF = window.__REF__ || "1116359";
-  var ERID = window.__ERID__ || "";
-  var _LNG = (document.documentElement.lang || "ru").slice(0, 2);
-  var BCDOM = _LNG === "ru"
-    ? "https://www.bestchange.ru" : "https://www.bestchange.com";
-  function bcQs(qs) { return ERID ? qs + "&erid=" + ERID : qs; }
+  var ROUTER = window.__ROUTER__ || "https://ratescout.ru/go/bestchange";
+  var _LNG = (document.documentElement.lang || "fr").slice(0, 2);
+  // Все партнёрские ссылки идут через роутер основного домена: метка ?p= и erid
+  // подставляются на сервере (Cloudflare Worker) и в HTML/JS не попадают.
+  function rl(frm, to) {
+    return ROUTER + "?from=" + encodeURIComponent(frm) + "&to=" + encodeURIComponent(to) +
+           (_LNG === "ru" ? "" : "&lang=" + _LNG) + "&noerid=1";
+  }
+  function homeLink() {
+    return ROUTER + "?" + (_LNG === "ru" ? "" : "lang=" + _LNG + "&") + "noerid=1";
+  }
 
   // ---- поиск по валютам (на всех страницах) ----
   (function () {
@@ -125,7 +130,7 @@
   fill(elFrom, defFrom);
   fill(elTo, defTo);
 
-  function deep(frm, to) { return BCDOM + "/" + frm + "-to-" + to + ".html?" + bcQs("p=" + REF); }
+  function deep(frm, to) { return rl(frm, to); }
 
   var OPEN = conv.getAttribute("data-open") || "Открыть";
   var APPROX = conv.getAttribute("data-approx") || "≈";
@@ -165,7 +170,7 @@
   function update() {
     var f = elFrom.value, t = elTo.value;
     if (f === t) {
-      elGo.href = BCDOM + "/?" + bcQs("p=" + REF);
+      elGo.href = homeLink();
       elGo.setAttribute("target", "_blank"); elGo.setAttribute("rel", "nofollow noopener sponsored");
       elGo.textContent = SAMEMSG; if (elOut) elOut.textContent = ""; return;
     }
